@@ -9,20 +9,29 @@ public enum ESortLayer
     Count
 }
 
-// object 외
 public enum WTEventType
 {
-    MapLoaded = 0,
-    AddressableGroupLoadComplete = 1,
+    SaveDataLoaded = 0,
+    MapLoaded = 1,
+    AddressableGroupLoadComplete = 2,
+    PlayerHPControl = 3,
+    Timer = 4,
     Count
 }
 
-// object를 param으로 갖는 이벤트 타입들
+public enum WTGameState
+{
+    None = 0,
+    Lobby,
+    Loading,
+    Game,
+};
+
 public enum WTEventObjectType
 {
     SpawnPC = 0,
     SpawnNPC = 1,
-    DestroyCharacter = 3,
+    DestroyCharacter = 2,
     Count
 }
 
