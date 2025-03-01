@@ -41,11 +41,3 @@ public enum WTAnimParam_Int
     SubState,
     Count
 }
-
-public enum PlayerStateType
-{
-    Idle,
-    Move,
-    Attack,
-    Die
-}
