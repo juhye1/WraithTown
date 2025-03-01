@@ -9,7 +9,7 @@ public class PlayerFSM : BaseFSM
     public float moveSpeed;
     public Vector2 moveDir;
     public Vector2 shootDir;
-    public bool isAttack;
+
     public string projectileName;
     #region Player States
     public PlayerMoveState MoveState { get; private set; }
@@ -43,15 +43,19 @@ public class PlayerFSM : BaseFSM
 
     public void Shoot()
     {
-        if (isAttack) return;
-        isAttack = true;
-        Invoke("ResetAtkCool", 1);
         var obj = WTPoolManager.Instance.SpawnQueue<Projectiles>(projectileName);
         obj.OnShoot(player ,shootDir);
     }
 
-    public void ResetAtkCool()
+    public void WaitForCooltime()
     {
-        isAttack = false;
+        if (!isCooltime) return;
+        cooltime -= Time.deltaTime;
+        if (cooltime <= 0)
+        {
+            isAttack = false;
+            isCooltime = false;
+            cooltime = 1f;
+        }
     }
 }

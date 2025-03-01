@@ -6,7 +6,7 @@ public class BaseAttackeState : BaseState
 {
     public BaseAttackeState(BaseFSM fsm) : base(fsm)
     {
-        animName = "Attack";
+        animName = "Attack_01";
     }
 
     public override void Enter()

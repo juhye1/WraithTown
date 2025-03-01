@@ -1296,7 +1296,7 @@ namespace Spine {
 		public void AllowImmediateQueue () {
 			if (nextTrackLast < 0) nextTrackLast = 0;
 		}
-	}
+    }
 
 	class EventQueue {
 		private readonly List<EventQueueEntry> eventQueueEntries = new List<EventQueueEntry>();

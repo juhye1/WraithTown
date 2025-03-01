@@ -90,8 +90,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
   isDontDestroyOnLoad: 1
-  poolParents: []
+  poolParents:
+  - {fileID: 1274470644506023560}
   prefabQList:
+  - {fileID: 2907634608316733499, guid: a3baa10635436164488ec4c4bb950c99, type: 3}
   - {fileID: 0}
   prefabLList: []
   isInit: 0

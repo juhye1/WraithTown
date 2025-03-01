@@ -6,7 +6,7 @@ public class BaseDieState : BaseState
 {
     public BaseDieState(BaseFSM fsm) : base(fsm)
     {
-        animName = "Death";
+        animName = "die";
     }
 
     public override void Enter()

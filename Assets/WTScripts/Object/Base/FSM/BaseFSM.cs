@@ -20,18 +20,24 @@ public class BaseFSM : MonoBehaviour
 
     [Header("Animations")]
     public SkeletonAnimation anim;
-    CharacterDirection Direction;
+    protected CharacterDirection Direction;
+
+    public bool isAttack;
+    public bool isCooltime;
+    public float cooltime = 1f;
     protected virtual void Awake()
     {
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();
         if (anim == null)
             anim = GetComponentInChildren<SkeletonAnimation>();
+        if(player == null)
+            player = BasePlayer.Instance;
     }
 
     public virtual void ChangeState(IState newState)
     {
-        Debug.Log(newState);
+        //Debug.Log(newState);
         if (currentState != null)
             currentState?.Exit();
         //Debug.Log(currentState);
@@ -56,6 +62,8 @@ public class BaseFSM : MonoBehaviour
     //_animator가 붙어있는 오브젝트가 모델 오브젝트
     public virtual void SetFlip()
     {
-        //anim.skeleton.ScaleX = Direction == CharacterDirection.Left ? Mathf.Abs(anim.skeleton.ScaleX) : -Mathf.Abs(anim.skeleton.ScaleX);
+        anim.skeleton.ScaleX = Direction == CharacterDirection.Left ? Mathf.Abs(anim.skeleton.ScaleX) : -Mathf.Abs(anim.skeleton.ScaleX);
     }
+
+
 }

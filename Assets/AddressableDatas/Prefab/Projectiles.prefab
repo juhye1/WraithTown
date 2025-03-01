@@ -134,7 +134,7 @@ MonoBehaviour:
   prefab: {fileID: 2907634608316733499}
   parent: {fileID: 0}
   rCode: Projectiles
-  count: 20
+  count: 30
   isUI: 0
   sort: 1
   model: {fileID: 2854689872841443517}

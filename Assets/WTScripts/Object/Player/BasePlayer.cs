@@ -2,11 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Spine.Unity;
+
+public enum PlayerSkin
+{
+    Miho = 0,
+    Kebi
+}
+
 public class BasePlayer : Singleton<BasePlayer>, BaseObject
 {
     #region 변수 
     public bool isPlaying;
     public bool isDead;
+    public PlayerSkin skinType;
+    public SkeletonDataAsset[] newSkeletonData;
+    string skinName;
+    [SerializeField]
+    private int sTileCount;
+    public List<WraithTile> tiles = new List<WraithTile>();
     #endregion
 
     #region 하위 클래스
@@ -19,6 +33,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     #region 유니티 함수
     protected virtual void Start()
     {
+        Init();
         fsm.Init();
     }
 
@@ -28,6 +43,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
             fsm.currentState?.Execute();
         if (rotObj != null)
             rotObj.RotateTowards(fsm.shootDir);
+        fsm.WaitForCooltime();
     }
     #endregion
 
@@ -59,6 +75,37 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
        
     }
     #endregion
+
+    public void SetSpecialTile()
+    {
+        HashSet<int> uniqueNumbers = new HashSet<int>();
+        while (uniqueNumbers.Count < sTileCount)
+        {
+            int randomNumber = Random.Range(0, tiles.Count);
+            Debug.Log(randomNumber);
+            uniqueNumbers.Add(randomNumber);
+        }
+
+        foreach(var idx in uniqueNumbers)
+        {
+            tiles[idx].isSpecial = true;
+            tiles[idx].SetTileColor();
+        }
+    }
+
+    public void SetSkin(PlayerSkin type)
+    {
+        skinType = type;
+        fsm.anim.skeletonDataAsset = newSkeletonData[(int)type];
+        fsm.anim.Initialize(true);
+        fsm.ChangeState(fsm.IdleState);
+    }
+
+    [ContextMenu("skinMiho")]
+    public void SetMiho()
+    {
+        SetSkin(PlayerSkin.Miho);
+    }
 
 
 }

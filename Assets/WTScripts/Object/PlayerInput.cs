@@ -12,7 +12,8 @@ public class PlayerInput : MonoBehaviour
     public bool isPress;
     private Camera cam;
     private Vector3 screenToWorldPos = Vector3.zero;
-
+    private Vector2 moveInput;
+    private Vector2 lastMousePos;
     void Start()
     {
         if(player == null)
@@ -64,7 +65,8 @@ public class PlayerInput : MonoBehaviour
         {
             case InputActionPhase.Started:
                 Debug.Log("플레이어 공격");
-                player.fsm.ChangeState(player.fsm.AttackState);
+                //if(!player.fsm.isAttack)
+                    player.fsm.ChangeState(player.fsm.AttackState);
                 break;
             case InputActionPhase.Canceled:
 
@@ -75,7 +77,7 @@ public class PlayerInput : MonoBehaviour
     }
     public void OnAiming(InputAction.CallbackContext context)
     {
-        var pos = context.ReadValue<Vector2>();
+        moveInput = context.ReadValue<Vector2>();
         switch (context.phase)
         {
             case InputActionPhase.Started:
@@ -83,14 +85,27 @@ public class PlayerInput : MonoBehaviour
 
                 break;
             case InputActionPhase.Performed:
-                screenToWorldPos.Set(pos.x, pos.y, 0);
-                player.fsm.shootDir = cam.ScreenToWorldPoint(screenToWorldPos);
+
                 break;
             case InputActionPhase.Canceled:
 
                 break;
             default:
                 break;
+        }
+    }
+
+    void Update()
+    {
+        // 항상 마우스 위치 업데이트
+        lastMousePos = Mouse.current.position.ReadValue();
+
+        // 이동 입력이 있거나 마우스가 움직일 때만 갱신
+        if (moveInput != Vector2.zero || Mouse.current.delta.ReadValue() != Vector2.zero)
+        {
+            screenToWorldPos.Set(lastMousePos.x, lastMousePos.y, 0);
+            player.fsm.shootDir = cam.ScreenToWorldPoint(screenToWorldPos);
+            player.fsm.targetPos = player.fsm.shootDir;
         }
     }
 }

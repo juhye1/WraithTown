@@ -1,55 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class BaseEnemy : ObjectPoolBase, BaseObject
 {
     #region 변수 
-
+    private string projectileName;
     #endregion
 
     #region 하위 클래스
-
+    public EnemyFSM fsm;
     #endregion
 
     #region 유니티 함수
-    // Start is called before the first frame update
     protected virtual void Start()
     {
 
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
-
+        if (fsm.currentState != null)
+            fsm.currentState?.Execute();
+        fsm.WaitForCooltime();       
     }
     #endregion
 
     #region 일반 메서드
     public void DeathEvt()
     {
-        throw new System.NotImplementedException();
+        SetActive(false);
     }
 
-    public void Init()
+    public override void Init()
     {
-        throw new System.NotImplementedException();
+        base.Init();
     }
 
     public void OnAttack()
     {
-        throw new System.NotImplementedException();
+        var obj = WTPoolManager.Instance.SpawnQueue<Projectiles>(projectileName);
+        var dir = (fsm.targetPos - (Vector2)transform.position).normalized;
+        obj.OnShoot(this, dir);
     }
 
     public void OnTakeDamaged()
     {
-        throw new System.NotImplementedException();
+        SetActive(false);
     }
 
-    public void Setup()
+    public override void Setup()
     {
-        throw new System.NotImplementedException();
+        base.Setup();
     }
     #endregion
 }

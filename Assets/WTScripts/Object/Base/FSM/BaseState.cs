@@ -25,7 +25,7 @@ public abstract class BaseState : IState
 
     protected void StartAnimation(string animName, int track = 0, bool isRepeat = true)
     {
-        //fsm.anim.AnimationState.SetAnimation(0, animName, isRepeat);
+        fsm.anim.AnimationState.SetAnimation(0, animName, isRepeat);
     }
 
     protected void StopAnimation(int track = 0, float delayTime = 0.5f)

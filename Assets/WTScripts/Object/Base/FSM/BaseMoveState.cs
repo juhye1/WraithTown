@@ -7,7 +7,8 @@ public class BaseMoveState : BaseState
     
     public BaseMoveState(BaseFSM fsm) : base(fsm)
     {
-        animName = "Move";
+        animName = "Walk";
+        fsm.Flip();
     }
 
     public override void Enter()
