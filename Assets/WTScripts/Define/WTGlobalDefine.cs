@@ -7,13 +7,15 @@ static class WTConstants
 {
     public const float CameraRotationEuler_X = 35.3f;
     public const float CameraRotationEuler_Y = 45f;
+    public const ushort StartStageID = 10001;
+    public const ushort TotalStageTime = 300;
 }
 
 public delegate void WTEventProcDelegate(int param1);
 public delegate void WTEventProcDelegateObj(object param1);
 
 
-static public class CMGlobal
+static public class WTGlobal
 {
     static WTEventProcDelegate[] _eventProcDelegates = new WTEventProcDelegate[(int)WTEventType.Count];
     static WTEventProcDelegateObj[] _eventProcDelegatesObj = new WTEventProcDelegateObj[(int)WTEventObjectType.Count];
