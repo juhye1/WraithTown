@@ -55,12 +55,11 @@ public partial class WTMain : MonoBehaviour
     public void LoadSavedData()
     {
         string filePath = persistentPath + "/data.json";
-        string jsonString = System.IO.File.ReadAllText(filePath);
-        if (!string.IsNullOrEmpty(jsonString))
+        if (System.IO.File.Exists(filePath))
         {
+            string jsonString = System.IO.File.ReadAllText(filePath);
             savedData = JsonUtility.FromJson<WTGameData>(jsonString);
             WTGlobal.CallEventDelegate(WTEventType.SaveDataLoaded, 1);
-            //savedData =  
         }
         else
         {
