@@ -42,6 +42,7 @@ public partial class WTMain : MonoBehaviour
         streamingAssetPath = Application.streamingAssetsPath;
         persistentPath = Application.persistentDataPath;
         tempPath = Application.temporaryCachePath;
+        LoadTemplates();
         LoadSavedData();
         //LoadOptionFromJson();
         //LoadQuestTemplate();
@@ -59,14 +60,23 @@ public partial class WTMain : MonoBehaviour
         {
             savedData = JsonUtility.FromJson<WTGameData>(jsonString);
             WTGlobal.CallEventDelegate(WTEventType.SaveDataLoaded, 1);
-
             //savedData =  
         }
         else
         {
-            //�̾��ϱ� ��ư ��Ȱ��ȭ
             WTGlobal.CallEventDelegate(WTEventType.SaveDataLoaded, 0);
         }
+    }
+    public void LoadTemplates()
+    {
+        TextAsset ta = Resources.Load<TextAsset>("Template/StageTimeTemplate");
+        WTStageData tempData = JsonUtility.FromJson<WTStageData>(ta.text);
+        for (int i = 0; i < tempData.timeDatas.Length; ++i)
+        {
+            WTStageTimeData data = tempData.timeDatas[i];
+            dicStageData.Add(data.stage_id, data);
+        }
+
     }
 
     public WTStageTimeData GetCurrentStageData()

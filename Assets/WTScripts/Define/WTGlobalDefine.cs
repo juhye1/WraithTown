@@ -9,6 +9,7 @@ static class WTConstants
     public const float CameraRotationEuler_Y = 45f;
     public const ushort StartStageID = 10001;
     public const ushort TotalStageTime = 300;
+    public const ushort MaxHP = 100;
 }
 
 public delegate void WTEventProcDelegate(int param1);

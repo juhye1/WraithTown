@@ -11,14 +11,12 @@ public class Panel_Lobby : MonoBehaviour
     {
         WTGlobal.RegisterEventDelegate(WTEventType.SaveDataLoaded, EnableContinueBtn);
     }
-
     private void OnDisable()
     {
         WTGlobal.UnregisterEventDelegate(WTEventType.SaveDataLoaded, EnableContinueBtn);
     }
     private void EnableContinueBtn(int val)
     {
-        //����� ������ ���� �� �̾��ϱ� ��ư ��Ȱ��ȭ
         bool enable = val == 1 ? true : false;
         continueDisableImg.enabled = enable;
     }
@@ -26,25 +24,18 @@ public class Panel_Lobby : MonoBehaviour
     {
         WTMain main = WTMain.Instance;
         main.ChangeGameState(WTGameState.Game);
-        //ó������
     }
-
     public void OnClickBtn_ContinueGame()
     {
         WTMain main = WTMain.Instance;
         main.ChangeGameState(WTGameState.Game);
-        //�̾��ϱ�(���丮 �Ⱥ�����)
     }
-
     public void OnClickBtn_QuitGame()
     {
         Application.Quit();
-        //��������
     }
-
     public void OnClickBtn_OptionMenu()
     {
-        //�ɼ� ��ư�� ���� �ӽ÷� �־�����!
         WTMain main = WTMain.Instance;
         main.SaveData();
     }

@@ -24,18 +24,15 @@ public partial class WTMain : MonoBehaviour
         InitDatas();
 
     }
-
     private void Start()
     {
         ChangeGameState(WTGameState.Lobby);
     }
-
     private void Update()
     {
         float dt = Time.deltaTime;
         UpdateTimer(dt);
     }
-
     public bool ChangeGameState(WTGameState eState) 
     {
         //Debug.Log("ChangeGameState - " + eState);
@@ -70,7 +67,6 @@ public partial class WTMain : MonoBehaviour
             }
             //PrepareGameStart();
         }
-
         return true;
     }
 

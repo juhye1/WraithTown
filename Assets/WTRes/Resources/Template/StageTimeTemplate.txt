@@ -1,0 +1,7 @@
+{"timeDatas":
+[{"stage_id":10001,"stage_night_time":80,"stage_day_time":20,"total_stage_time":300},
+{"stage_id":10002,"stage_night_time":65,"stage_day_time":35,"total_stage_time":300},
+{"stage_id":10003,"stage_night_time":50,"stage_day_time":50,"total_stage_time":300},
+{"stage_id":10004,"stage_night_time":35,"stage_day_time":65,"total_stage_time":300},
+{"stage_id":10005,"stage_night_time":20,"stage_day_time":80,"total_stage_time":300},
+{"stage_id":10006,"stage_night_time":10,"stage_day_time":90,"total_stage_time":300}]}
