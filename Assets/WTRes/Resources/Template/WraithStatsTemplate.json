@@ -1,0 +1,2 @@
+[{"userunit_id":11001,"move_speed":1,"hp":100,"dmg":8,"attack_range":10,"attack_speed":1,"total_tile_count":9,"special_tile_count":3,"normal_tile_count":6},
+{"userunit_id":11002,"move_speed":0.8,"hp":150,"dmg":10,"attack_range":2,"attack_speed":0.8,"total_tile_count":6,"special_tile_count":2,"normal_tile_count":4}]

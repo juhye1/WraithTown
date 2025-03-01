@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class Panel_Game : MonoBehaviour
 {
+    public RectTransform RT;
     [Header("TMP")]
-    public TextMeshProUGUI dayTMP;
     public TextMeshProUGUI pointTMP;
     public TextMeshProUGUI goldTMP;
     
@@ -16,32 +16,33 @@ public class Panel_Game : MonoBehaviour
     public Slider hpSlider;
     //public Slider daySlider;
 
-    public RectTransform dayArrowRect;
-    public RectTransform dayArrowEndRect;
-
     private void Awake()
     {
+        RT = transform as RectTransform;
         ResetSlider();
     }
     private void OnEnable()
     {
         WTGlobal.RegisterEventDelegate(WTEventType.PlayerHPControl, ControlHPSlider);
-        WTGlobal.RegisterEventDelegate(WTEventType.Timer, ControlDayArrow);
+        WTGlobal.RegisterEventDelegate(WTEventType.ChangeGold, ControlGold);
     }
     private void OnDisable()
     {
         WTGlobal.UnregisterEventDelegate(WTEventType.PlayerHPControl, ControlHPSlider);
-        WTGlobal.UnregisterEventDelegate(WTEventType.Timer, ControlDayArrow);
+        WTGlobal.UnregisterEventDelegate(WTEventType.ChangeGold, ControlGold);
     }
     public void ControlHPSlider(int hp)
     {
+        WTMain main = WTMain.Instance;
+        main.playerData.hp += hp;
         hpSlider.value = hp;
     }
 
-    public void ControlDayArrow(int time)
+    public void ControlGold(int gold)
     {
-        dayArrowRect.DOLocalMoveX(dayArrowEndRect.localPosition.x, WTConstants.TotalStageTime);
-       // daySlider.value = time;
+        WTMain main = WTMain.Instance;
+        main.playerData.gold += gold;
+        goldTMP.SetText(main.playerData.gold.ToString());
     }
     private void ResetSlider()
     {

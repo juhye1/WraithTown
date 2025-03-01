@@ -380,7 +380,7 @@ MonoBehaviour:
   panelLobby: {fileID: 1408593725006897418, guid: 3c06cb34456b1194ea5a964d51663809, type: 3}
   panelLoading: {fileID: 0}
   panelGame: {fileID: 8245050139444142276, guid: c7b167e16f95a7e47a980f31457c5b1c, type: 3}
-  panelShop: {fileID: 0}
+  panelShop: {fileID: 8527392110023353345, guid: 4c4734afef5a7794185e4c9074edfa18, type: 3}
   panelPause: {fileID: 1872987708292125946, guid: 2c6947a42d1addf4db1c0ce87a4dee8a, type: 3}
   panelResult: {fileID: 0}
 --- !u!1 &857176160

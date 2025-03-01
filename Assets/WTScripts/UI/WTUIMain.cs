@@ -123,10 +123,18 @@ public class WTUIMain : MonoBehaviour
         }
         else if (uiState == WTUIState.Game)
         {
-            if (panel_Game != null)
+            if(_state == WTUIState.Shop)
             {
-                Destroy(panel_Game.gameObject);
-                panel_Game = null;
+                GetPanel(WTUIState.Shop);
+                panel_Game.RT.SetAsLastSibling();
+            }
+            else
+            {
+                if (panel_Game != null)
+                {
+                    Destroy(panel_Game.gameObject);
+                    panel_Game = null;
+                }
             }
         }
         uiState = _state;

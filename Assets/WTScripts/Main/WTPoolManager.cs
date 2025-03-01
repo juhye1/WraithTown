@@ -11,11 +11,11 @@ public class WTPoolManager : Singleton<WTPoolManager>
     public List<ObjectPoolBase> prefabLList = new();
     public bool isInit = false;
 
-    #region ÃÊ±âÈ­
-    [ContextMenu("ÃÊ±âÈ­")]
+    #region ï¿½Ê±ï¿½È­
+    [ContextMenu("ï¿½Ê±ï¿½È­")]
     public void Init()
     {
-        //Å¥¸¦ ÀÌ¿ëÇÑ Ç®¸µ
+        //Å¥ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½
         foreach (var data in prefabQList)
         {
             WTResourcesManager.Instance.LoadAsset<ObjectPoolBase>(data.rCode, eAddressableType.prefab, (obj) =>
@@ -50,7 +50,7 @@ public class WTPoolManager : Singleton<WTPoolManager>
             }
         }
 
-        //¸®½ºÆ®¸¦ ÀÌ¿ëÇÑ Ç®¸µ
+        //ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½
         foreach (var data in prefabLList)
         {
             WTResourcesManager.Instance.LoadAsset<ObjectPoolBase>(data.rCode, eAddressableType.prefab, (obj) =>
@@ -86,12 +86,12 @@ public class WTPoolManager : Singleton<WTPoolManager>
             }
             lPools.Add(data.rCode, list);
         }
-        Debug.Log("Ç®¸µ Á¾·á");
+        Debug.Log("Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         isInit = true;
     }
     #endregion
 
-    #region ½ºÆù Å¥
+    #region ï¿½ï¿½ï¿½ï¿½ Å¥
     public T SpawnQueue<T>(string rcode) where T : ObjectPoolBase
     {
         if (qPools[rcode].Count == 0)
@@ -131,7 +131,7 @@ public class WTPoolManager : Singleton<WTPoolManager>
         return obj;
     }
     #endregion
-    #region ¸±¸®Áî
+    #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void Release(ObjectPoolBase item)
     {
         item.SetActive(false);
@@ -174,8 +174,8 @@ public class WTPoolManager : Singleton<WTPoolManager>
     }
     #endregion
 
-    #region ½ºÆù ¸®½ºÆ®
-    //°¡Á®¿È°ú µ¿½Ã¿¡ ³Ö¾îÁÖ°í ºÎÁ· ½Ã Ãß°¡»ý¼ºX
+    #region ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+    //ï¿½ï¿½ï¿½ï¿½ï¿½È°ï¿½ ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½Ö¾ï¿½ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½X
     public T SpawnFromPool<T>(string rcode) where T : ObjectPoolBase
     {
         if (!qPools.ContainsKey(rcode)) return default;
@@ -191,7 +191,7 @@ public class WTPoolManager : Singleton<WTPoolManager>
     }
 
 
-    //¸®½ºÆ®Ç®¿¡¼­ ÀÎµ¦½º·Î ÇØ´ç ¹ø¤Š¸¦ °¡Á®¿È
+    //ï¿½ï¿½ï¿½ï¿½Æ®Ç®ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public T SpawnList<T>(string rcode, int index = 0) where T : ObjectPoolBase
     {
         if (lPools[rcode].Count == 0 || lPools[rcode].Count <= index)

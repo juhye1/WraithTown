@@ -16,6 +16,8 @@ public enum WTEventType
     AddressableGroupLoadComplete = 2,
     PlayerHPControl = 3,
     Timer = 4,
+    ChangeGold = 5,
+    ChangePoint = 6,
     Count
 }
 

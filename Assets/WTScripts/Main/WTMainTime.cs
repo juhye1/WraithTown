@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public partial class WTMain : MonoBehaviour
 {
-    public float playerTimer;
-    public float nightTime;
-    public bool isTimerStarted;
+    [NonSerialized] public float playerTimer;
+    [NonSerialized] public float nightTime;
+    [NonSerialized] public bool isTimerStarted;
 
     public void StartDayTimer(WTStageTimeData data)
     {
@@ -21,11 +22,14 @@ public partial class WTMain : MonoBehaviour
         if(isTimerStarted)
         {
             playerTimer += dt;
-            if(playerTimer > nightTime) 
+            playerTimer = 500; // 상점 테스트용
+            if (playerTimer > nightTime)
             {
                 // 낮으로 전환
-                if(playerTimer > WTConstants.TotalStageTime)
+                if (playerTimer > WTConstants.TotalStageTime)
                 {
+                    WTUIMain uiMain = WTUIMain.Instance;
+                    uiMain.ChangeUIState(WTUIState.Shop);
                     //스테이지 끝
                     isTimerStarted = false;
                 }
