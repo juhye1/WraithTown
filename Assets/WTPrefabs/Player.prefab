@@ -144,7 +144,7 @@ MonoBehaviour:
   fsm: {fileID: 7159535665379085927}
   input: {fileID: 110136118968118927}
   rotObj: {fileID: 2429694623379182268}
-  projectileTr: {fileID: 0}
+  projectileTr: {fileID: 5130594807140746787}
 --- !u!114 &7159535665379085927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   moveDir: {x: 0, y: 0}
   shootDir: {x: 0, y: 0}
   isAttack: 0
-  projectileName: 
+  projectileName: Projectiles
 --- !u!114 &110136118968118927
 MonoBehaviour:
   m_ObjectHideFlags: 0

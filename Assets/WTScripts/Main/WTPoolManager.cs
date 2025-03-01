@@ -18,10 +18,10 @@ public class WTPoolManager : Singleton<WTPoolManager>
         //큐를 이용한 풀링
         foreach (var data in prefabQList)
         {
-            //ResourceManager.Instance.LoadAsset<ObjectPoolBase>(data.rCode, eAddressableType.prefab, (obj) =>
-            //{
-            //    data.prefab = obj;
-            //});
+            WTResourcesManager.Instance.LoadAsset<ObjectPoolBase>(data.rCode, eAddressableType.prefab, (obj) =>
+            {
+                data.prefab = obj;
+            });
 
             if (data.isUI)
             {
@@ -53,10 +53,10 @@ public class WTPoolManager : Singleton<WTPoolManager>
         //리스트를 이용한 풀링
         foreach (var data in prefabLList)
         {
-            //ResourceManager.Instance.LoadAsset<ObjectPoolBase>(data.rCode, eAddressableType.prefab, (obj) =>
-            //{
-            //    data.prefab = obj;
-            //});
+            WTResourcesManager.Instance.LoadAsset<ObjectPoolBase>(data.rCode, eAddressableType.prefab, (obj) =>
+            {
+                data.prefab = obj;
+            });
             data.parent = new GameObject(data.rCode + "parent").transform;
 
             if (data.isUI)

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: animation
+  m_EditorClassIdentifier: 
+  m_GroupName: animation
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 5ffb31e307c9745ff9451a1583e8b19e
+  m_SerializeEntries:
+  - m_GUID: b4a2ca12207a1934fac853191b52dbbc
+    m_Address: Assets/AddressableDatas/Animaton
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitDownload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 54efb4e03696d4a2bb255cbf737542ce, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 27a17ad41361740309b8ec65a38f3fc6, type: 2}
+    - {fileID: 11400000, guid: 49838e1798e1347e28f8b468974450df, type: 2}

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5542501545124539972
+--- !u!1 &4907232515908783129
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1274470644506023560}
-  - component: {fileID: 7052310151335122246}
+  - component: {fileID: 4469338068768105941}
+  - component: {fileID: 5291850886920498923}
   m_Layer: 0
-  m_Name: WTPoolManager
+  m_Name: WTResourcesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1274470644506023560
+--- !u!4 &4469338068768105941
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5542501545124539972}
+  m_GameObject: {fileID: 4907232515908783129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.2705412, y: 2.8999805, z: 0.008082846}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7052310151335122246
+--- !u!114 &5291850886920498923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5542501545124539972}
+  m_GameObject: {fileID: 4907232515908783129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 981c82b34417ca44698e1beff38aecb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2908477399ac7ac478b4e43c9d5f7140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -53,17 +53,14 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: qPools
+    - Name: addressableMap
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Queue`1[[ObjectPoolBase,
-        Assembly-CSharp]], mscorlib]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[eAddressableType, Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[System.String,
+        mscorlib],[AddressableMap, Assembly-CSharp]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[eAddressableType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -73,13 +70,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: lPools
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.List`1[[ObjectPoolBase,
-        Assembly-CSharp]], mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 1
     - Name: 
       Entry: 12
       Data: 0
@@ -90,8 +80,5 @@ MonoBehaviour:
       Entry: 8
       Data: 
   isDontDestroyOnLoad: 1
-  poolParents: []
-  prefabQList:
-  - {fileID: 0}
-  prefabLList: []
+  isAutoLoading: 0
   isInit: 0
