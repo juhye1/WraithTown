@@ -58,6 +58,8 @@ public class PlayerInput : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         switch (context.phase)
         {
             case InputActionPhase.Started:

@@ -86,7 +86,7 @@ public class WTPoolManager : Singleton<WTPoolManager>
             }
             lPools.Add(data.rCode, list);
         }
-
+        Debug.Log("풀링 종료");
         isInit = true;
     }
     #endregion

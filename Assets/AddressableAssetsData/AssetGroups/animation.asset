@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - InitDownload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3286590604f8764d8126e803782f608
+    m_Address: Assets/AddressableDatas/Animaton/addressableMap.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AddressableMap
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 54efb4e03696d4a2bb255cbf737542ce, type: 2}
   m_SchemaSet:

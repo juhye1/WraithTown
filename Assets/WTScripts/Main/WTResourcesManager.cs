@@ -89,16 +89,17 @@ public class WTResourcesManager : Singleton<WTResourcesManager>
                     mapDic.Add(data.key, data);
             }
             if (!addressableMap.ContainsKey(key)) addressableMap.Add(key, mapDic);
+            ++adIndex;
             //TitleManager.Instance.titleScene.SetGuageBar(++adIndex / (int)eAddressableType.max - 1);
-            if (adIndex == (int)eAddressableType.max - 1)
+            if (adIndex == (int)eAddressableType.max)
             {
-
                 Debug.Log(adIndex);
-                Debug.Log("adend");
                 isInit = true;
+                WTPoolManager.Instance.Init();
             }
         });
         //TitleManager.Instance.titleScene.SetGuageBar(1f);
+        
     }
 
     public List<string> GetPaths(string key, eAddressableType addressableType, eAssetType assetType)

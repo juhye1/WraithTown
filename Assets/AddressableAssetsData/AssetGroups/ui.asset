@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - InitDownload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 681ede5940a1dc54ab50dc62b25f0fba
+    m_Address: Assets/AddressableDatas/UI/addressableMap.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AddressableMap
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 54efb4e03696d4a2bb255cbf737542ce, type: 2}
   m_SchemaSet:
