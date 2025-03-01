@@ -13,8 +13,9 @@ public partial class WTMain : MonoBehaviour
     {
         playerTimer = 0;
         nightTime = WTConstants.TotalStageTime * (data.stage_night_time * 0.01f);
+        playerTimer = WTConstants.TotalStageTime -3; // 상점 테스트용
         isTimerStarted = true;
-        WTGlobal.CallEventDelegate(WTEventType.Timer, (int)playerTimer);
+        WTGlobal.CallEventDelegate(WTEventType.Timer, 3); // 테스트
     }
 
     private void UpdateTimer(float dt)
@@ -22,7 +23,6 @@ public partial class WTMain : MonoBehaviour
         if(isTimerStarted)
         {
             playerTimer += dt;
-            playerTimer = 500; // 상점 테스트용
             if (playerTimer > nightTime)
             {
                 // 낮으로 전환

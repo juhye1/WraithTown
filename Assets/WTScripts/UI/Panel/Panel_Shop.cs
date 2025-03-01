@@ -6,6 +6,7 @@ using UnityEngine;
 public class Panel_Shop : MonoBehaviour
 {
     public TextMeshProUGUI dayTMP;
+    public TextMeshProUGUI nextdayTMP;
     public TextMeshProUGUI changePanelTMP;
     public Slot_Card[] slotCards = new Slot_Card[3];
 
@@ -13,9 +14,20 @@ public class Panel_Shop : MonoBehaviour
     public GameObject panelCard;
     public GameObject panelUnit;
     private bool isCard = true;
+    private const string strCard = "혼령\n상점";
+    private const string strUnit = "유닛\n배치";
+    private const string strContinue = "로 이동";
+    private const string strDayEnd = " 종료!";
+    private const int shuffleGold = -2;
 
     private void OnEnable()
     {
+        WTMain main = WTMain.Instance;
+        WTStageTimeData data = main.GetCurrentStageData();
+        int stage = data.stage_id - 10000;
+        string day = stage.ToString();
+        dayTMP.SetText(WTConstants.StrDay + day + strDayEnd);
+        nextdayTMP.SetText(WTConstants.StrDay + (stage+1).ToString() + strContinue);
         GetRandomCards();
     }
     private void GetRandomCards()
@@ -31,7 +43,7 @@ public class Panel_Shop : MonoBehaviour
 
     public void OnClick_ShuffleBtn()
     {
-        WTGlobal.CallEventDelegate(WTEventType.ChangeGold, -2);
+        WTGlobal.CallEventDelegate(WTEventType.ChangeGold, shuffleGold);
         GetRandomCards();
         //2원 깎이게
     }
@@ -39,9 +51,21 @@ public class Panel_Shop : MonoBehaviour
     public void OnClick_ChangePanel()
     {
         isCard = !isCard;
+        string str = isCard ? strUnit : strCard;
+        changePanelTMP.SetText(str);
         panelCard.SetActive(isCard);
-        panelCard.SetActive(!isCard);
-        //2원 깎이게
+        panelUnit.SetActive(!isCard);
+        //카드 <> 유닛
+    }
+
+    public void OnClick_ContinueGame()
+    {
+        WTUIMain uiMain = WTUIMain.Instance;
+        WTMain main = WTMain.Instance;
+        main.playerData.stageID++;
+        WTGlobal.CallEventDelegate(WTEventType.ChangeStage, main.playerData.stageID);
+        uiMain.ChangeUIState(WTUIState.Game);
+        uiMain.DestroyPanel(WTUIState.Shop);
     }
 
 }

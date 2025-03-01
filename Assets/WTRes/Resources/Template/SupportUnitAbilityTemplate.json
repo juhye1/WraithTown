@@ -1,0 +1,9 @@
+{"supportUnitDatas":
+[{"support_unit_id":12001,"support_ability_name":"굶주림","support_ability":"초당 체력 회복 효과를 두배로 증폭시킵니다. 해당 되는 효과가 없을 시 초당 체력을 +2만큼 회복합니다."},
+{"support_unit_id":12002,"support_ability_name":"돌격","support_ability":"플레이어의 이동속도를 10% 증가시킵니다."},
+{"support_unit_id":12003,"support_ability_name":"질투쟁이","support_ability":"플레이어의 공격 적중 시 10% 확률로 적의 체력을 뺏어옵니다."},
+{"support_unit_id":12004,"support_ability_name":"꺼지지않는 불","support_ability":"플레이어의 공격 적중 시 10% 확률로 두배의 대미지를 줍니다."},
+{"support_unit_id":12005,"support_ability_name":"강인함","support_ability":"10%의 확률로 대미지를 절반만 받습니다."},
+{"support_unit_id":12006,"support_ability_name":"흉내쟁이","support_ability":"15마리 처치시마다 플레이어를 모방하여 공격합니다."},
+{"support_unit_id":12007,"support_ability_name":"가사 도우미","support_ability":"사거리를 +2 증가시킵니다. "},
+{"support_unit_id":12008,"support_ability_name":"부자가 될꺼야","support_ability":"스테이지 종료 후 모든 재화 종류를 10%를 더 획득합니다."}]}

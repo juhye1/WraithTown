@@ -52,19 +52,22 @@ public partial class WTMain : MonoBehaviour
         }
         else if (gameState == WTGameState.Game)
         {
-            if (savedData == null)
-            {
-                uiMain.ChangeUIState(WTUIState.Story);
-            }
-            else
-            {
+            //if (savedData == null) 나중에,, 스토리 패널 만들고나서,,
+            //{
+            //    uiMain.ChangeUIState(WTUIState.Story);
+            //}
+            //else
+            //{
                 playerData = new WTGameData();
+                WTWraithStatTemplate temp = GetPlayerCharacterTemplate(11001);
+                playerData.playerAb = new WTPlayerAbility(temp);
                 playerData.day = 1;
+                playerData.currentHP = temp.hp;
                 playerData.stageID = WTConstants.StartStageID;
                 uiMain.ChangeUIState(WTUIState.Game);
                 WTStageTimeData data = GetCurrentStageData();
                 StartDayTimer(data);
-            }
+            //}
             //PrepareGameStart();
         }
         return true;

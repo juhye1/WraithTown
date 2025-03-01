@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.46557486, b: 0.051886797, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 1670879361901947298}
   - component: {fileID: 5392262333694578299}
   - component: {fileID: 8146116911053953745}
+  - component: {fileID: 510477356378737582}
   m_Layer: 5
   m_Name: Panel_Day
   m_TagString: Untagged
@@ -368,6 +369,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &510477356378737582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5312553328288096356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02fa77835f3d78f40a6313d4605c125b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayTMP: {fileID: 3616565788386275711}
+  dayArrowRect: {fileID: 810902666018616663}
+  dayArrowEndRect: {fileID: 6107554558660279015}
 --- !u!1 &5569483873242804631
 GameObject:
   m_ObjectHideFlags: 0

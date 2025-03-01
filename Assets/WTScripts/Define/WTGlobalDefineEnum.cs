@@ -15,9 +15,11 @@ public enum WTEventType
     MapLoaded = 1,
     AddressableGroupLoadComplete = 2,
     PlayerHPControl = 3,
+    PlayerMaxHPControl = 3,
     Timer = 4,
     ChangeGold = 5,
     ChangePoint = 6,
+    ChangeStage = 7,
     Count
 }
 
@@ -28,6 +30,25 @@ public enum WTGameState
     Loading,
     Game,
 };
+
+public enum WTEffectType
+{
+    MaxHPIncrease = 0,
+    HealHp,
+    RangeIncrease,
+    AttackSpeedIncrease,
+    ProjectileCountIncrease,
+    TileGradeChange,
+    TilePositionChange,
+    GetRandomSoilUnit,
+    GetRandomFireUnit,
+    GetRandomGoldUnit,
+    GetRandomMoonUnit,
+    GetRandomWaterUnit,
+    GetRandomGhostUnit,
+    GetRandomYokaiUnit,
+    Count
+}
 
 public enum WTEventObjectType
 {

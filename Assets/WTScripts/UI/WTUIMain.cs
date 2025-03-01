@@ -84,6 +84,18 @@ public class WTUIMain : MonoBehaviour
         return panels[(int)type];
     }
 
+    public void DestroyPanel(WTUIState type)
+    {
+        WTMain main = WTMain.Instance;
+        byte iType = (byte)type;
+        if (panels[iType] != null)
+        {
+            Destroy(panels[iType].gameObject);
+            panels[iType] = null;
+        }
+        //main.PlaySound("UI_Open");
+    }
+
     private GameObject SpawnUIPanelObject(WTUIState type)
     {
         GameObject go = null;
@@ -96,6 +108,7 @@ public class WTUIMain : MonoBehaviour
                 break;
             case WTUIState.Game:
                 go = SpawnUIObject(container.panelGame);
+                SpawnUIObject(container.panelDay);
                 break;
             case WTUIState.Shop:
                 go = SpawnUIObject(container.panelShop);
@@ -146,7 +159,10 @@ public class WTUIMain : MonoBehaviour
         }
         else if (uiState == WTUIState.Game)
         {
-            panel_Game = GetPanel(WTUIState.Game).GetComponent<Panel_Game>();
+            if(panel_Game == null)
+            {
+                panel_Game = GetPanel(WTUIState.Game).GetComponent<Panel_Game>();
+            }
         }
 
         return true;

@@ -18,6 +18,7 @@ public class WTUIPrefabContainer : MonoBehaviour
     public GameObject panelLobby;
     public GameObject panelLoading;
     public GameObject panelGame;
+    public GameObject panelDay;
     public GameObject panelShop;
     public GameObject panelPause;
     public GameObject panelResult;
