@@ -1,4 +1,5 @@
 # Unity 관련 폴더 및 파일 제외
+/Library/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
