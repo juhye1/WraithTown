@@ -15,8 +15,8 @@ public delegate void WTEventProcDelegateObj(object param1);
 
 static public class CMGlobal
 {
-    static WTEventProcDelegate[] _eventProcDelegates = new WTEventProcDelegate[(int)CMEventType.Count];
-    static WTEventProcDelegateObj[] _eventProcDelegatesObj = new WTEventProcDelegateObj[(int)CMEventObjectType.Count];
+    static WTEventProcDelegate[] _eventProcDelegates = new WTEventProcDelegate[(int)WTEventType.Count];
+    static WTEventProcDelegateObj[] _eventProcDelegatesObj = new WTEventProcDelegateObj[(int)WTEventObjectType.Count];
 
     static public int[] animParamID_IntType = new int[(int)WTAnimParam_Int.Count];
 
