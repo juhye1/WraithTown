@@ -24,7 +24,6 @@ public class EnemyFSM : BaseFSM
         ChaseState = new EnemyChaseState(this);
         AttackState = new EnemyAttackState(this);
         DieState = new EnemyDieState(this);
-        player = BasePlayer.Instance;
         ChangeState(ChaseState);
     }
 

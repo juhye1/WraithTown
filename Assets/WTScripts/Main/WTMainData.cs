@@ -224,6 +224,7 @@ public partial class WTMain : MonoBehaviour
         streamingAssetPath = Application.streamingAssetsPath;
         persistentPath = Application.persistentDataPath;
         tempPath = Application.temporaryCachePath;
+        LoadAddressable();
         LoadTemplates();
         LoadSavedData();
         //LoadOptionFromJson();
@@ -234,6 +235,17 @@ public partial class WTMain : MonoBehaviour
         //LoadLocalizationTable();
         //LoadSoundTemplate();
     }
+
+    public void LoadAddressable()
+    {
+        var obj = Resources.Load<WTResourcesManager>("WTResourcesManager");
+        if (obj != null)
+        {
+            var instance = Instantiate(obj); // 씬에 인스턴스 생성
+            instance.gameObject.SetActive(true);
+        }
+    }
+
     public void LoadSavedData()
     {
         string filePath = persistentPath + "/data.json";

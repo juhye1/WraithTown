@@ -11,10 +11,15 @@ public class WTPoolManager : Singleton<WTPoolManager>
     public List<ObjectPoolBase> prefabLList = new();
     public bool isInit = false;
 
+    private void Start()
+    {
+        Init();
+    }
     #region �ʱ�ȭ
     [ContextMenu("�ʱ�ȭ")]
     public void Init()
     {
+        gameObject.SetActive(true);
         //ť�� �̿��� Ǯ��
         foreach (var data in prefabQList)
         {
@@ -88,6 +93,13 @@ public class WTPoolManager : Singleton<WTPoolManager>
         }
         Debug.Log("Ǯ�� ����");
         isInit = true;
+        var spawner = Resources.Load<WTSpawner>("Spawner");
+        if (spawner != null)
+        {
+            var instance = Instantiate(spawner); // 씬에 인스턴스 생성
+            instance.gameObject.SetActive(true);
+        }
+
     }
     #endregion
 

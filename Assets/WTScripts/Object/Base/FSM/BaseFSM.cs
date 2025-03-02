@@ -13,7 +13,7 @@ public enum CharacterDirection
 public class BaseFSM : MonoBehaviour
 {
     public IState currentState;
-    public BasePlayer player;
+    public BasePlayer player => BasePlayer.Instance;
     public GameObject modelParent;
     public Vector2 targetPos;
     public Rigidbody2D rb;
@@ -31,8 +31,6 @@ public class BaseFSM : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
         if (anim == null)
             anim = GetComponentInChildren<SkeletonAnimation>();
-        if(player == null)
-            player = BasePlayer.Instance;
     }
 
     public virtual void ChangeState(IState newState)
@@ -62,6 +60,8 @@ public class BaseFSM : MonoBehaviour
     //_animator가 붙어있는 오브젝트가 모델 오브젝트
     public virtual void SetFlip()
     {
+        if (anim.skeleton == null)
+            return;
         anim.skeleton.ScaleX = Direction == CharacterDirection.Left ? Mathf.Abs(anim.skeleton.ScaleX) : -Mathf.Abs(anim.skeleton.ScaleX);
     }
 

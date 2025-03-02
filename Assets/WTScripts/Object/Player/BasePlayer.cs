@@ -31,8 +31,9 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     #endregion
 
     #region ����Ƽ �Լ�
-    protected virtual void Start()
+    protected override void Awake()
     {
+        base.Awake();
         Init();
         fsm.Init();
     }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerGumiho : BasePlayer
 {
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
+        
     }
 
     // Update is called once per frame

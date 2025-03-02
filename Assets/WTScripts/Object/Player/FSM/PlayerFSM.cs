@@ -38,7 +38,6 @@ public class PlayerFSM : BaseFSM
 
     public void Init()
     {
-        player = BasePlayer.Instance;
         MoveState = new PlayerMoveState(this);
         IdleState = new PlayerIdleState(this);
         DieState = new PlayerDieState(this);
@@ -55,7 +54,7 @@ public class PlayerFSM : BaseFSM
 
     public void Aiming(Vector2 dir)
     {
-        shootDir = dir;
+        shootDir = (dir - (Vector2)transform.position).normalized;
     }
 
     public void Shoot()
@@ -73,7 +72,7 @@ public class PlayerFSM : BaseFSM
 
     private void Slash()
     {
-        var colls = Physics2D.OverlapCircleAll((Vector2)transform.position + shootDir.normalized, 2, enemyMask);
+        var colls = Physics2D.OverlapCircleAll((Vector2)transform.position + shootDir, 2, enemyMask);
         Debug.LogWarning(colls.Length);
         foreach(var coll in colls) 
         { 
@@ -91,7 +90,7 @@ public class PlayerFSM : BaseFSM
         Gizmos.color = Color.red;
 
         // 현재 위치에서 슈팅 방향을 기준으로 원을 그림
-        Vector2 center = (Vector2)transform.position + shootDir.normalized;
+        Vector2 center = (Vector2)transform.position + shootDir;
         Gizmos.DrawWireSphere(center, 2);
     }
 

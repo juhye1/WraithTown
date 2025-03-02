@@ -30,9 +30,15 @@ public class Projectiles : ObjectPoolBase
         base.Setup();
     }
 
+    public override void Release()
+    {
+        rb.velocity = Vector2.zero;
+        base.Release();
+    }
+
     public void OnShoot(BasePlayer player, Vector2 dir)
     {
-        SetActive(true); ;
+        SetActive(true);
         startPos = player.projectileTr.position;
         transform.position = startPos;
         rb.velocity = dir.normalized * speed;

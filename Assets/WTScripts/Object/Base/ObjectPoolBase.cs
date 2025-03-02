@@ -34,7 +34,7 @@ public class ObjectPoolBase : MonoBehaviour
         gameObject.SetActive(active);
     }
 
-    public void Release()
+    public virtual void Release()
     {
         WTPoolManager.Instance.Release(this);
     }

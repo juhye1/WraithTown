@@ -114,6 +114,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 99f155f9-bfe9-4464-bcb6-ab254a2eb4d6
     m_ActionName: PlayerActionMap/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 110136118968118927}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: OnClickEsc
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 72e646a1-d55e-4808-9cd2-716387efa975
+    m_ActionName: PlayerActionMap/ClickEsc[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: PC
   m_DefaultActionMap: PlayerActionMap
@@ -165,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df84dfe9e461df84dbe03a67a8de9c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6934230542115438664}
   modelParent: {fileID: 8470344393276382820}
   targetPos: {x: 0, y: 0}
   rb: {fileID: 5030603799962173291}

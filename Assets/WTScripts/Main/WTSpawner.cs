@@ -10,14 +10,10 @@ public class WTSpawner : MonoBehaviour
     private int maxCount;
     [SerializeField]
     private int perCount;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Init();
-    }
 
     public void Init()
     {
+        gameObject.SetActive(true);
         StartCoroutine(MonsterSpawner());
     }
 

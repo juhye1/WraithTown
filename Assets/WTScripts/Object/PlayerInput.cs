@@ -85,13 +85,29 @@ public class PlayerInput : MonoBehaviour
         {
             case InputActionPhase.Started:
 
-
                 break;
             case InputActionPhase.Performed:
 
                 break;
             case InputActionPhase.Canceled:
+                
+                break;
+            default:
+                break;
+        }
+    }
 
+    public void OnClickEsc(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                break;
+            case InputActionPhase.Performed:
+
+                break;
+            case InputActionPhase.Canceled:
+                Debug.Log("esc");
                 break;
             default:
                 break;
@@ -100,15 +116,16 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        // 항상 마우스 위치 업데이트
         lastMousePos = Mouse.current.position.ReadValue();
 
-        // 이동 입력이 있거나 마우스가 움직일 때만 갱신
-        if (moveInput != Vector2.zero || Mouse.current.delta.ReadValue() != Vector2.zero)
-        {
-            screenToWorldPos.Set(lastMousePos.x, lastMousePos.y, 0);
-            player.fsm.shootDir = cam.ScreenToWorldPoint(screenToWorldPos);
-            player.fsm.targetPos = player.fsm.shootDir;
-        }
+        // 마우스 위치를 월드 좌표로 변환
+        screenToWorldPos = lastMousePos;
+        screenToWorldPos.z = Mathf.Abs(cam.transform.position.z - player.transform.position.z); // 올바른 깊이 설정
+
+        Vector3 worldMousePos = cam.ScreenToWorldPoint(screenToWorldPos);
+
+        player.fsm.Aiming(worldMousePos);
+        player.fsm.targetPos = player.fsm.shootDir;
     }
+
 }

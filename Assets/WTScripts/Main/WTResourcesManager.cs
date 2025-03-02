@@ -95,7 +95,12 @@ public class WTResourcesManager : Singleton<WTResourcesManager>
             {
                 Debug.Log(adIndex);
                 isInit = true;
-                WTPoolManager.Instance.Init();
+                var obj = Resources.Load<WTPoolManager>(("WTPoolManager"));
+                if (obj != null)
+                {
+                    var instance = Instantiate(obj); // 씬에 인스턴스 생성
+                    instance.gameObject.SetActive(true);
+                }
             }
         });
         //TitleManager.Instance.titleScene.SetGuageBar(1f);
