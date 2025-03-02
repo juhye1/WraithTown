@@ -5,16 +5,19 @@ using UnityEngine;
 public class WraithTiles : MonoBehaviour
 {
     public WraithTile tilePrefab; // 배치할 타일 프리팹
-    public int objectCount = 9; // 생성할 오브젝트 개수
+    public int objectCount; // 생성할 오브젝트 개수
     public float radius = 2f; // 캐릭터와 오브젝트 사이 거리
     // Start is called before the first frame update
-    void Start()
+
+    public void Init()
     {
         PlaceObjectsAround();
     }
 
     void PlaceObjectsAround()
     {
+        BasePlayer.Instance.tiles.Clear();
+        objectCount = WTMain.Instance.dicPlayerStatTemplate[(ushort)WTMain.Instance.playerData.userUnitId].total_tile_count;
         float angleStep = 360f / objectCount; // 오브젝트 간 각도 간격
 
         for (int i = 0; i < objectCount; i++)

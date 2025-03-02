@@ -26,6 +26,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     #region ���� Ŭ����
     public PlayerFSM fsm;
     public PlayerInput input;
+    public PlayerStatHandler stat;
     public RotationTarget rotObj;
     public Transform projectileTr;
     #endregion
@@ -44,7 +45,6 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
             fsm.currentState?.Execute();
         if (rotObj != null)
             rotObj.RotateTowards(fsm.targetPos);
-        fsm.WaitForCooltime();
     }
     #endregion
 
@@ -66,9 +66,18 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
         
     }
 
-    public void OnTakeDamaged()
+    public void OnTakeDamaged(int damage)
     {
-        
+        if (isDead) return;
+        stat.status.hp -= damage;
+        if(stat.status.hp <= 0)
+        {
+            DeathEvt();
+        }
+        else
+        {
+
+        }
     }
 
     public void DeathEvt()
@@ -80,6 +89,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     public void SetSpecialTile()
     {
         HashSet<int> uniqueNumbers = new HashSet<int>();
+        sTileCount = WTMain.Instance.dicPlayerStatTemplate[(ushort)WTMain.Instance.playerData.userUnitId].special_tile_count;
         while (uniqueNumbers.Count < sTileCount)
         {
             int randomNumber = Random.Range(0, tiles.Count);

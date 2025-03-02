@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyDieState : BaseDieState
 {
+    new EnemyFSM fsm;
     public EnemyDieState(EnemyFSM fsm) : base(fsm)
     {
         this.fsm = fsm;

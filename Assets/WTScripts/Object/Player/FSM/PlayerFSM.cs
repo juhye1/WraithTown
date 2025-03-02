@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
@@ -6,12 +7,12 @@ using UnityEngine;
 
 public class PlayerFSM : BaseFSM
 {
-    public float moveSpeed;
     public Vector2 moveDir;
     public Vector2 lookDir;
     public Vector2 shootDir;
     private LayerMask enemyMask;
     public string projectileName;
+
     #region Player States
     public PlayerMoveState MoveState { get; private set; }
     public PlayerDieState DieState { get; private set; }
@@ -24,18 +25,11 @@ public class PlayerFSM : BaseFSM
         base.Awake();
         enemyMask = LayerMask.GetMask("Enemy");
     }
-
-    private void Update()
+    public void Start()
     {
-        if (!isCooltime) return;
-        cooltime -= Time.deltaTime;
-        if (cooltime <= 0)
-        {
-            isAttack = false;
-            isCooltime = false;
-            cooltime = 1f;
-        }
+        moveSpd *= WTMain.Instance.playerData.playerAb.moveSpeed;
     }
+
 
     public void Init()
     {
@@ -60,7 +54,7 @@ public class PlayerFSM : BaseFSM
 
     public void Shoot()
     {
-        if(player.skinType == PlayerSkin.Miho)
+        if (player.skinType == PlayerSkin.Miho)
         {
             var obj = WTPoolManager.Instance.SpawnQueue<Projectiles>(projectileName);
             obj.OnShoot(player, shootDir.normalized);
@@ -73,14 +67,12 @@ public class PlayerFSM : BaseFSM
 
     private void Slash()
     {
-        var colls = Physics2D.OverlapCircleAll((Vector2)transform.position + shootDir.normalized, 2, enemyMask);
-        Debug.LogWarning(colls.Length);
+        var colls = Physics2D.OverlapCircleAll((Vector2)transform.position + shootDir.normalized, WTMain.Instance.playerData.playerAb.attackRange, enemyMask);
         foreach(var coll in colls) 
         { 
             if(coll.TryGetComponent(out BaseEnemy enemy))
             {
-                enemy.OnTakeDamaged();
-                Debug.LogWarning(enemy + "Á¦°Å");
+                enemy.OnTakeDamaged(player.stat.status.dmg);
             }
         }
     }
@@ -94,9 +86,5 @@ public class PlayerFSM : BaseFSM
         Vector2 center = (Vector2)transform.position + shootDir;
         Gizmos.DrawWireSphere(center, 2);
     }
-
-    public void WaitForCooltime()
-    {
-
-    }
+   
 }

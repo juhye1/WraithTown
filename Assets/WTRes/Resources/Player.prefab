@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6934230542115438664}
   - component: {fileID: 7159535665379085927}
   - component: {fileID: 110136118968118927}
+  - component: {fileID: 2805022669434473181}
   - component: {fileID: 5030603799962173291}
   - component: {fileID: 938049870794028250}
   - component: {fileID: 6483397811850054093}
@@ -167,6 +168,7 @@ MonoBehaviour:
   tiles: []
   fsm: {fileID: 7159535665379085927}
   input: {fileID: 110136118968118927}
+  stat: {fileID: 2805022669434473181}
   rotObj: {fileID: 2429694623379182268}
   projectileTr: {fileID: 5130594807140746787}
 --- !u!114 &7159535665379085927
@@ -186,9 +188,8 @@ MonoBehaviour:
   rb: {fileID: 5030603799962173291}
   anim: {fileID: 1122105511130068314}
   isAttack: 0
-  isCooltime: 0
-  cooltime: 1
-  moveSpeed: 5
+  moveSpd: 3
+  atkSpd: 1
   moveDir: {x: 0, y: 0}
   lookDir: {x: 0, y: 0}
   shootDir: {x: 0, y: 0}
@@ -206,6 +207,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPress: 0
+--- !u!114 &2805022669434473181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798032017611172700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780c56b5ce759a645a5b87a5c9fd1319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status:
+    userunit_id: 0
+    move_speed: 0
+    hp: 0
+    dmg: 0
+    attack_range: 0
+    attack_speed: 0
+    total_tile_count: 0
+    special_tile_count: 0
+    normal_tile_count: 0
+    basePrefabName: Player
 --- !u!50 &5030603799962173291
 Rigidbody2D:
   serializedVersion: 4

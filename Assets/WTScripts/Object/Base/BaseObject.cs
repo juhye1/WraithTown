@@ -7,7 +7,7 @@ public interface BaseObject
     public abstract void Init();
     public abstract void Setup();
     public abstract void OnAttack();
-    public abstract void OnTakeDamaged();
+    public abstract void OnTakeDamaged(int damage);
     public abstract void DeathEvt();
 
 }

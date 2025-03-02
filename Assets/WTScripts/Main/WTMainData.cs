@@ -26,6 +26,7 @@ public class WTGameData
     public ushort stageID = 0;
     public ushort day = 0;
     public ushort remainTimes = 0;
+    public ushort[] speicalTiles = null;
     public WTPlayerAbility playerAb;
     public List<SupportUnitCount> supportUnits = new();
     public List<ushort> totalSupportUnits = new();
@@ -235,7 +236,7 @@ public class WTTotalSynergyDataTemplateGroup
 [Serializable]
 public class WTStageTimeData
 {
-    public ushort stage_id, stage_night_time, stage_day_time, total_stage_time = 0;
+    public ushort stage_id, stage_night_time, stage_day_time, total_stage_time, SpawnRate, EnemiesPerWave = 0;
 }
 
 public partial class WTMain : MonoBehaviour

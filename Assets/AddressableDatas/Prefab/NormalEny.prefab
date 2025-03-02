@@ -55,7 +55,31 @@ MonoBehaviour:
   count: 20
   isUI: 0
   sort: 1
+  isDead: 0
+  newSkeletonData:
+  - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
+  - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
+  - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
+  - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
+  - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
+  - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
+  damageEffect: DamageEffect
+  killEffect: KillEffect
   fsm: {fileID: 7692290341591977038}
+  stat:
+    enemyunit_id: 0
+    enemy_name: 
+    spawn_start_time: 0
+    spawn_end_time: 0
+    spawn_weight: 0
+    move_speed: 0
+    hp: 0
+    dmg: 0
+    attack_range: 0
+    attack_speed: 0
+    drop_weight: 0
+    dead_drop_soul: 0
+    dead_drop_coin: 0
 --- !u!114 &7692290341591977038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,14 +92,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eaa9f9ce17822f47bc139dd2d3e87d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   modelParent: {fileID: 3550808440639696346}
   targetPos: {x: 0, y: 0}
   rb: {fileID: 423592365436173496}
   anim: {fileID: 4478980517441520379}
   isAttack: 0
-  isCooltime: 0
-  cooltime: 0
+  moveSpd: 3
+  atkSpd: 1
+  enemy: {fileID: 602060186326736802}
   atkRange: 2
 --- !u!114 &5756503419822614320
 MonoBehaviour:

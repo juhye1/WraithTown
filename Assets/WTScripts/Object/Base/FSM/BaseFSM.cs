@@ -23,8 +23,8 @@ public class BaseFSM : MonoBehaviour
     protected CharacterDirection Direction;
 
     public bool isAttack;
-    public bool isCooltime;
-    public float cooltime = 1f;
+    public float moveSpd = 3f;
+    public float atkSpd = 1f;
     protected virtual void Awake()
     {
         if (rb == null)

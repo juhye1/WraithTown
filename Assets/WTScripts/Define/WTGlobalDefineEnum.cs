@@ -85,3 +85,14 @@ public enum WTAnimParam_Int
     SubState,
     Count
 }
+
+
+public enum WTEnemyType
+{
+    Hound = 21101,
+    Haetae = 21102,
+    Exorcist = 21103,
+    Student = 21201,
+    Maniac = 21202,
+    Tourist = 21203
+}

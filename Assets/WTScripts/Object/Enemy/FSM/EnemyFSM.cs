@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyFSM : BaseFSM
 {
+    public BaseEnemy enemy;
     #region Enemy States
     public EnemyIdleState IdleState { get; private set; }
     public EnemyChaseState ChaseState { get; private set; }
@@ -24,34 +25,14 @@ public class EnemyFSM : BaseFSM
         ChaseState = new EnemyChaseState(this);
         AttackState = new EnemyAttackState(this);
         DieState = new EnemyDieState(this);
+        if(enemy == null)
+            enemy = GetComponent<BaseEnemy>();
         ChangeState(ChaseState);
     }
 
     public void IsAttackRange()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) > atkRange)
-        {
-            ChangeState(ChaseState);
-        }
-        else if(isCooltime && Vector2.Distance(transform.position, player.transform.position) <= atkRange)
-        {
-            ChangeState(IdleState);
-        }
-        else if(!isCooltime && currentState == IdleState)
-        {
-            ChangeState(AttackState);
-        }
-    }
 
-    public void WaitForCooltime()
-    {
-        if (!isCooltime) return;
-        cooltime -= Time.deltaTime;
-        if (cooltime <= 0)
-        {
-            isCooltime = false;
-            cooltime = 1f;
-        }
     }
 
     public override void Flip()

@@ -13,7 +13,8 @@ public class Projectiles : ObjectPoolBase
     [SerializeField]
     private Rigidbody2D rb;
     private float speed = 5f;
-    private float distance = 5f;
+    private float distance = 10f;
+    private int damage;
     private void Update()
     {
         if (Vector2.Distance(startPos, transform.position) <= distance) return;
@@ -39,6 +40,8 @@ public class Projectiles : ObjectPoolBase
     public void OnShoot(BasePlayer player, Vector2 dir)
     {
         SetActive(true);
+        distance = WTMain.Instance.playerData.playerAb.attackRange;
+        damage = player.stat.status.dmg;
         startPos = player.projectileTr.position;
         transform.position = startPos;
         rb.velocity = dir.normalized * speed;
@@ -46,6 +49,9 @@ public class Projectiles : ObjectPoolBase
 
     public void OnShoot(BaseEnemy enemy , Vector2 dir)
     {
+        SetActive(true);
+        distance = enemy.stat.attack_range;
+        damage = enemy.stat.dmg;
         startPos = enemy.transform.position;
         transform.position = startPos;
         rb.velocity = dir * speed;
@@ -57,7 +63,7 @@ public class Projectiles : ObjectPoolBase
         {
             if(collision.TryGetComponent(out BaseEnemy enemy))
             {
-                enemy.OnTakeDamaged();
+                enemy.OnTakeDamaged(damage);
                 Release();
             }
         }

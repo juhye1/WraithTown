@@ -1,4 +1,5 @@
 
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -16,19 +17,26 @@ public class EnemyAttackState : BaseAttackeState
     {
         base.Enter();
         fsm.rb.velocity = Vector2.zero;
-        StartAnimation(animName, 0, false);
+        SetAnimSpeed(fsm.atkSpd);
+        StartAnimation(animName, 0, true);
     }
 
     public override void Execute()
     {
         base.Execute();
         if(!fsm.isAttack)
-            fsm.IsAttackRange();
+        {
+            if (Vector2.Distance(fsm.transform.position, fsm.player.transform.position) > fsm.atkRange)
+            {
+                fsm.ChangeState(fsm.ChaseState);
+            }
+        }
     }
 
     public override void Exit()
     {
         base.Exit();
+        SetAnimSpeed(1);
     }
 }
 

@@ -27,7 +27,8 @@ public class SpineEvtHandler : MonoBehaviour
 
         switch (trackEntry.Animation.Name)
         {
-            case nameof(PlayerStateType.Attack_01):
+            case "Attack_01":
+            case "Attack_02":
                 player.fsm.isAttack = true;
                 break;
         }
@@ -40,9 +41,9 @@ public class SpineEvtHandler : MonoBehaviour
 
         switch(trackEntry.Animation.Name)
         {
-            case nameof(PlayerStateType.Attack_01):
-            case nameof(PlayerStateType.Attack_02):
-                player.fsm.isCooltime = true;
+            case "Attack_01":
+            case "Attack_02":
+                player.fsm.isAttack = false;
                 if (player.isPlaying && player.input.isPress)
                     player.fsm.ChangeState(player.fsm.MoveState);
                 else
@@ -50,6 +51,7 @@ public class SpineEvtHandler : MonoBehaviour
                 break;
         }
     }
+
 }
 
 public enum PlayerStateType

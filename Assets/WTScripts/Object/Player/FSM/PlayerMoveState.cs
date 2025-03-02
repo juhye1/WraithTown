@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerMoveState : BaseMoveState
 {
     private new PlayerFSM fsm;
+    
     public PlayerMoveState(PlayerFSM fsm) : base(fsm)
     {
-        this.fsm = fsm;
+        this.fsm = fsm; 
     }
 
     public override void Enter()
@@ -19,7 +20,7 @@ public class PlayerMoveState : BaseMoveState
     {
         base.Execute();
         //if ()
-        fsm.rb.velocity = fsm.moveDir * fsm.moveSpeed;
+        fsm.rb.velocity = fsm.moveDir * fsm.moveSpd;
         if(fsm.moveDir == Vector2.zero)
             fsm.ChangeState(fsm.IdleState);
     }
