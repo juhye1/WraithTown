@@ -10,16 +10,12 @@ public class EnySpineEvtHandler : MonoBehaviour
     BaseEnemy enemy;
     public SkeletonAnimation skeletonAnimation;
 
-    private void Start()
-    {
-        skeletonAnimation.AnimationState.Start += OnAnimationStart;
-        skeletonAnimation.AnimationState.Complete += OnAnimationComplete;
-    }
-
-    private void OnDestroy()
+    private void Awake()
     {
         skeletonAnimation.AnimationState.Start -= OnAnimationStart;
         skeletonAnimation.AnimationState.Complete -= OnAnimationComplete;
+        skeletonAnimation.AnimationState.Start += OnAnimationStart;
+        skeletonAnimation.AnimationState.Complete += OnAnimationComplete;
     }
 
     private void OnAnimationStart(TrackEntry trackEntry)
@@ -40,7 +36,7 @@ public class EnySpineEvtHandler : MonoBehaviour
     private void OnAnimationComplete(TrackEntry trackEntry)
     {
         //Debug.Log($"�ִϸ��̼� �����: {trackEntry.Animation.Name}");
-
+        Debug.LogWarning(trackEntry.Animation.Name);
         switch (trackEntry.Animation.Name)
         {
             case "Nt_Attack":
@@ -50,8 +46,6 @@ public class EnySpineEvtHandler : MonoBehaviour
             case "Nt_Die":
             case "An_Die":
                 enemy.isDead = false;
-                enemy.fsm.ChangeState(enemy.fsm.IdleState);
-                enemy.SetActive(false);
                 break;
         }
     }

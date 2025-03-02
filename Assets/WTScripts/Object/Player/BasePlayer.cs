@@ -63,7 +63,11 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
 
     public void Setup()
     {
-       
+        fsm.ChangeState(fsm.IdleState);
+        stat.Init();
+        isDead = false;
+        isPlaying = true;
+        WTMain.Instance.spawner.Setup();
     }
 
     public void OnAttack()
@@ -73,7 +77,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
 
     public void OnTakeDamaged(int damage)
     {
-        if (isDead) return;
+        if (isDead || stat.status.hp <= 0) return;
         stat.status.hp -= damage;
         Debug.LogWarning(stat.status.hp);
         if(stat.status.hp <= 0)

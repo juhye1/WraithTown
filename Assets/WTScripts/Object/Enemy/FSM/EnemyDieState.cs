@@ -15,9 +15,9 @@ public class EnemyDieState : BaseDieState
     {
         base.Enter();
         if (fsm.enemy.isNight)
-            StartAnimation(ntName, 0, true);
+            StartAnimation(ntName, 0, false);
         else
-            StartAnimation(anName, 0, true);
+            StartAnimation(anName, 0, false);
     }
 
     public override void Exit()

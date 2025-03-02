@@ -25,15 +25,15 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     #endregion
 
     #region 유니티 함수
-    protected virtual void Start()
-    {
-
-    }
 
     protected virtual void Update()
     {
         if (fsm.currentState != null)
-            fsm.currentState?.Execute();   
+            fsm.currentState?.Execute(); 
+        if(!fsm.player.isPlaying || fsm.player.isDead)
+        {
+            Release();
+        }
     }
     #endregion
 

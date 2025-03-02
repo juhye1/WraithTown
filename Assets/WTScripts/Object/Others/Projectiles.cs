@@ -17,6 +17,8 @@ public class Projectiles : ObjectPoolBase
     private int damage;
     private void Update()
     {
+        if(!BasePlayer.Instance.isPlaying || BasePlayer.Instance.isDead)
+            Release();
         if (Vector2.Distance(startPos, transform.position) <= distance) return;
         Release();
     }

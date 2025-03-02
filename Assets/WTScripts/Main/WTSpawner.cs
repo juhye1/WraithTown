@@ -17,6 +17,13 @@ public class WTSpawner : MonoBehaviour
         StartCoroutine(MonsterSpawner());
     }
 
+    public void Setup()
+    {
+        gameObject.SetActive(true);
+        StopAllCoroutines();
+        StartCoroutine(MonsterSpawner());
+    }
+
     IEnumerator MonsterSpawner()
     {
         WaitUntil until = new WaitUntil(() => WTPoolManager.Instance.isInit);

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1150451027565470349}
   - component: {fileID: 602060186326736802}
   - component: {fileID: 7692290341591977038}
-  - component: {fileID: 5756503419822614320}
   - component: {fileID: 423592365436173496}
   - component: {fileID: 5256442156819493113}
   m_Layer: 9
@@ -101,21 +100,6 @@ MonoBehaviour:
   moveSpd: 3
   atkSpd: 1
   enemy: {fileID: 602060186326736802}
-  atkRange: 2
---- !u!114 &5756503419822614320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550396934956416209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 432977a4d717a404dbad93a4573e60fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 602060186326736802}
-  skeletonAnimation: {fileID: 4478980517441520379}
 --- !u!50 &423592365436173496
 Rigidbody2D:
   serializedVersion: 4
@@ -222,6 +206,7 @@ GameObject:
   - component: {fileID: 9169424588236169387}
   - component: {fileID: 4478980517441520379}
   - component: {fileID: 3781427363632788475}
+  - component: {fileID: 7225864481657265956}
   m_Layer: 9
   m_Name: EnemyModel
   m_TagString: Untagged
@@ -323,7 +308,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: Idle
+  _animationName: Nt_Idle
   loop: 0
   timeScale: 1
 --- !u!33 &3781427363632788475
@@ -334,3 +319,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3995181968594727068}
   m_Mesh: {fileID: 0}
+--- !u!114 &7225864481657265956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995181968594727068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432977a4d717a404dbad93a4573e60fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 602060186326736802}
+  skeletonAnimation: {fileID: 4478980517441520379}
