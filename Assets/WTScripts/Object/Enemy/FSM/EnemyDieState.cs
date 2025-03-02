@@ -1,5 +1,7 @@
+using Spine;
 using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyDieState : BaseDieState
 {
@@ -15,9 +17,15 @@ public class EnemyDieState : BaseDieState
     {
         base.Enter();
         if (fsm.enemy.isNight)
-            StartAnimation(ntName, 0, false);
+        {
+            TrackEntry trackEntry = fsm.anim.AnimationState.SetAnimation(0, ntName, false);
+            trackEntry.Complete += (entry) => fsm.enemy.Release();
+        }
         else
-            StartAnimation(anName, 0, false);
+        {
+            TrackEntry trackEntry = fsm.anim.AnimationState.SetAnimation(0, anName, false);
+            trackEntry.Complete += (entry) => fsm.enemy.Release();
+        }
     }
 
     public override void Exit()

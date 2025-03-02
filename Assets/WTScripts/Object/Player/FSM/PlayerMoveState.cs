@@ -21,7 +21,7 @@ public class PlayerMoveState : BaseMoveState
     {
         base.Execute();
         //if ()
-        fsm.rb.velocity = fsm.moveDir * fsm.moveSpd;
+        fsm.rb.velocity = fsm.moveDir * fsm.player.stat.status.move_speed;
         if(fsm.moveDir == Vector2.zero)
             fsm.ChangeState(fsm.IdleState);
     }

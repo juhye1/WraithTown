@@ -14,7 +14,7 @@ public class PlayerDieState : BaseDieState
     {
         if (fsm.player.isDead) return;
         base.Enter();
-        StartAnimation(animName);
+        StartAnimation(animName, 0, false);
     }
 
     public override void Exit()
