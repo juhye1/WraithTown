@@ -66,6 +66,7 @@ public class WTWraithStatTemplate
     public int hp;          
     public int dmg;              
     public float attack_range;    
+    public float attack_radius;
     public float attack_speed;
     public int total_tile_count;
     public int special_tile_count;
