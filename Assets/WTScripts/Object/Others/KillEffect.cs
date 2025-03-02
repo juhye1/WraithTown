@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 
 public class KillEffect : ObjectPoolBase
 {
-    GameObject target;
     [SerializeField]
     private SkeletonAnimation anim;
 
@@ -19,15 +18,12 @@ public class KillEffect : ObjectPoolBase
     public void Setup(GameObject obj)
     {
         SetActive(true);
-        anim.AnimationState.SetAnimation(0, "Monster_die", false);
-        target = obj;
+        TrackEntry trackEntry = anim.AnimationState.SetAnimation(0, "Monster_die", false);
+        trackEntry.Complete += OffEffect;
         transform.position = obj.transform.position;
-        Invoke("OffEffect", 1);
     }
-    public void OffEffect()
+    public void OffEffect(TrackEntry trackEntry)
     {
-        Debug.Log($"{gameObject.name} - OffEffect() »£√‚µ !");
-        target = null;
         WTPoolManager.Instance.Release(this);
     }
 }

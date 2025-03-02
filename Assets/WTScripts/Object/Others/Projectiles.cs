@@ -54,8 +54,8 @@ public class Projectiles : ObjectPoolBase
     public void OnShoot(BaseEnemy enemy , Vector2 dir)
     {
         SetActive(true);
-        distance = enemy.stat.attack_range;
-        damage = enemy.stat.dmg;
+        distance = enemy.stat.template.attack_range;
+        damage = enemy.stat.template.dmg;
         startPos = enemy.transform.position;
         transform.position = startPos;
         rb.velocity = dir * speed;

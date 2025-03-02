@@ -19,12 +19,12 @@ public class EnemyDieState : BaseDieState
         if (fsm.enemy.isNight)
         {
             TrackEntry trackEntry = fsm.anim.AnimationState.SetAnimation(0, ntName, false);
-            trackEntry.Complete += (entry) => fsm.enemy.Release();
+            trackEntry.Complete += (entry) => { fsm.enemy.Release(); fsm.enemy.isDead = false; };
         }
         else
         {
             TrackEntry trackEntry = fsm.anim.AnimationState.SetAnimation(0, anName, false);
-            trackEntry.Complete += (entry) => fsm.enemy.Release();
+            trackEntry.Complete += (entry) => { fsm.enemy.Release(); fsm.enemy.isDead = false; };
         }
     }
 

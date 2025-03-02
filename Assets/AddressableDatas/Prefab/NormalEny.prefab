@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7692290341591977038}
   - component: {fileID: 423592365436173496}
   - component: {fileID: 5256442156819493113}
+  - component: {fileID: 5911454413599065782}
   m_Layer: 9
   m_Name: NormalEny
   m_TagString: Enemy
@@ -65,21 +66,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0394d91493ee6184b9693ce2cdcce5bf, type: 2}
   damageEffect: DamageEffect
   killEffect: KillEffect
+  goldGoods: Goods
   fsm: {fileID: 7692290341591977038}
-  stat:
-    enemyunit_id: 0
-    enemy_name: 
-    spawn_start_time: 0
-    spawn_end_time: 0
-    spawn_weight: 0
-    move_speed: 0
-    hp: 0
-    dmg: 0
-    attack_range: 0
-    attack_speed: 0
-    drop_weight: 0
-    dead_drop_soul: 0
-    dead_drop_coin: 0
+  stat: {fileID: 5911454413599065782}
 --- !u!114 &7692290341591977038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +86,6 @@ MonoBehaviour:
   rb: {fileID: 423592365436173496}
   anim: {fileID: 4478980517441520379}
   isAttack: 0
-  moveSpd: 3
   atkSpd: 1
   enemy: {fileID: 602060186326736802}
 --- !u!50 &423592365436173496
@@ -162,6 +150,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   m_Size: {x: 0.7, y: 1.3}
   m_Direction: 0
+--- !u!114 &5911454413599065782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550396934956416209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d351b8e3ab1664a8408c0813c4e32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template:
+    enemyunit_id: 0
+    enemy_name: 
+    spawn_start_time: 0
+    spawn_end_time: 0
+    spawn_weight: 0
+    move_speed: 0
+    hp: 0
+    dmg: 0
+    attack_range: 0
+    attack_speed: 0
+    drop_weight: 0
+    dead_drop_soul: 0
+    dead_drop_coin: 0
+  hp: 0
 --- !u!1 &3550808440639696346
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +221,6 @@ GameObject:
   - component: {fileID: 9169424588236169387}
   - component: {fileID: 4478980517441520379}
   - component: {fileID: 3781427363632788475}
-  - component: {fileID: 7225864481657265956}
   m_Layer: 9
   m_Name: EnemyModel
   m_TagString: Untagged
@@ -319,17 +333,3 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3995181968594727068}
   m_Mesh: {fileID: 0}
---- !u!114 &7225864481657265956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3995181968594727068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 432977a4d717a404dbad93a4573e60fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 602060186326736802}
-  skeletonAnimation: {fileID: 4478980517441520379}

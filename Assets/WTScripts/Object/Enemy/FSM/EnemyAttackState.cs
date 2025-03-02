@@ -1,6 +1,8 @@
 
+using Spine;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemyAttackState : BaseAttackeState
@@ -21,11 +23,20 @@ public class EnemyAttackState : BaseAttackeState
     {
         base.Enter();
         fsm.rb.velocity = Vector2.zero;
-        SetAnimSpeed(fsm.enemy.stat.attack_speed);
-        if(fsm.enemy.isNight)
-            StartAnimation(ntName, 0, true);
+ 
+        if (fsm.enemy.isNight)
+        {
+            TrackEntry trackEntry = fsm.anim.AnimationState.SetAnimation(0, ntName, false);
+            trackEntry.Start += OnAnimationStart;
+            trackEntry.Complete += OnAnimationComplete;
+        }
         else
-            StartAnimation(anName, 0, true);
+        {
+            TrackEntry trackEntry = fsm.anim.AnimationState.SetAnimation(0, anName, false);
+            trackEntry.Start += OnAnimationStart;
+            trackEntry.Complete += OnAnimationComplete;
+        }
+        SetAnimSpeed(fsm.enemy.stat.template.attack_speed);
     }
 
     public override void Execute()
@@ -44,6 +55,18 @@ public class EnemyAttackState : BaseAttackeState
     {
         base.Exit();
         SetAnimSpeed(1);
+    }
+
+    private void OnAnimationStart(TrackEntry trackEntry)
+    {
+        fsm.isAttack = true;
+        fsm.enemy.OnAttack();
+    }
+
+    private void OnAnimationComplete(TrackEntry trackEntry)
+    {
+        fsm.isAttack = false;
+        fsm.ChangeState(fsm.AttackState);
     }
 }
 

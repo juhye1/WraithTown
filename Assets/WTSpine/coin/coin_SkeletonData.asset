@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
   m_Name: coin_SkeletonData
   m_EditorClassIdentifier: 
-  atlasAssets: []
+  atlasAssets:
+  - {fileID: 11400000, guid: ebaff18739af13447adc2e36df127da4, type: 2}
   scale: 0.01
   skeletonJSON: {fileID: 4900000, guid: a37ed47ff580d5841a06ce5e8e09a3cd, type: 3}
   isUpgradingBlendModeMaterials: 0

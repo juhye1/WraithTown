@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Spine.Unity;
+using UnityEngine.UIElements;
 
 public enum PlayerSkin
 {
@@ -29,14 +30,19 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     public PlayerStatHandler stat;
     public RotationTarget rotObj;
     public Transform projectileTr;
+    public SkeletonAnimation floorAnim;
+    WTMain main => WTMain.Instance;
+    WTGameData data => main.playerData;
     #endregion
 
+    string floorAnimName = "floor";
     #region ����Ƽ �Լ�
     protected override void Awake()
     {
         base.Awake();
         Init();
         fsm.Init();
+        floorAnim.AnimationState.SetAnimation(0, floorAnimName, true);
     }
 
     public void Start()
@@ -64,6 +70,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     public void Setup()
     {
         fsm.ChangeState(fsm.IdleState);
+        floorAnim.AnimationState.SetAnimation(0, floorAnimName, true);
         stat.Init();
         isDead = false;
         isPlaying = true;
@@ -77,8 +84,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
 
     public void OnTakeDamaged(int damage)
     {
-        WTMain main = WTMain.Instance;
-        WTGameData data = main.playerData;
+
         if (isDead || data.currentHP <= 0) return;
         data.currentHP -= damage;
         Debug.LogWarning(data.currentHP);

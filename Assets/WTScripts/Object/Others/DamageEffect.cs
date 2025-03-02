@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 
 public class DamageEffect : ObjectPoolBase
 {
-    GameObject target;
     [SerializeField]
     private SkeletonAnimation anim;
 
@@ -18,17 +17,15 @@ public class DamageEffect : ObjectPoolBase
     }
     public void Setup(GameObject obj)
     {
-        Setup();
         SetActive(true);
+        TrackEntry trackEntry = anim.AnimationState.SetAnimation(0, "Monster_hit", false);
+        trackEntry.Complete += OffEffect;
         transform.position = obj.transform.position;
-        target = obj;
-        Invoke("OffEffect", 2);
-    }
-    public void OffEffect()
-    {
-        Debug.Log($"{gameObject.name} - OffEffect() »£√‚µ !");
-        WTPoolManager.Instance.Release(this);
     }
 
+    public void OffEffect(TrackEntry trackEntry)
+    {
+        WTPoolManager.Instance.Release(this);
+    }
 
 }

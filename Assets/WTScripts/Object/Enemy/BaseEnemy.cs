@@ -17,12 +17,18 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     string damageEffect = "DamageEffect";
     [SerializeField]
     string killEffect = "KillEffect";
+    [SerializeField]
+    string goldGoods = "Goods";
     #endregion
 
     #region 하위 클래스
     public EnemyFSM fsm;
-    public WTEnemyUnitStatsTemplate stat = new();
+    public EnemyStatHandler stat;
     #endregion
+    void Start()
+    {
+        fsm.Init();
+    }
 
     #region 유니티 함수
 
@@ -46,20 +52,25 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     }
     private void DropGoods()
     {
-        if(stat.dead_drop_coin != 0)
+        if(stat.template.dead_drop_coin != 0)
         {
             float rand = Random.Range(0, 1);
-            Debug.Log("코인" + rand);
-            if (rand <= stat.drop_weight)
-                WTGlobal.CallEventDelegate(WTEventType.ChangeGold, stat.dead_drop_coin);
+            
+            if (rand <= stat.template.drop_weight)
+            {
+                Debug.Log("코인" + rand);
+                var obj = WTPoolManager.Instance.SpawnQueue<DropGoods>(goldGoods);
+                obj.Setup(transform.position);
+                WTGlobal.CallEventDelegate(WTEventType.ChangeGold, stat.template.dead_drop_coin);
+            }
         }
 
-        if(stat.dead_drop_soul != 0)
+        if(stat.template.dead_drop_soul != 0)
         {
             float rand = Random.Range(0, 1);
             Debug.Log("소울" + rand);
-            if (rand <= stat.drop_weight)
-                WTGlobal.CallEventDelegate(WTEventType.ChangePoint, stat.dead_drop_soul);
+            if (rand <= stat.template.drop_weight)
+                WTGlobal.CallEventDelegate(WTEventType.ChangePoint, stat.template.dead_drop_soul);
         }
     }
 
@@ -70,9 +81,9 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
 
     public void OnAttack()
     {
-        if(stat.attack_range == 1)
+        if(stat.template.attack_range == 1)
         {
-            BasePlayer.Instance.OnTakeDamaged(stat.dmg);
+            BasePlayer.Instance.OnTakeDamaged(stat.template.dmg);
         }
         else
         {
@@ -145,7 +156,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     public void Setup(WTEnemyUnitStatsTemplate template)
     {
         Setup();
-        stat = template;
+        stat.Init(template);
         SetSkin((WTEnemyType)template.enemyunit_id);
     }
     #endregion

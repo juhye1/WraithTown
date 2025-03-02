@@ -12,12 +12,8 @@ public class EnemyFSM : BaseFSM
     public EnemyAttackState AttackState { get; private set; }
     public EnemyDieState DieState { get; private set; }
     #endregion
-    public float atkRange => enemy.stat.attack_range;
+    public float atkRange => enemy.stat.template.attack_range;
     // Start is called before the first frame update
-    void Start()
-    {
-        Init();
-    }
 
     public void Init()
     {
