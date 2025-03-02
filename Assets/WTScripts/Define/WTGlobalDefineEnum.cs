@@ -32,6 +32,7 @@ public enum WTGameState
     SelectCharacter
 };
 
+
 public enum WTGameMode
 {
     None = 0,

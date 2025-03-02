@@ -93,12 +93,6 @@ public class WTPoolManager : Singleton<WTPoolManager>
         }
         Debug.Log("Ǯ�� ����");
         isInit = true;
-        var spawner = Resources.Load<WTSpawner>("Spawner");
-        if (spawner != null)
-        {
-            var instance = Instantiate(spawner); // 씬에 인스턴스 생성
-            instance.gameObject.SetActive(true);
-        }
 
     }
     #endregion

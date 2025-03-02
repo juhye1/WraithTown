@@ -7,6 +7,7 @@ using UnityEngine;
 [Serializable]
 public class WTGameData
 {
+    public int userUnitId = 0;
     public int gold, point = 0;
     public int currentHP = 0;
     public ushort[] items = null;
@@ -208,6 +209,8 @@ public partial class WTMain : MonoBehaviour
     [NonSerialized] public WTGameData savedData = null;
     [NonSerialized] public WTGameData playerData = null;
     [NonSerialized] public WTCardData[] cardDatas = null;
+    [NonSerialized] public WTSupportUnitTemplate[] supportUnitDatas = null;
+
     [NonSerialized] public Dictionary<ushort, WTStageTimeData> dicStageData = new();
     [NonSerialized] public Dictionary<ushort, WTWraithStatTemplate> dicPlayerStatTemplate = new();
     [NonSerialized] public Dictionary<ushort, WTSupportUnitAbilityTemplate> dicSupportUnitAbilityTemplate = new();
@@ -303,6 +306,7 @@ public partial class WTMain : MonoBehaviour
         //보호 유닛 정보 
         TextAsset supportUnitTa = Resources.Load<TextAsset>("Template/SupportUnitTemplate");
         WTSupportUnitTemplateGroup tempSpUnitData = JsonUtility.FromJson<WTSupportUnitTemplateGroup>(supportUnitTa.text);
+        supportUnitDatas = tempSpUnitData.supportUnitDatas;
         for (int i = 0; i < tempSpUnitData.supportUnitDatas.Length; ++i)
         {
             WTSupportUnitTemplate s = tempSpUnitData.supportUnitDatas[i];
@@ -391,6 +395,38 @@ public partial class WTMain : MonoBehaviour
         System.IO.File.WriteAllText(filePath, dataToJason);
     }
 
+    public void GetSupportSynergyUnit(ushort synergyID)
+    {
+        Utils.Shuffle(supportUnitDatas);
+        WTSupportUnitTemplate unit = null;
+        for(int i=0; i<supportUnitDatas.Length; ++i)
+        {
+            WTSupportUnitTemplate temp = supportUnitDatas[i];
+            if(temp.synergy_id == synergyID)
+            {
+                unit = temp;
+                break;
+            }
+        }
+        playerData.supportUnits.Add(unit.support_unit_id);
+    }
+
+    public void GetSupportTraitUnit(ushort traitID)
+    {
+        Utils.Shuffle(supportUnitDatas);
+        WTSupportUnitTemplate unit = null;
+        for (int i = 0; i < supportUnitDatas.Length; ++i)
+        {
+            WTSupportUnitTemplate temp = supportUnitDatas[i];
+            if (temp.trait_id == traitID)
+            {
+                unit = temp;
+                break;
+            }
+        }
+        playerData.supportUnits.Add(unit.support_unit_id);
+    }
+
     public void ChangePlayerStats(WTEffectType type, int val)
     {
         WTPlayerAbility ab = playerData.playerAb;
@@ -429,6 +465,8 @@ public partial class WTMain : MonoBehaviour
                 break;
                 //밑으로 유닛 랜덤 획득
             case WTEffectType.GetRandomSoilUnit:
+               // WTTraitDataTemplate temp = GetSupportTraitUnit()
+                GetSupportSynergyUnit(10201);
                 break;
             case WTEffectType.GetRandomFireUnit:
                 break;

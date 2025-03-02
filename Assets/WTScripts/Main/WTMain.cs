@@ -83,8 +83,8 @@ public partial class WTMain : MonoBehaviour
         }
         else if (gameState == WTGameState.Game)
         {
-            StartDayTimer(GetCurrentStageData());
             uiMain.ChangeUIState(WTUIState.Game);
+            StartDayTimer(GetCurrentStageData());
         }
         return true;
     }

@@ -25,6 +25,7 @@ public partial class WTMain : MonoBehaviour
             WTWraithStatTemplate temp = GetPlayerCharacterTemplate(TID);
             playerData.playerAb = new WTPlayerAbility(temp); // 생성자에서 temp 값 넣어줌
             playerData.day = 1;
+            playerData.userUnitId = TID;
             playerData.currentHP = temp.hp;
             playerData.stageID = WTConstants.StartStageID;
             ChangeGameState(WTGameState.Game);
