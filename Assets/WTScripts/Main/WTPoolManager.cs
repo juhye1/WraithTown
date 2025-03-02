@@ -105,7 +105,6 @@ public class WTPoolManager : Singleton<WTPoolManager>
             }
         }
         var retObj = (T)qPools[rcode].Dequeue();
-        retObj.SetActive(true);
         retObj.Setup();
         return retObj;
     }

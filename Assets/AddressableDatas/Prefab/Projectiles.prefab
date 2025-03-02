@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9048014900948984314}
   - component: {fileID: 2854689872841443517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2907634608316733499}
   - component: {fileID: 7680750707015157435}
   - component: {fileID: 4374227067810611194}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9048014900948984314}

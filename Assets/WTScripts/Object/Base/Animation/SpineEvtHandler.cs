@@ -41,7 +41,6 @@ public class SpineEvtHandler : MonoBehaviour
         switch(trackEntry.Animation.Name)
         {
             case nameof(PlayerStateType.Attack_01):
-                player.fsm.isAttack = false;
                 player.fsm.isCooltime = true;
                 if (player.isPlaying && player.input.isPress)
                     player.fsm.ChangeState(player.fsm.MoveState);

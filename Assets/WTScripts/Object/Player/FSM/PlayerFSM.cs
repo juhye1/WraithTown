@@ -9,7 +9,7 @@ public class PlayerFSM : BaseFSM
     public float moveSpeed;
     public Vector2 moveDir;
     public Vector2 shootDir;
-
+    private LayerMask enemyMask;
     public string projectileName;
     #region Player States
     public PlayerMoveState MoveState { get; private set; }
@@ -18,6 +18,23 @@ public class PlayerFSM : BaseFSM
     public PlayerIdleState IdleState { get; private set; }
 
     #endregion
+    protected override void Awake()
+    {
+        base.Awake();
+        enemyMask = LayerMask.GetMask("Enemy");
+    }
+
+    private void Update()
+    {
+        if (!isCooltime) return;
+        cooltime -= Time.deltaTime;
+        if (cooltime <= 0)
+        {
+            isAttack = false;
+            isCooltime = false;
+            cooltime = 1f;
+        }
+    }
 
     public void Init()
     {
@@ -26,7 +43,7 @@ public class PlayerFSM : BaseFSM
         IdleState = new PlayerIdleState(this);
         DieState = new PlayerDieState(this);
         AttackState = new PlayerAttackState(this);
-
+        
         ChangeState(IdleState);
     }
 
@@ -43,19 +60,43 @@ public class PlayerFSM : BaseFSM
 
     public void Shoot()
     {
-        var obj = WTPoolManager.Instance.SpawnQueue<Projectiles>(projectileName);
-        obj.OnShoot(player ,shootDir);
+        if(player.skinType == PlayerSkin.Miho)
+        {
+            var obj = WTPoolManager.Instance.SpawnQueue<Projectiles>(projectileName);
+            obj.OnShoot(player, shootDir);
+        }
+        else if(player.skinType == PlayerSkin.Kebi)
+        {
+            Invoke("Slash", 5 / 30f);
+        }
+    }
+
+    private void Slash()
+    {
+        var colls = Physics2D.OverlapCircleAll((Vector2)transform.position + shootDir.normalized, 2, enemyMask);
+        Debug.LogWarning(colls.Length);
+        foreach(var coll in colls) 
+        { 
+            if(coll.TryGetComponent(out BaseEnemy enemy))
+            {
+                enemy.OnTakeDamaged();
+                Debug.LogWarning(enemy + "제거");
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // 기즈모 색상 설정
+        Gizmos.color = Color.red;
+
+        // 현재 위치에서 슈팅 방향을 기준으로 원을 그림
+        Vector2 center = (Vector2)transform.position + shootDir.normalized;
+        Gizmos.DrawWireSphere(center, 2);
     }
 
     public void WaitForCooltime()
     {
-        if (!isCooltime) return;
-        cooltime -= Time.deltaTime;
-        if (cooltime <= 0)
-        {
-            isAttack = false;
-            isCooltime = false;
-            cooltime = 1f;
-        }
+
     }
 }

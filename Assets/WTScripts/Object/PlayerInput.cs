@@ -24,15 +24,17 @@ public class PlayerInput : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         var dir = context.ReadValue<Vector2>();
-        Debug.Log(dir);
+        
         switch (context.phase)
         {
             case InputActionPhase.Started:
-                if(player.isPlaying && !player.isDead)
+                isPress = true;
+                if (player.fsm.isAttack) return;
+                if (player.isPlaying && !player.isDead)
                 {
                     player.fsm.ChangeState(player.fsm.MoveState);
                 }
-                isPress = true;
+
                 break;
             case InputActionPhase.Performed:
                 if (player.isPlaying && !player.isDead)
@@ -45,12 +47,13 @@ public class PlayerInput : MonoBehaviour
                 }
                 break;
             case InputActionPhase.Canceled:
+                isPress = false;
                 if (player.isPlaying && !player.isDead)
                 {
                     player.fsm.moveDir = Vector2.zero;
+                    if (player.fsm.isAttack) return;
                     player.fsm.ChangeState(player.fsm.IdleState);
                 }
-                isPress = false;
                 break;
             default:
                 break;
@@ -65,7 +68,7 @@ public class PlayerInput : MonoBehaviour
         {
             case InputActionPhase.Started:
                 Debug.Log("플레이어 공격");
-                //if(!player.fsm.isAttack)
+                if(!player.fsm.isAttack)
                     player.fsm.ChangeState(player.fsm.AttackState);
                 break;
             case InputActionPhase.Canceled:

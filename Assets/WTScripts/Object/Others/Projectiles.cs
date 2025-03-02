@@ -32,9 +32,10 @@ public class Projectiles : ObjectPoolBase
 
     public void OnShoot(BasePlayer player, Vector2 dir)
     {
+        SetActive(true); ;
         startPos = player.projectileTr.position;
         transform.position = startPos;
-        rb.velocity = dir * speed;
+        rb.velocity = dir.normalized * speed;
     }
 
     public void OnShoot(BaseEnemy enemy , Vector2 dir)

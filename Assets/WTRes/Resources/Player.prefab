@@ -143,7 +143,7 @@ MonoBehaviour:
   isDontDestroyOnLoad: 1
   isPlaying: 1
   isDead: 0
-  skinType: 0
+  skinType: 1
   newSkeletonData:
   - {fileID: 11400000, guid: fd1b1253209a99f448795125bc82ceba, type: 2}
   - {fileID: 11400000, guid: eaf4b59858c41dd40aa8658c7498c18c, type: 2}
@@ -266,6 +266,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6934230542115438664}
   skeletonAnimation: {fileID: 1122105511130068314}
+--- !u!1 &2514006458428046662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4690916811266922753}
+  m_Layer: 10
+  m_Name: AimParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4690916811266922753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2514006458428046662}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5130594807140746787}
+  m_Father: {fileID: 1118955129685483435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &2806568641777049487
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,11 +324,11 @@ Transform:
   m_GameObject: {fileID: 2806568641777049487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5130594807140746787}
+  - {fileID: 4690916811266922753}
   m_Father: {fileID: 387540334083181332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2429694623379182268
@@ -341,7 +373,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2856310542909040324}
@@ -366,7 +398,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0dfa6f5199baff4428821de5235ea962, type: 2}
+  - {fileID: 2100000, guid: dd2d0f326559d7c4b9ec85bd98e2ba36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -400,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: fd1b1253209a99f448795125bc82ceba, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: eaf4b59858c41dd40aa8658c7498c18c, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -461,12 +493,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4511763856195399021}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.7, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.49999997, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1118955129685483435}
+  m_Father: {fileID: 4690916811266922753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1213588306343386384
 SpriteRenderer:
@@ -578,7 +610,7 @@ Transform:
   m_GameObject: {fileID: 8642322065876834595}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -598,4 +630,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 8648061430147588430, guid: 64fe418b84b07494392833d780c63759, type: 3}
   objectCount: 9
-  radius: 1.5
+  radius: 1.2

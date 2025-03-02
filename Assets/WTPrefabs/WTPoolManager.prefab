@@ -94,6 +94,6 @@ MonoBehaviour:
   - {fileID: 1274470644506023560}
   prefabQList:
   - {fileID: 2907634608316733499, guid: a3baa10635436164488ec4c4bb950c99, type: 3}
-  - {fileID: 0}
+  - {fileID: 602060186326736802, guid: 0a328884fd123ca4eb6fcee6ff0afece, type: 3}
   prefabLList: []
   isInit: 0
