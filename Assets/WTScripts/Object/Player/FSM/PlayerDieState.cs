@@ -14,6 +14,7 @@ public class PlayerDieState : BaseDieState
     {
         if (fsm.player.isDead) return;
         base.Enter();
+        StartAnimation(animName);
         fsm.player.isDead = true;
         //fsm.player.isPlaying = false;
     }

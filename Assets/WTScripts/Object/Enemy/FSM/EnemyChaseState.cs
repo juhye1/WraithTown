@@ -1,9 +1,12 @@
 
+using System.Xml.Linq;
 using UnityEngine;
 
 public class EnemyChaseState : BaseMoveState
 {
     new EnemyFSM fsm;
+    string ntName = "Nt_Walk";
+    string anName = "An_Walk";
     public EnemyChaseState(EnemyFSM fsm) : base(fsm)
     {
         this.fsm = fsm;
@@ -13,6 +16,10 @@ public class EnemyChaseState : BaseMoveState
     {
         base.Enter();
         fsm.rb.velocity = (fsm.targetPos - (Vector2)fsm.transform.position).normalized * (fsm.moveSpd);
+        if (fsm.enemy.isNight)
+            StartAnimation(ntName, 0, true);
+        else
+            StartAnimation(anName, 0, true);
     }
 
     public override void Execute()

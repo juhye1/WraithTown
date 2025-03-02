@@ -14,6 +14,7 @@ public class PlayerMoveState : BaseMoveState
     public override void Enter()
     {
         base.Enter();
+        StartAnimation(animName);
     }
 
     public override void Execute()

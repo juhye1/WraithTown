@@ -1,3 +1,4 @@
+using System.Xml.Linq;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
@@ -5,6 +6,8 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class EnemyIdleState : BaseIdleState
 {
     new EnemyFSM fsm;
+    string ntName = "Nt_Idle";
+    string anName = "An_Idle";
     public EnemyIdleState(EnemyFSM fsm) : base(fsm)
     {
         this.fsm = fsm;
@@ -14,6 +17,10 @@ public class EnemyIdleState : BaseIdleState
     public override void Enter()
     {
         base.Enter();
+        if (fsm.enemy.isNight)
+            StartAnimation(ntName, 0, true);
+        else
+            StartAnimation(anName, 0, true);
     }
 
     public override void Execute()

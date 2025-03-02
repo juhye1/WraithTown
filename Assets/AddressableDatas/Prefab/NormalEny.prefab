@@ -56,11 +56,12 @@ MonoBehaviour:
   isUI: 0
   sort: 1
   isDead: 0
+  isNight: 0
   newSkeletonData:
-  - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
   - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
   - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
   - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
+  - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
   - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
   - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
   damageEffect: DamageEffect

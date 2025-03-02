@@ -43,6 +43,7 @@ public class WTSpawner : MonoBehaviour
             if (rate >= data.Value.spawn_start_time && rate <= data.Value.spawn_end_time)
             {
                 list.Add(data.Value);
+                Debug.LogWarning(data);
             }
         }
 
@@ -51,19 +52,20 @@ public class WTSpawner : MonoBehaviour
         {
             totalWeight += data.spawn_weight;
         }
+        Debug.LogWarning(totalWeight + "총가중치");
         int count = 0;
         foreach (var data in list)
         {
-            count = Mathf.RoundToInt(((float)data.spawn_weight / totalWeight) * stageData.EnemiesPerWave);
+            count = Mathf.RoundToInt((data.spawn_weight / totalWeight) * stageData.EnemiesPerWave);
+            Debug.LogWarning((data.spawn_weight / totalWeight) + "가중치 비율");
+            Debug.LogWarning(stageData.EnemiesPerWave + "최대 마리수");
+            Debug.LogWarning(count + "마리 소환");
             for(int i = 0; i < count; i++)
             {
                 var obj = WTPoolManager.Instance.SpawnQueue<BaseEnemy>("NormalEny");
                 var idx = Random.Range(0, spawnTr.Length);
                 obj.transform.position = spawnTr[idx].position;
-                if(stageData.total_stage_time - WTMain.Instance.playerData.remainTimes < stageData.total_stage_time * stageData.stage_night_time / 100)
-                    obj.Setup(data, true); //밤
-                else
-                    obj.Setup(data, false); //낮
+                obj.Setup(data);
             }
         }
         return stageData.SpawnRate;

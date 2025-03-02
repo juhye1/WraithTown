@@ -8,8 +8,8 @@ public class EnemyAttackState : BaseAttackeState
     new EnemyFSM fsm;
     //EnemyStatHandler stat;
 
-    string ntName = "";
-    string anName = "";
+    string ntName = "Nt_Attack";
+    string anName = "An_Attack";
 
     public EnemyAttackState(EnemyFSM fsm): base(fsm)
     {
@@ -22,7 +22,10 @@ public class EnemyAttackState : BaseAttackeState
         base.Enter();
         fsm.rb.velocity = Vector2.zero;
         SetAnimSpeed(fsm.atkSpd);
-        StartAnimation(animName, 0, true);
+        if(fsm.enemy.isNight)
+            StartAnimation(ntName, 0, true);
+        else
+            StartAnimation(anName, 0, true);
     }
 
     public override void Execute()

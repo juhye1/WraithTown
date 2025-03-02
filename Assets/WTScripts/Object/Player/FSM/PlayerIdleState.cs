@@ -15,6 +15,7 @@ public class PlayerIdleState : BaseIdleState
     public override void Enter()
     {
         base.Enter();
+        StartAnimation(animName);
         fsm.rb.velocity = Vector2.zero;
     }
 

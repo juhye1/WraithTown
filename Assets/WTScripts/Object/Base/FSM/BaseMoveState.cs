@@ -13,7 +13,7 @@ public class BaseMoveState : BaseState
 
     public override void Enter()
     {
-        StartAnimation(animName);
+
     }
 
     public override void Execute()

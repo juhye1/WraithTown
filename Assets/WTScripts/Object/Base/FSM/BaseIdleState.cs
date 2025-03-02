@@ -12,7 +12,6 @@ public class BaseIdleState : BaseState
     public override void Enter()
     {
         fsm.rb.velocity = Vector2.zero;
-        StartAnimation(animName);
     }
 
     public override void Execute()

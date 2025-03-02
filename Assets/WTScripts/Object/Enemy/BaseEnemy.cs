@@ -107,21 +107,27 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
         {
             case WTEnemyType.Hound:
                 idx = 0;
+                isNight = true;
                 break;
             case WTEnemyType.Haetae:
                 idx = 1;
+                isNight = true;
                 break;
             case WTEnemyType.Exorcist:
                 idx = 2;
+                isNight = true;
                 break;
             case WTEnemyType.Student:
                 idx = 3;
+                isNight = false;
                 break;
             case WTEnemyType.Maniac:
                 idx = 4;
+                isNight = false;
                 break;
             case WTEnemyType.Tourist:
                 idx = 5;
+                isNight = false;
                 break;
         }
         fsm.anim.skeletonDataAsset = newSkeletonData[idx];
@@ -129,12 +135,11 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
         fsm.ChangeState(fsm.ChaseState);
     }
 
-    public void Setup(WTEnemyUnitStatsTemplate template, bool _isNight)
+    public void Setup(WTEnemyUnitStatsTemplate template)
     {
         Setup();
         stat = template;
         SetSkin((WTEnemyType)template.enemyunit_id);
-        isNight = _isNight;
     }
     #endregion
 }

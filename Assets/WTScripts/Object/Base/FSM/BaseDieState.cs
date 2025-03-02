@@ -11,7 +11,6 @@ public class BaseDieState : BaseState
 
     public override void Enter()
     {
-        StartAnimation(animName);
         fsm.rb.velocity = Vector3.zero;
     }
 
