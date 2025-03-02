@@ -29,6 +29,7 @@ public enum WTGameState
     Lobby,
     Loading,
     Game,
+    SelectCharacter
 };
 
 public enum WTGameMode

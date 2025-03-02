@@ -1,0 +1,7 @@
+{"synergyDatas":
+[{"synergy_id":10101,"synergy_name":"고스트","threshold":2,"effect_des":"공격 속도 증가 +10%"},
+{"synergy_id":10102,"synergy_name":"고스트","threshold":4,"effect_des":"공격 속도 증가 +15%"},
+{"synergy_id":10103,"synergy_name":"고스트","threshold":6,"effect_des":"공격 속도 증가 +20%"},
+{"synergy_id":10104,"synergy_name":"요괴","threshold":2,"effect_des":"최대 체력 +20"},
+{"synergy_id":10105,"synergy_name":"요괴","threshold":4,"effect_des":"최대 체력 +40"},
+{"synergy_id":10106,"synergy_name":"요괴","threshold":6,"effect_des":"최대 체력 +60"}]}

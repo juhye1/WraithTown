@@ -1,0 +1,9 @@
+{"attributeTileDatas":
+[{"tile_attribute_id":12101,"support_unit_id":12001,"special_tile_value_text":"25%","special_tile_value":25},
+{"tile_attribute_id":12102,"support_unit_id":12002,"special_tile_value_text":"20%","special_tile_value":20},
+{"tile_attribute_id":12103,"support_unit_id":12003,"special_tile_value_text":"20%","special_tile_value":20},
+{"tile_attribute_id":12104,"support_unit_id":12004,"special_tile_value_text":"20%","special_tile_value":20},
+{"tile_attribute_id":12105,"support_unit_id":12005,"special_tile_value_text":"20%","special_tile_value":20},
+{"tile_attribute_id":12106,"support_unit_id":12006,"special_tile_value_text":"10","special_tile_value":10},
+{"tile_attribute_id":12107,"support_unit_id":12007,"special_tile_value_text":"4","special_tile_value":4},
+{"tile_attribute_id":12108,"support_unit_id":12008,"special_tile_value_text":"20%","special_tile_value":20}]}

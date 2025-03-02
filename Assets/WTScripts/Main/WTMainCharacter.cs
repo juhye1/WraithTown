@@ -13,7 +13,14 @@ public partial class WTMain : MonoBehaviour
 
         if (LoadPlayerCharacterTemplateData(pc_temp))
         {
-
+            GameObject go = Instantiate(pc_temp.basePrefab, Vector2.zero, Quaternion.identity);
+            playerData = new WTGameData();
+            WTWraithStatTemplate temp = GetPlayerCharacterTemplate(TID);
+            playerData.playerAb = new WTPlayerAbility(temp); // 생성자에서 temp 값 넣어줌
+            playerData.day = 1;
+            playerData.currentHP = temp.hp;
+            playerData.stageID = WTConstants.StartStageID;
+            ChangeGameState(WTGameState.Game);
         }
         return null;
     }
