@@ -23,13 +23,16 @@ public class Panel_GameOver : MonoBehaviour
     {
         WTMain main = WTMain.Instance;
         main.ChangeGameState(WTGameState.Lobby);
+        gameObject.SetActive(false);
         //로비로
     }
 
     public void OnClickBtn_Restart()
     {
         WTMain main = WTMain.Instance;
+        main.gameMode = WTGameMode.Restart;
         main.RestartGame();
+        gameObject.SetActive(false);
 
         //재시작
     }

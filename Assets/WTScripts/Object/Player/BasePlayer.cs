@@ -79,8 +79,11 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     {
         if (isDead || stat.status.hp <= 0) return;
         stat.status.hp -= damage;
+        WTMain main = WTMain.Instance;
         Debug.LogWarning(stat.status.hp);
-        if(stat.status.hp <= 0)
+        main.playerData.currentHP = stat.status.hp;
+        WTGlobal.CallEventDelegate(WTEventType.PlayerHPControl, stat.status.hp);
+        if (stat.status.hp <= 0)
         {
             DeathEvt();
         }

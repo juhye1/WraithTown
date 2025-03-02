@@ -9,6 +9,7 @@ public class SupportUnitCount
 {
     public ushort unitID;
     public int unitCount;
+    public bool isSpecialTile = false;
     public SupportUnitCount(ushort id, int count)
     {
         unitID = id;
@@ -85,6 +86,9 @@ public class WTPlayerAbility
     public float attackSpeed;
     public int projectileCount;
     public int special_tile_count;
+    public float stealEnemyHp;
+    public float doubleDamageChance;
+    public float enemyHalfDamageChance;
 
     public WTPlayerAbility(WTWraithStatTemplate temp)
     {
@@ -423,6 +427,20 @@ public partial class WTMain : MonoBehaviour
         return result[lv];
     }
 
+    public SupportUnitCount GetActiveSupportUnit(ushort id)
+    {
+        SupportUnitCount unit = null;
+        List<SupportUnitCount> c = playerData.activeSupportUnits;
+        for (int i = 0; i < c.Count; ++i)
+        {
+            if (c[i].unitID == 12005) // 금속성 한명
+            {
+                unit = c[i];
+                return unit;
+            }
+        }
+        return null;
+    }
     public void AddSpriteToDic()
     {
         Sprite[] sprites = Resources.LoadAll<Sprite>("Synerge");
@@ -573,7 +591,7 @@ public partial class WTMain : MonoBehaviour
         playerData.supportUnits.Add(c);
     }
 
-    public void AddActiveUnit(ushort addUnitID)
+    public void AddActiveUnit(ushort addUnitID, bool isSpecial)
     {
         for (int i = 0; i < playerData.activeSupportUnits.Count; ++i)
         {
@@ -581,10 +599,12 @@ public partial class WTMain : MonoBehaviour
             if (id == addUnitID)
             {
                 playerData.activeSupportUnits[i].unitCount++;
+                playerData.activeSupportUnits[i].isSpecialTile = isSpecial;
                 return;
             }
         }
         SupportUnitCount c = new(addUnitID, 1);
+        c.isSpecialTile = isSpecial;
         playerData.activeSupportUnits.Add(c);
     }
 

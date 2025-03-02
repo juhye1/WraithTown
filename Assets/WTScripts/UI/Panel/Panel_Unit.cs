@@ -91,8 +91,12 @@ public class Panel_Unit : MonoBehaviour
             if (i < totalSpUnits.Count)
             {
                 WTSupportUnitTemplate temp = main.GetSupportUnitTemplate(totalSpUnits[i]);
-                main.AddActiveUnit(temp.support_unit_id);
+                main.AddActiveUnit(temp.support_unit_id, t.isSpecial);
                 SkeletonDataAsset d = GetSkeletonData(temp.synergy_id);
+                if(t.isSpecial)
+                {
+
+                }
                 t.SetUnit(d, ReturnAnimationKey(temp));
                 j++;
             }

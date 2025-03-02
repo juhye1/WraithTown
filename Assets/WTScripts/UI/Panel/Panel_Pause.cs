@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class Panel_Pause : MonoBehaviour
 {
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
     public void OnClickBtn_Save()
     {
         WTMain main = WTMain.Instance;

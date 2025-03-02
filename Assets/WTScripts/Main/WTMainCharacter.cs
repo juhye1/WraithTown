@@ -32,7 +32,14 @@ public partial class WTMain : MonoBehaviour
             playerData.currentHP = temp.hp;
             playerData.stageID = WTConstants.StartStageID;
             WTUIMain uiMain = WTUIMain.Instance;
-            uiMain.ChangeUIState(WTUIState.Story);
+            if(gameMode == WTGameMode.PlayFromStart)
+            {
+                uiMain.ChangeUIState(WTUIState.Story);
+            }
+            else
+            {
+                uiMain.ChangeUIState(WTUIState.Game);
+            }
         }
         return null;
     }

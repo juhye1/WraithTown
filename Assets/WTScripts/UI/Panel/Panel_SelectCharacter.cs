@@ -9,47 +9,63 @@ public class Panel_SelectCharacter : MonoBehaviour
 {
     private ushort selectCharacterID;
     public SkeletonGraphic mihoSkel;
-    public SkeletonGraphic kebiSkel;
+    public SkeletonGraphic kebiSkel;    
+    public SkeletonGraphic mihoSkel_G;
+    public SkeletonGraphic kebiSkel_G;
     public Image selectImageMiho;
     public Image selectImageKebi;
+    public Color color;
 
     private void OnEnable()
     {
         selectCharacterID = WTConstants.UnitIDMiho;
-        kebiSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
-        mihoSkel.AnimationState.SetAnimation(0, PlayerStateType.Attack_01.ToString(), false).Complete += AnimationCompleteEventMiho;
+        //kebiSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
+        //mihoSkel.AnimationState.SetAnimation(0, PlayerStateType.Attack_01.ToString(), false).Complete += AnimationCompleteEventMiho;
     }
 
     public void OnClickBtn_Miho()
     {
         selectCharacterID = WTConstants.UnitIDMiho;
-        selectImageMiho.enabled = true;
-        selectImageKebi.enabled = false;
-        kebiSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
+        //selectImageMiho.enabled = true;
+        //selectImageKebi.enabled = false;
+        kebiSkel.enabled = false;
+        kebiSkel_G.enabled = true;
+       // kebiSkel.Skeleton.SetColor(color);
+        //kebiSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
         mihoSkel.AnimationState.SetAnimation(0, PlayerStateType.Attack_01.ToString(), false).Complete += AnimationCompleteEventMiho;
     }
 
     public void OnClickBtn_Kebi()
     {
         selectCharacterID = WTConstants.UnitIDKebi;
-        selectImageMiho.enabled = false;
-        selectImageKebi.enabled = true;
-        mihoSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
+        //selectImageMiho.enabled = false;
+        //selectImageKebi.enabled = true;
+        //mihoSkel.color = color;
+        mihoSkel.enabled = false;
+        mihoSkel_G.enabled = true;
+        //mihoSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
         kebiSkel.AnimationState.SetAnimation(0, PlayerStateType.Attack_01.ToString(), false).Complete += AnimationCompleteEventKebi;
     }
 
     private void AnimationCompleteEventKebi(TrackEntry de)
     {
         kebiSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
+        Invoke("SpawnCharacterDelay", 0.5f);
     }
     private void AnimationCompleteEventMiho(TrackEntry de)
     {
         mihoSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
+        Invoke("SpawnCharacterDelay", 0.5f);
+    }
+
+    private void SpawnCharacterDelay()
+    {
+        SpawnCharacter(selectCharacterID);
     }
 
     public void OnClickBtn_Start()
     {
-        SpawnCharacter(selectCharacterID);
+        //SpawnCharacter(selectCharacterID);
     }
 
     private void SpawnCharacter(ushort id)

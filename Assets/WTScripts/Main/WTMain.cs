@@ -37,13 +37,6 @@ public partial class WTMain : MonoBehaviour
     {
         float dt = Time.deltaTime;
         UpdateTimer(dt);
-
-        //임시
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            WTUIMain uiMain = WTUIMain.Instance;
-            uiMain.GetPanel(WTUIState.Pause);
-        }
     }
     public bool ChangeGameState(WTGameState eState) 
     {
@@ -53,6 +46,7 @@ public partial class WTMain : MonoBehaviour
 
         WTUIMain uiMain = WTUIMain.Instance;
         befGameState = gameState;
+
         gameState = eState;
         if (gameState == WTGameState.Lobby)
         {
@@ -92,6 +86,7 @@ public partial class WTMain : MonoBehaviour
     public void RestartGame()
     {
         WTUIMain uiMain = WTUIMain.Instance;
+        uiMain.DestroyPanel(WTUIState.Game);
         uiMain.ChangeUIState(WTUIState.SelectCharacter);
     }
 

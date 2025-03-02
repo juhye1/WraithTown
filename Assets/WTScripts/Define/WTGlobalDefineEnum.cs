@@ -15,15 +15,15 @@ public enum WTEventType
     MapLoaded = 1,
     AddressableGroupLoadComplete = 2,
     PlayerHPControl = 3,
-    PlayerMaxHPControl = 3,
-    Timer = 4,
-    ChangeGold = 5,
-    ChangePoint = 6,
-    ChangeStage = 7,
-    UpdateUnitInfo = 8,
-    AddSynergy = 9,
-    PlayerSpawn = 10,
-    ShowSynergyInfo = 11,
+    PlayerMaxHPControl,
+    Timer,
+    ChangeGold,
+    ChangePoint,
+    ChangeStage,
+    UpdateUnitInfo,
+    AddSynergy,
+    PlayerSpawn,
+    ShowSynergyInfo,
     Count
 }
 
@@ -41,7 +41,8 @@ public enum WTGameMode
 {
     None = 0,
     PlayFromStart = 1,
-    ContinueGame = 2
+    ContinueGame = 2,
+    Restart = 3
 };
 
 public enum WTEffectType

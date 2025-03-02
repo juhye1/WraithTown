@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -102,6 +101,8 @@ public class PlayerInput : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Started:
+                WTUIMain uiMain = WTUIMain.Instance;
+                uiMain.GetPanel(WTUIState.Pause);
                 break;
             case InputActionPhase.Performed:
 

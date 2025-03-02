@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Panel_Game : MonoBehaviour
@@ -37,13 +38,15 @@ public class Panel_Game : MonoBehaviour
         ControlGold(100);
         ControlPoint(100);
         SpawnSynergySlots();
+        SetProfile(0);
         WTGlobal.CallEventDelegate(WTEventType.PlayerSpawn, 0);
     }
     private void OnEnable()
     {
         WTGlobal.RegisterEventDelegate(WTEventType.PlayerHPControl, ControlHPSlider);
-        WTGlobal.RegisterEventDelegate(WTEventType.PlayerSpawn, SetProfile);
         WTGlobal.RegisterEventDelegate(WTEventType.PlayerMaxHPControl, ControlMaxHPSlider);
+
+        WTGlobal.RegisterEventDelegate(WTEventType.PlayerSpawn, SetProfile);
         WTGlobal.RegisterEventDelegate(WTEventType.ChangeGold, ControlGold);
         WTGlobal.RegisterEventDelegate(WTEventType.ChangePoint, ControlPoint);
         WTGlobal.RegisterEventDelegate(WTEventType.AddSynergy, AddSynergy);
@@ -51,8 +54,9 @@ public class Panel_Game : MonoBehaviour
     private void OnDisable()
     {
         WTGlobal.UnregisterEventDelegate(WTEventType.PlayerHPControl, ControlHPSlider);
-        WTGlobal.UnregisterEventDelegate(WTEventType.PlayerSpawn, SetProfile);
         WTGlobal.UnregisterEventDelegate(WTEventType.PlayerMaxHPControl, ControlMaxHPSlider);
+
+        WTGlobal.UnregisterEventDelegate(WTEventType.PlayerSpawn, SetProfile);
         WTGlobal.UnregisterEventDelegate(WTEventType.ChangeGold, ControlGold);
         WTGlobal.UnregisterEventDelegate(WTEventType.ChangePoint, ControlPoint);
         WTGlobal.UnregisterEventDelegate(WTEventType.AddSynergy, AddSynergy);
@@ -146,8 +150,11 @@ public class Panel_Game : MonoBehaviour
     private void ResetSlider()
     {
         //daySlider.value = 0;
-        hpSlider.maxValue = WTConstants.MaxHP;
-        hpSlider.value = WTConstants.MaxHP;
+        WTMain main = WTMain.Instance;
+
+        hpSlider.maxValue = main.playerData.playerAb.maxHP;
+        hpSlider.value = main.playerData.currentHP;
+        ControlHPSlider(main.playerData.currentHP);
         //daySlider.maxValue = WTConstants.TotalStageTime;
     }
 

@@ -23,6 +23,7 @@ public class Panel_Lobby : MonoBehaviour
     public void OnClickBtn_StartGame()
     {
         WTMain main = WTMain.Instance; // 나중에 스토리로 바꿔야해
+        main.gameMode = WTGameMode.PlayFromStart;
         main.ChangeGameState(WTGameState.SelectCharacter);
     }
     public void OnClickBtn_ContinueGame()

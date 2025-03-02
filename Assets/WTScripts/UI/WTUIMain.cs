@@ -14,6 +14,7 @@ public enum WTUIState
     SelectCharacter = 5,
     GameOver = 6,
     Pause = 7,
+    Day = 8,
     Count
 }
 
@@ -109,7 +110,6 @@ public class WTUIMain : MonoBehaviour
                 break;
             case WTUIState.Game:
                 go = SpawnUIObject(container.panelGame);
-                SpawnUIObject(container.panelDay);
                 break;
             case WTUIState.Shop:
                 go = SpawnUIObject(container.panelShop);
@@ -125,6 +125,9 @@ public class WTUIMain : MonoBehaviour
                 break;
             case WTUIState.Story:
                 go = SpawnUIObject(container.panelStory);
+                break;
+            case WTUIState.Day:
+                go = SpawnUIObject(container.panelDay);
                 break;
         }
         return go;
@@ -153,6 +156,10 @@ public class WTUIMain : MonoBehaviour
                 main.player.fsm.ChangeState(main.player.fsm.IdleState);
                 main.player.isPlaying = false;
                 main.spawner.gameObject.SetActive(false);
+            }
+            else if(_state == WTUIState.Lobby)
+            {
+                DestroyPanel(WTUIState.Day);
             }
             else
             {
@@ -183,6 +190,7 @@ public class WTUIMain : MonoBehaviour
             if (panel_Game == null)
             {
                 panel_Game = GetPanel(WTUIState.Game).GetComponent<Panel_Game>();
+                GetPanel(WTUIState.Day);
             }
         }
 

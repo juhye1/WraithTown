@@ -29,7 +29,23 @@ public class Panel_Shop : MonoBehaviour
         string day = stage.ToString();
         dayTMP.SetText(WTConstants.StrDay + day + strDayEnd);
         nextdayTMP.SetText(WTConstants.StrDay + (stage+1).ToString() + strContinue);
+        GetGold();
         GetRandomCards();
+    }
+
+    private void GetGold()
+    {
+        WTMain main = WTMain.Instance;
+        SupportUnitCount unit = main.GetActiveSupportUnit(12005); // 금
+        if (unit != null)
+        {
+            int gold = main.playerData.gold + (int)(main.playerData.gold * (unit.unitCount * 5 * 0.01));
+            main.playerData.gold = gold;
+        }
+        else
+        {
+
+        }
     }
     private void GetRandomCards()
     {

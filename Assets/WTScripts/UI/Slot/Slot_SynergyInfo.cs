@@ -38,7 +38,7 @@ public class Slot_SynergyInfo : MonoBehaviour
         InfoGo.SetActive(true);
 
         WTUIMain uiMain = WTUIMain.Instance;
-        InfoGo.transform.localPosition = new Vector3(InfoGo.transform.localPosition.x, uiMain.panel_Game.currentSlot.transform.localPosition.y, 0);
+        InfoGo.transform.localPosition = new Vector3(InfoGo.transform.localPosition.x   , uiMain.panel_Game.currentSlot.transform.localPosition.y, 0);
 
 
         WTMain main = WTMain.Instance;
