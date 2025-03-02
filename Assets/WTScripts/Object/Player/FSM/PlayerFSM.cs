@@ -25,10 +25,6 @@ public class PlayerFSM : BaseFSM
         base.Awake();
         enemyMask = LayerMask.GetMask("Enemy");
     }
-    public void Start()
-    {
-        moveSpd *= WTMain.Instance.playerData.playerAb.moveSpeed;
-    }
 
 
     public void Init()

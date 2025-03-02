@@ -1,0 +1,14 @@
+coin.png
+size:128,64
+filter:Linear,Linear
+scale:0.5
+01
+bounds:2,16,36,36
+02
+bounds:40,16,28,36
+offsets:1,0,30,36
+03
+bounds:2,2,12,36
+rotate:90
+04
+bounds:70,16,5,36

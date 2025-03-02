@@ -21,7 +21,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
 
     #region 하위 클래스
     public EnemyFSM fsm;
-    public WTEnemyUnitStatsTemplate stat;
+    public WTEnemyUnitStatsTemplate stat = new();
     #endregion
 
     #region 유니티 함수

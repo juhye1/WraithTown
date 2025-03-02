@@ -45,6 +45,7 @@ public class EnySpineEvtHandler : MonoBehaviour
                 break;
             case "Nt_Die":
             case "An_Die":
+                enemy.Release();
                 enemy.isDead = false;
                 break;
         }
