@@ -29,7 +29,7 @@ public class Panel_DayTimer : MonoBehaviour
     }
     public void ControlDayArrow(int time)
     {
-        dayArrowRect.DOLocalMoveX(dayArrowEndRect.localPosition.x, 3);
+        dayArrowRect.DOLocalMoveX(dayArrowEndRect.localPosition.x, WTMain.Instance.shopTime);
         //dayArrowRect.DOLocalMoveX(dayArrowEndRect.localPosition.x, WTConstants.TotalStageTime);
         // daySlider.value = time;
     }

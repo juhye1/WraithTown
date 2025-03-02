@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: eeeeee
+  m_text: e
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8604fa20816d9124397c801cb3c751f3, type: 2}
   m_sharedMaterial: {fileID: -6342711347604008166, guid: 8604fa20816d9124397c801cb3c751f3, type: 2}
@@ -1060,9 +1060,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 136, y: 138}
+  m_AnchoredPosition: {x: -92, y: 247.5}
   m_SizeDelta: {x: 234, y: 219}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &9164917041115850831
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.57254905}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1277,8 +1277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 300, y: 500}
+  m_AnchoredPosition: {x: 219, y: 0}
+  m_SizeDelta: {x: 438, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1873953876516791379
 MonoBehaviour:
@@ -1293,9 +1293,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InfoGo: {fileID: 5460371796998729258}
+  synergyIconImage: {fileID: 7476123667746628494}
   synergyNameTMP: {fileID: 4506579262922463767}
   synergyDescTMP: {fileID: 655579390460193295}
   synergyTMP: {fileID: 5711109795359332326}
+  synergySprites:
+  - {fileID: 21300000, guid: 33dbb8479c6f6f244b885304b98295d7, type: 3}
+  - {fileID: 21300000, guid: ac35602f8ee276c42a1af490ee0e1c73, type: 3}
+  - {fileID: 21300000, guid: a38d4d9eab77ebd42b13beb278422dc9, type: 3}
+  - {fileID: 21300000, guid: 2a81a7e0e367cb04880eac144b8ca269, type: 3}
+  - {fileID: 21300000, guid: 0cda60c2ac85e3b43992b0857b04e37f, type: 3}
+  - {fileID: 21300000, guid: e64805ea05a2e0540b900b0e0fb6bf8f, type: 3}
+  - {fileID: 21300000, guid: 1d59d4285fff4ba4da45b8c488a0ab74, type: 3}
 --- !u!1 &6084743849297808272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,8 +1339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 300, y: 500}
+  m_AnchoredPosition: {x: 112.5, y: 0}
+  m_SizeDelta: {x: 225, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1198677830962477485
 CanvasRenderer:
@@ -1893,7 +1902,7 @@ GameObject:
   - component: {fileID: 4817668794526378504}
   - component: {fileID: 7476123667746628494}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2258,11 +2267,12 @@ MonoBehaviour:
   goldTMP: {fileID: 2717133586011872075}
   hpTMP: {fileID: 3659153372769163379}
   hpSlider: {fileID: 6894207326959752653}
-  profileSkel: {fileID: 0}
+  profileSkel: {fileID: 2246533507674198521}
   kebi: {fileID: 11400000, guid: eaf4b59858c41dd40aa8658c7498c18c, type: 2}
   miho: {fileID: 11400000, guid: fd1b1253209a99f448795125bc82ceba, type: 2}
   slotSynergy: {fileID: 2569458771664812070, guid: 536b0d25efd9b8a4ea1f0c573c513cc9, type: 3}
   slotParent: {fileID: 1774380664945061801}
+  currentSlot: {fileID: 0}
 --- !u!1 &8957826070193145400
 GameObject:
   m_ObjectHideFlags: 0

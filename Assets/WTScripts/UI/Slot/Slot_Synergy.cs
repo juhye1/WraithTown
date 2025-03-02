@@ -29,6 +29,8 @@ public class Slot_Synergy : MonoBehaviour
 
     public void ShowInfo()
     {
+        WTUIMain uiMain = WTUIMain.Instance;
+        uiMain.panel_Game.currentSlot = this; // 임시
         WTGlobal.CallEventDelegate(WTEventType.ShowSynergyInfo, temp.Total_Synergy_ID);
     }
 

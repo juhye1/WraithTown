@@ -26,6 +26,7 @@ public class Panel_Game : MonoBehaviour
     public RectTransform slotParent;
     private List<Slot_Synergy> slots = new();
     private Dictionary<ushort, Slot_Synergy> dicSlot = new();
+    public Slot_Synergy currentSlot;
     //public Slider daySlider;
 
     private void Awake()

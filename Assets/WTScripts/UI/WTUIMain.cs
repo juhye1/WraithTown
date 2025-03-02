@@ -68,7 +68,6 @@ public class WTUIMain : MonoBehaviour
         //}
         //panel_ComfirmPopup.SetMsgType(popupMsgType);
         //panel_ComfirmPopup.gameObject.SetActive(true);
-
         return true;
     }
 

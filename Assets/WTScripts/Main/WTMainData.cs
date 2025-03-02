@@ -163,7 +163,8 @@ public class WTSynergyTemplate
     public ushort synergy_type;
     public string synergy_name;   // 시너지 이름
     public int threshold;         // 효과 발동 조건 (예: 2개 이상)
-    public string effect_des;     // 효과 설명
+    public string mouseover_des;     // 효과 설명
+    public string synergy_effect_value;     // 효과 설명
    [NonSerialized] public string synergy_threshold;   // 시너지 이름
 }
 
@@ -194,7 +195,8 @@ public class WTTraitDataTemplate
     public ushort trait_id;        // 특성 ID
     public string trait_name;   // 특성 이름
     public int threshold;       // 효과 발동 조건
-    public string effect_des;   // 효과 설명
+    public string trait_effect_value;   // 효과 설명
+    public string mouseover_des;   // 효과 설명
 }
 [Serializable]
 public class WTTraitDataTemplateGroup
@@ -224,6 +226,7 @@ public class WTTotalSynergyDataTemplate
     public string Card_Effect_Name;      // 카드 효과 이름
     public int[] Effect_Value;           // 효과 값 (배열로 변환)
     public string ThresHold_UI;          // 조건 UI 표시
+    public int spriteKey;
 }
 
 [Serializable]

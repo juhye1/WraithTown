@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class WraithTiles : MonoBehaviour
 {
-    public WraithTile tilePrefab; // ¹èÄ¡ÇÒ Å¸ÀÏ ÇÁ¸®ÆÕ
-    public int objectCount; // »ý¼ºÇÒ ¿ÀºêÁ§Æ® °³¼ö
-    public float radius = 2f; // Ä³¸¯ÅÍ¿Í ¿ÀºêÁ§Æ® »çÀÌ °Å¸®
+    public WraithTile tilePrefab; // ï¿½ï¿½Ä¡ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public int objectCount; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+    public float radius = 2f; // Ä³ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½
     // Start is called before the first frame update
+
+    private void Start()
+    {
+        Init();
+    }
 
     public void Init()
     {
@@ -18,11 +23,11 @@ public class WraithTiles : MonoBehaviour
     {
         BasePlayer.Instance.tiles.Clear();
         objectCount = WTMain.Instance.dicPlayerStatTemplate[(ushort)WTMain.Instance.playerData.userUnitId].total_tile_count;
-        float angleStep = 360f / objectCount; // ¿ÀºêÁ§Æ® °£ °¢µµ °£°Ý
+        float angleStep = 360f / objectCount; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         for (int i = 0; i < objectCount; i++)
         {
-            float angle = angleStep * i * Mathf.Deg2Rad; // °¢µµ¸¦ ¶óµð¾ÈÀ¸·Î º¯È¯
+            float angle = angleStep * i * Mathf.Deg2Rad; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
             float x = transform.position.x + Mathf.Cos(angle) * radius;
             float y = transform.position.y + Mathf.Sin(angle) * radius;
 
