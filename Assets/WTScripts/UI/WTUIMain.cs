@@ -11,9 +11,10 @@ public enum WTUIState
     Story = 2,
     Game = 3,
     Shop = 4,
-    Result = 5,
-    SelectCharacter = 6,
-    Count = 7
+    SelectCharacter = 5,
+    GameOver = 6,
+    Pause = 7,
+    Count
 }
 
 public class WTUIMain : MonoBehaviour
@@ -114,11 +115,14 @@ public class WTUIMain : MonoBehaviour
             case WTUIState.Shop:
                 go = SpawnUIObject(container.panelShop);
                 break;
-            case WTUIState.Result:
-                go = SpawnUIObject(container.panelResult);
-                break;
             case WTUIState.SelectCharacter:
                 go = SpawnUIObject(container.panelSelectCharacter);
+                break;
+            case WTUIState.Pause:
+                go = SpawnUIObject(container.panelPause);
+                break;
+            case WTUIState.GameOver:
+                go = SpawnUIObject(container.panelGameOver);
                 break;
         }
         return go;

@@ -14,14 +14,13 @@ public class WTUIPrefabContainer : MonoBehaviour
     }
 
     [Header("Panel")]
-    public GameObject panelLogin;
     public GameObject panelLobby;
     public GameObject panelLoading;
     public GameObject panelGame;
     public GameObject panelDay;
     public GameObject panelShop;
     public GameObject panelPause;
-    public GameObject panelResult;
+    public GameObject panelGameOver;
     public GameObject panelSelectCharacter;
 
     public void Awake()

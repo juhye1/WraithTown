@@ -4,6 +4,7 @@ using UnityEngine;
 
 public partial class WTMain : MonoBehaviour
 {
+    public BasePlayer player;
     public BasePlayer SpawnPlayerCharacter(ushort TID)
     {
         WTWraithStatTemplate pc_temp = GetPlayerCharacterTemplate(TID);
@@ -13,9 +14,13 @@ public partial class WTMain : MonoBehaviour
 
         if (LoadPlayerCharacterTemplateData(pc_temp))
         {
-            GameObject go = Instantiate(pc_temp.basePrefab, Vector2.zero, Quaternion.identity);
+            if(player == null)
+            {
+                GameObject go = Instantiate(pc_temp.basePrefab, Vector2.zero, Quaternion.identity);
+                player = go.GetComponent<BasePlayer>();
+            }
             PlayerSkin skin = TID == WTConstants.UnitIDMiho ? PlayerSkin.Miho : PlayerSkin.Kebi;
-            BasePlayer.Instance.SetSkin(skin);
+            player.SetSkin(skin);
             playerData = new WTGameData();
             WTWraithStatTemplate temp = GetPlayerCharacterTemplate(TID);
             playerData.playerAb = new WTPlayerAbility(temp); // 생성자에서 temp 값 넣어줌

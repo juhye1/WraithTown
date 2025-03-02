@@ -13,9 +13,12 @@ public partial class WTMain : MonoBehaviour
     {
         playerTimer = 0;
         nightTime = WTConstants.TotalStageTime * (data.stage_night_time * 0.01f);
-        if(isTestMode)
+        GameObject go = Resources.Load<GameObject>("Spawner");
+        Instantiate(go);
+
+        if (isTestMode)
         {
-            playerTimer = WTConstants.TotalStageTime -3; // 상점 테스트용
+          //  playerTimer = WTConstants.TotalStageTime -3; // 상점 테스트용
         }
         isTimerStarted = true;
         WTGlobal.CallEventDelegate(WTEventType.Timer, 3); // 테스트

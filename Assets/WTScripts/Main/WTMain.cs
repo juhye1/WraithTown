@@ -37,6 +37,13 @@ public partial class WTMain : MonoBehaviour
     {
         float dt = Time.deltaTime;
         UpdateTimer(dt);
+
+        //임시
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            WTUIMain uiMain = WTUIMain.Instance;
+            uiMain.GetPanel(WTUIState.Pause);
+        }
     }
     public bool ChangeGameState(WTGameState eState) 
     {
@@ -76,9 +83,16 @@ public partial class WTMain : MonoBehaviour
         }
         else if (gameState == WTGameState.Game)
         {
+            StartDayTimer(GetCurrentStageData());
             uiMain.ChangeUIState(WTUIState.Game);
         }
         return true;
+    }
+
+    public void RestartGame()
+    {
+        WTUIMain uiMain = WTUIMain.Instance;
+        uiMain.ChangeUIState(WTUIState.SelectCharacter);
     }
 
 }
