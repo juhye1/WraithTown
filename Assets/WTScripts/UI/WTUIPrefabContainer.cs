@@ -22,6 +22,7 @@ public class WTUIPrefabContainer : MonoBehaviour
     public GameObject panelShop;
     public GameObject panelPause;
     public GameObject panelResult;
+    public GameObject panelSelectCharacter;
 
     public void Awake()
     {

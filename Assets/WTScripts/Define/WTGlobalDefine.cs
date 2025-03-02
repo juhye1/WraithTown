@@ -11,6 +11,8 @@ static class WTConstants
     public const ushort TotalStageTime = 300;
     public const ushort MaxHP = 100;
     public const string StrDay = "Day ";
+    public const ushort UnitIDMiho = 11001;
+    public const ushort UnitIDKebi = 11002;
 }
 
 public delegate void WTEventProcDelegate(int param1);

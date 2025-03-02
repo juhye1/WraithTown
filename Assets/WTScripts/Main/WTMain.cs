@@ -17,6 +17,7 @@ public partial class WTMain : MonoBehaviour
     [NonSerialized] public int[] sortLayerID = new int[(int)ESortLayer.Count];
     [NonSerialized] public WTGameState gameState = WTGameState.None;
     [NonSerialized] public WTGameState befGameState = WTGameState.None;
+    [NonSerialized] public WTGameMode gameMode = WTGameMode.None;
     public bool isTestMode = true;
 
     public void Awake()
@@ -27,7 +28,10 @@ public partial class WTMain : MonoBehaviour
     }
     private void Start()
     {
-        ChangeGameState(WTGameState.Lobby);
+        if(isTestMode)
+        {
+            ChangeGameState(WTGameState.Lobby);
+        }
     }
     private void Update()
     {
@@ -55,11 +59,12 @@ public partial class WTMain : MonoBehaviour
         {
             //if (savedData == null) 나중에,, 스토리 패널 만들고나서,,
             //{
+            //
             //    uiMain.ChangeUIState(WTUIState.Story);
             //}
             //else
             //{
-                playerData = new WTGameData();
+            playerData = new WTGameData();
                 WTWraithStatTemplate temp = GetPlayerCharacterTemplate(11001);
                 playerData.playerAb = new WTPlayerAbility(temp);
                 playerData.day = 1;

@@ -48,10 +48,13 @@ public class WTWraithStatTemplate
     public int hp;          
     public int dmg;              
     public float attack_range;    
-    public float attack_speed;   
+    public float attack_speed;
     public int total_tile_count;
-    public int special_tile_count; 
-    public int normal_tile_count; 
+    public int special_tile_count;
+    public int normal_tile_count;
+
+    public string basePrefabName = "Player";
+    [NonSerialized] public GameObject basePrefab;
 }
 
 [Serializable]

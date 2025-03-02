@@ -12,7 +12,8 @@ public enum WTUIState
     Game = 3,
     Shop = 4,
     Result = 5,
-    Count = 6
+    SelectCharacter = 6,
+    Count = 7
 }
 
 public class WTUIMain : MonoBehaviour

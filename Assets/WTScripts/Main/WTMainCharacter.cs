@@ -11,25 +11,25 @@ public partial class WTMain : MonoBehaviour
 
         Debug.Log("SpawnCharacter");
 
-        //if (LoadPlayerCharacterTemplateData(pc_temp))
-        //{
-        //}
+        if (LoadPlayerCharacterTemplateData(pc_temp))
+        {
+
+        }
         return null;
     }
 
-    //public bool LoadPlayerCharacterTemplateData(WTWraithStatTemplate pc_template)
-    //{
-    //    if (pc_template != null)
-    //    {
-    //        if (pc_template.basePrefab == null && pc_template.basePrefabName != "")
-    //        {
-    //            pc_template.basePrefab = (GameObject)Resources.Load(pc_template.basePrefabName);
-    //            pc_template.basePrefab_Controller = (GameObject)Resources.Load(pc_template.basePrefabName_Controller);
-    //        }
+    public bool LoadPlayerCharacterTemplateData(WTWraithStatTemplate pc_template)
+    {
+        if (pc_template != null)
+        {
+            if (pc_template.basePrefab == null && pc_template.basePrefabName != "")
+            {
+                pc_template.basePrefab = (GameObject)Resources.Load(pc_template.basePrefabName);
+            }
 
-    //        return true;
-    //    }
-    //    return false;
-    //}
+            return true;
+        }
+        return false;
+    }
 
 }

@@ -31,6 +31,13 @@ public enum WTGameState
     Game,
 };
 
+public enum WTGameMode
+{
+    None = 0,
+    PlayFromStart = 1,
+    ContinueGame = 2
+};
+
 public enum WTEffectType
 {
     MaxHPIncrease = 0,
