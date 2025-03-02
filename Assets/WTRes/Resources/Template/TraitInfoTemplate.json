@@ -1,0 +1,16 @@
+{"traitDatas":
+[{"trait_id":10201,"trait_name":"흙","threshold":1,"effect_des":"초당 체력 회복 효과 +2"},
+{"trait_id":10202,"trait_name":"흙","threshold":2,"effect_des":"초당 체력 회복 효과 +4"},
+{"trait_id":10203,"trait_name":"흙","threshold":3,"effect_des":"초당 쳬력 회복 효과 +6"},
+{"trait_id":10204,"trait_name":"불","threshold":1,"effect_des":"플레이어 대미지 증가 5%"},
+{"trait_id":10205,"trait_name":"불","threshold":2,"effect_des":"플레이어 대미지 증가 10%"},
+{"trait_id":10206,"trait_name":"불","threshold":3,"effect_des":"플레이어 대미지 증가 15%"},
+{"trait_id":10207,"trait_name":"금","threshold":1,"effect_des":"스테이지 종료 후 재화 추가 획득 5%"},
+{"trait_id":10208,"trait_name":"금","threshold":2,"effect_des":"스테이지 종료 후 재화 추가 획득 10%"},
+{"trait_id":10209,"trait_name":"금","threshold":3,"effect_des":"스테이지 종료 후 재화 추가 획득 15%"},
+{"trait_id":10210,"trait_name":"달","threshold":2,"effect_des":"이동 속도 증가 5%"},
+{"trait_id":10211,"trait_name":"달","threshold":3,"effect_des":"이동 속도 증가 10%"},
+{"trait_id":10212,"trait_name":"달","threshold":4,"effect_des":"이동 속도 증가  15%"},
+{"trait_id":10213,"trait_name":"물","threshold":1,"effect_des":"공격 사거리 증가 +1"},
+{"trait_id":10214,"trait_name":"물","threshold":2,"effect_des":"공격 사거리 증가 +2"},
+{"trait_id":10215,"trait_name":"물","threshold":3,"effect_des":"공격 사거리 증가 +4"}]}
