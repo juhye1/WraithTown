@@ -9,6 +9,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     #region º¯¼ö 
     private string projectileName;
     public bool isDead;
+    public bool isNight;
     private WTEnemyType skinType;
     [SerializeField]
     public SkeletonDataAsset[] newSkeletonData;
@@ -128,11 +129,12 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
         fsm.ChangeState(fsm.ChaseState);
     }
 
-    public void Setup(WTEnemyUnitStatsTemplate template)
+    public void Setup(WTEnemyUnitStatsTemplate template, bool _isNight)
     {
         Setup();
         stat = template;
         SetSkin((WTEnemyType)template.enemyunit_id);
+        isNight = _isNight;
     }
     #endregion
 }

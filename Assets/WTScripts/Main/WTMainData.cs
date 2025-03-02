@@ -105,7 +105,7 @@ public class WTEnemyUnitStatsTemplate
     public string enemy_name;
     public float spawn_start_time;
     public float spawn_end_time;
-    public int spawn_weight;
+    public float spawn_weight;
     public float move_speed;
     public int hp;
     public int dmg;

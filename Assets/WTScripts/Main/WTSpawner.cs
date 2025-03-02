@@ -33,7 +33,9 @@ public class WTSpawner : MonoBehaviour
     public int RandomSpawn()
     {
         var stageData = WTMain.Instance.dicStageData[WTMain.Instance.playerData.stageID];
-        float rate = (stageData.total_stage_time - WTMain.Instance.playerData.remainTimes) / stageData.total_stage_time * 100 ;
+        float rate = 0;
+        if(WTMain.Instance.playerData.remainTimes != 0)
+            rate = WTMain.Instance.playerData.remainTimes / stageData.total_stage_time * 100 ;
         //어떤 애들만 소환 가능한지 확인
         List<WTEnemyUnitStatsTemplate> list = new List<WTEnemyUnitStatsTemplate>();
         foreach (var data in WTMain.Instance.dicEnemyUnitStatsTemplate)
@@ -52,13 +54,16 @@ public class WTSpawner : MonoBehaviour
         int count = 0;
         foreach (var data in list)
         {
-            count = Mathf.RoundToInt((data.spawn_weight / totalWeight) / stageData.EnemiesPerWave);
+            count = Mathf.RoundToInt(((float)data.spawn_weight / totalWeight) * stageData.EnemiesPerWave);
             for(int i = 0; i < count; i++)
             {
                 var obj = WTPoolManager.Instance.SpawnQueue<BaseEnemy>("NormalEny");
                 var idx = Random.Range(0, spawnTr.Length);
                 obj.transform.position = spawnTr[idx].position;
-                obj.Setup(data);
+                if(stageData.total_stage_time - WTMain.Instance.playerData.remainTimes < stageData.total_stage_time * stageData.stage_night_time / 100)
+                    obj.Setup(data, true); //밤
+                else
+                    obj.Setup(data, false); //낮
             }
         }
         return stageData.SpawnRate;

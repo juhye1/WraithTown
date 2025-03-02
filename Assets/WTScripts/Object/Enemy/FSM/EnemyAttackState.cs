@@ -7,6 +7,10 @@ public class EnemyAttackState : BaseAttackeState
 {
     new EnemyFSM fsm;
     //EnemyStatHandler stat;
+
+    string ntName = "";
+    string anName = "";
+
     public EnemyAttackState(EnemyFSM fsm): base(fsm)
     {
         this.fsm = fsm;
