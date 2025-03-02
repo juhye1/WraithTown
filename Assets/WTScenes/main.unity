@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebef00ea2abd0ee4f8c81f3440c45120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTestMode: 1
   mainCam: {fileID: 519420031}
   WTVCam1_Follow: {fileID: 878489303}
 --- !u!1 &519420028

@@ -12,7 +12,7 @@ public enum PlayerSkin
 
 public class BasePlayer : Singleton<BasePlayer>, BaseObject
 {
-    #region º¯¼ö 
+    #region ï¿½ï¿½ï¿½ï¿½ 
     public bool isPlaying;
     public bool isDead;
     public PlayerSkin skinType;
@@ -23,14 +23,14 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     public List<WraithTile> tiles = new List<WraithTile>();
     #endregion
 
-    #region ÇÏÀ§ Å¬·¡½º
+    #region ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
     public PlayerFSM fsm;
     public PlayerInput input;
     public RotationTarget rotObj;
     public Transform projectileTr;
     #endregion
 
-    #region À¯´ÏÆ¼ ÇÔ¼ö
+    #region ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Ô¼ï¿½
     protected virtual void Start()
     {
         Init();
@@ -47,7 +47,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     }
     #endregion
 
-    #region ¸Þ¼Òµå
+    #region ï¿½Þ¼Òµï¿½
 
 
     public void Init()

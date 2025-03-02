@@ -17,6 +17,7 @@ public partial class WTMain : MonoBehaviour
     [NonSerialized] public int[] sortLayerID = new int[(int)ESortLayer.Count];
     [NonSerialized] public WTGameState gameState = WTGameState.None;
     [NonSerialized] public WTGameState befGameState = WTGameState.None;
+    public bool isTestMode = true;
 
     public void Awake()
     {
