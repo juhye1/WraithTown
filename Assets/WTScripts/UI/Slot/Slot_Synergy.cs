@@ -11,13 +11,29 @@ public class Slot_Synergy : MonoBehaviour
     public TextMeshProUGUI synergyName;
     public TextMeshProUGUI synergyState;
     private int num = 0;
+    private WTTotalSynergyDataTemplate temp;
+
+    private void OnEnable()
+    {
+    }
 
     public void SetData(Sprite sp, WTTotalSynergyDataTemplate synergy, int count)
     {
+        temp = synergy;
         Debug.Log(synergy.Total_Synergy_Name+ num);
         synergyImg.sprite = sp;
         number.SetText(count.ToString());
         synergyName.SetText(synergy.Total_Synergy_Name);
         synergyState.SetText(synergy.ThresHold_UI);
+    }
+
+    public void ShowInfo()
+    {
+        WTGlobal.CallEventDelegate(WTEventType.ShowSynergyInfo, temp.Total_Synergy_ID);
+    }
+
+    public void OffInfo()
+    {
+        WTGlobal.CallEventDelegate(WTEventType.ShowSynergyInfo, 0);
     }
 }

@@ -23,6 +23,7 @@ public enum WTEventType
     UpdateUnitInfo = 8,
     AddSynergy = 9,
     PlayerSpawn = 10,
+    ShowSynergyInfo = 11,
     Count
 }
 

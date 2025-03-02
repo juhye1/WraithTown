@@ -499,6 +499,13 @@ public partial class WTMain : MonoBehaviour
         return result;
     }
 
+    public WTTraitDataTemplate GetTraitDataTemplate(ushort TID)
+    {
+        WTTraitDataTemplate result;
+        dicTraitDataTemplate.TryGetValue(TID, out result);
+        return result;
+    }
+
     public WTTotalSynergyDataTemplate GetTotalSynergeTemplate(ushort TID)
     {
         WTTotalSynergyDataTemplate result;

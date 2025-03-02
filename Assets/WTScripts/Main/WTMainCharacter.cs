@@ -31,7 +31,6 @@ public partial class WTMain : MonoBehaviour
             playerData.userUnitId = TID;
             playerData.currentHP = temp.hp;
             playerData.stageID = WTConstants.StartStageID;
-            WTGlobal.CallEventDelegate(WTEventType.PlayerSpawn, 0);
             WTUIMain uiMain = WTUIMain.Instance;
             uiMain.ChangeUIState(WTUIState.Story);
         }

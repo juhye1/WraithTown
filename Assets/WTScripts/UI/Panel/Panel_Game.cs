@@ -36,6 +36,7 @@ public class Panel_Game : MonoBehaviour
         ControlGold(100);
         ControlPoint(100);
         SpawnSynergySlots();
+        WTGlobal.CallEventDelegate(WTEventType.PlayerSpawn, 0);
     }
     private void OnEnable()
     {
