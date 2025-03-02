@@ -21,7 +21,7 @@ public class EnemyAttackState : BaseAttackeState
     {
         base.Enter();
         fsm.rb.velocity = Vector2.zero;
-        SetAnimSpeed(fsm.atkSpd);
+        SetAnimSpeed(fsm.enemy.stat.attack_speed);
         if(fsm.enemy.isNight)
             StartAnimation(ntName, 0, true);
         else

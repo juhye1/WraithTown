@@ -15,7 +15,7 @@ public class EnemyChaseState : BaseMoveState
     public override void Enter()
     {
         base.Enter();
-        fsm.rb.velocity = (fsm.targetPos - (Vector2)fsm.transform.position).normalized * (fsm.moveSpd);
+        fsm.rb.velocity = (fsm.targetPos - (Vector2)fsm.transform.position).normalized * (fsm.moveSpd * fsm.enemy.stat.move_speed);
         if (fsm.enemy.isNight)
             StartAnimation(ntName, 0, true);
         else
@@ -37,7 +37,7 @@ public class EnemyChaseState : BaseMoveState
     {
         if (fsm.rb != null && fsm.player != null)
         {
-            fsm.rb.velocity = (fsm.player.transform.position - fsm.transform.position).normalized * fsm.moveSpd;
+            fsm.rb.velocity = (fsm.player.transform.position - fsm.transform.position).normalized * (fsm.moveSpd * fsm.enemy.stat.move_speed);
 
             float distance = Vector2.Distance(fsm.transform.position, fsm.player.transform.position);
             // 타겟에게 도착하면 공격 상태로 변경

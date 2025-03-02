@@ -28,9 +28,10 @@ public class EnySpineEvtHandler : MonoBehaviour
 
         switch (trackEntry.Animation.Name)
         {
-            case "Attack_01":
-            case "Attack_02":
+            case "Nt_Attack":
+            case "An_Attack":
                 enemy.fsm.isAttack = true;
+                enemy.OnAttack();
                 break;
         }
     }
@@ -42,11 +43,12 @@ public class EnySpineEvtHandler : MonoBehaviour
 
         switch (trackEntry.Animation.Name)
         {
-            case "Attack_01":
-            case "Attack_02":
+            case "Nt_Attack":
+            case "An_Attack":
                 enemy.fsm.isAttack = false;
                 break;
-            case "die":
+            case "Nt_Die":
+            case "An_Die":
                 enemy.isDead = false;
                 enemy.fsm.ChangeState(enemy.fsm.IdleState);
                 enemy.SetActive(false);

@@ -12,7 +12,7 @@ public class EnemyFSM : BaseFSM
     public EnemyAttackState AttackState { get; private set; }
     public EnemyDieState DieState { get; private set; }
     #endregion
-    public float atkRange = 10f;
+    public float atkRange => enemy.stat.attack_range;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +29,6 @@ public class EnemyFSM : BaseFSM
             enemy = GetComponent<BaseEnemy>();
         ChangeState(ChaseState);
     }
-
-    public void IsAttackRange()
-    {
-
-    }
-
     public override void Flip()
     {
         SetDirection(player.transform.position);

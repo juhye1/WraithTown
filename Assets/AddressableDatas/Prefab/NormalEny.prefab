@@ -60,10 +60,10 @@ MonoBehaviour:
   newSkeletonData:
   - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
   - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
+  - {fileID: 11400000, guid: 0394d91493ee6184b9693ce2cdcce5bf, type: 2}
   - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
   - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
-  - {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
-  - {fileID: 11400000, guid: 3bbb91c11080e214cb71f137e085759b, type: 2}
+  - {fileID: 11400000, guid: 0394d91493ee6184b9693ce2cdcce5bf, type: 2}
   damageEffect: DamageEffect
   killEffect: KillEffect
   fsm: {fileID: 7692290341591977038}
@@ -264,7 +264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dd2d0f326559d7c4b9ec85bd98e2ba36, type: 2}
+  - {fileID: 2100000, guid: 53065aa46ca829345be8ec3ea30fe395, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: eaf4b59858c41dd40aa8658c7498c18c, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: e396db37b9719f64097b97534cb60282, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -307,12 +307,12 @@ MonoBehaviour:
   separatorSlotNames: []
   zSpacing: 0
   useClipping: 1
-  immutableTriangles: 0
+  immutableTriangles: 1
   pmaVertexColors: 1
   clearStateOnDisable: 0
   tintBlack: 0
-  singleSubmesh: 0
-  fixDrawOrder: 0
+  singleSubmesh: 1
+  fixDrawOrder: 1
   addNormals: 0
   calculateTangents: 0
   maskInteraction: 0

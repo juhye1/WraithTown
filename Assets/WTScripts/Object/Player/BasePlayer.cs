@@ -39,6 +39,11 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
         fsm.Init();
     }
 
+    public void Start()
+    {
+        stat.Init();
+    }
+
     protected virtual void Update()
     {
         if (fsm.currentState != null)
@@ -70,6 +75,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     {
         if (isDead) return;
         stat.status.hp -= damage;
+        Debug.LogWarning(stat.status.hp);
         if(stat.status.hp <= 0)
         {
             DeathEvt();
@@ -82,7 +88,10 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
 
     public void DeathEvt()
     {
-       
+        if(isDead) return;
+        isDead = true;
+        fsm.ChangeState(fsm.DieState);
+        WTUIMain.Instance.GetPanel(WTUIState.GameOver);
     }
     #endregion
 

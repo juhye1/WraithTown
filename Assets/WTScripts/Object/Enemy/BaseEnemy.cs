@@ -7,7 +7,7 @@ using UnityEngine;
 public class BaseEnemy : ObjectPoolBase, BaseObject
 {
     #region º¯¼ö 
-    private string projectileName;
+    private string projectileName = "EnemyProjectiles";
     public bool isDead;
     public bool isNight;
     private WTEnemyType skinType;
@@ -70,9 +70,16 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
 
     public void OnAttack()
     {
-        var obj = WTPoolManager.Instance.SpawnQueue<Projectiles>(projectileName);
-        var dir = (fsm.targetPos - (Vector2)transform.position).normalized;
-        obj.OnShoot(this, dir);
+        if(stat.attack_range == 1)
+        {
+            BasePlayer.Instance.OnTakeDamaged(stat.dmg);
+        }
+        else
+        {
+            var obj = WTPoolManager.Instance.SpawnQueue<EnemyProjectiles>(projectileName);
+            var dir = (BasePlayer.Instance.transform.position - transform.position).normalized;
+            obj.OnShoot(this, dir);
+        }
     }
 
     public void OnTakeDamaged(int damage)

@@ -97,5 +97,6 @@ MonoBehaviour:
   - {fileID: 602060186326736802, guid: 0a328884fd123ca4eb6fcee6ff0afece, type: 3}
   - {fileID: 3256695944150776193, guid: 9e2a7d3d3c2a870469fd3176d08412fa, type: 3}
   - {fileID: 4950013796561005098, guid: 38edc6166f4ff544a92a59af80e449e0, type: 3}
+  - {fileID: 1211252699986821684, guid: 02e524927d104a24abf29b192134e0ae, type: 3}
   prefabLList: []
   isInit: 0

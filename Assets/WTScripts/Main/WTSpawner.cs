@@ -25,12 +25,12 @@ public class WTSpawner : MonoBehaviour
         while(true)
         {
             yield return waitSummon;
-            int time = RandomSpawn();
+            float time = RandomSpawn();
             yield return new WaitForSeconds(time);
         }
     }
 
-    public int RandomSpawn()
+    public float RandomSpawn()
     {
         var stageData = WTMain.Instance.dicStageData[WTMain.Instance.playerData.stageID];
         float rate = 0;
@@ -52,16 +52,17 @@ public class WTSpawner : MonoBehaviour
         {
             totalWeight += data.spawn_weight;
         }
-        Debug.LogWarning(totalWeight + "총가중치");
+        //Debug.LogWarning(totalWeight + "총가중치");
         int count = 0;
         foreach (var data in list)
         {
             count = Mathf.RoundToInt((data.spawn_weight / totalWeight) * stageData.EnemiesPerWave);
-            Debug.LogWarning((data.spawn_weight / totalWeight) + "가중치 비율");
-            Debug.LogWarning(stageData.EnemiesPerWave + "최대 마리수");
-            Debug.LogWarning(count + "마리 소환");
+            //Debug.LogWarning((data.spawn_weight / totalWeight) + "가중치 비율");
+            //Debug.LogWarning(stageData.EnemiesPerWave + "최대 마리수");
+            //Debug.LogWarning(count + "마리 소환");
             for(int i = 0; i < count; i++)
             {
+                if (WTPoolManager.Instance.qPools["NormalEny"].Count > 100) break;
                 var obj = WTPoolManager.Instance.SpawnQueue<BaseEnemy>("NormalEny");
                 var idx = Random.Range(0, spawnTr.Length);
                 obj.transform.position = spawnTr[idx].position;
