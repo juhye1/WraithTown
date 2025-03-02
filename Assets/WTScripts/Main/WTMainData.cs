@@ -88,8 +88,8 @@ public class WTPlayerAbility
     public int projectileCount;
     public int special_tile_count;
     public float stealEnemyHp;
-    public float doubleDamageChance;
-    public float enemyHalfDamageChance;
+    public float criticalChance;
+    public float shieldChance;
 
     public WTPlayerAbility(WTWraithStatTemplate temp)
     {

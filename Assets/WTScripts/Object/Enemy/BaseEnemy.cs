@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BaseEnemy : ObjectPoolBase, BaseObject
 {
-    #region º¯¼ö 
+    #region ï¿½ï¿½ï¿½ï¿½ 
     private string projectileName = "EnemyProjectiles";
     public bool isDead;
     public bool isNight;
@@ -21,7 +21,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     string goldGoods = "Goods";
     #endregion
 
-    #region ÇÏÀ§ Å¬·¡½º
+    #region ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
     public EnemyFSM fsm;
     public EnemyStatHandler stat;
     #endregion
@@ -30,7 +30,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
         fsm.Init();
     }
 
-    #region À¯´ÏÆ¼ ÇÔ¼ö
+    #region ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Ô¼ï¿½
 
     protected virtual void Update()
     {
@@ -43,7 +43,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     }
     #endregion
 
-    #region ÀÏ¹Ý ¸Þ¼­µå
+    #region ï¿½Ï¹ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
     public void DeathEvt()
     {
         isDead = true;
@@ -55,10 +55,9 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
         if(stat.template.dead_drop_coin != 0)
         {
             float rand = Random.Range(0, 1);
-            
             if (rand <= stat.template.drop_weight)
             {
-                Debug.Log("ÄÚÀÎ" + rand);
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½" + rand);
                 var obj = WTPoolManager.Instance.SpawnQueue<DropGoods>(goldGoods);
                 obj.Setup(transform.position);
                 WTGlobal.CallEventDelegate(WTEventType.ChangeGold, stat.template.dead_drop_coin);
@@ -68,7 +67,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
         if(stat.template.dead_drop_soul != 0)
         {
             float rand = Random.Range(0, 1);
-            Debug.Log("¼Ò¿ï" + rand);
+            Debug.Log("ï¿½Ò¿ï¿½" + rand);
             if (rand <= stat.template.drop_weight)
                 WTGlobal.CallEventDelegate(WTEventType.ChangePoint, stat.template.dead_drop_soul);
         }
@@ -83,7 +82,15 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     {
         if(stat.template.attack_range == 1)
         {
-            BasePlayer.Instance.OnTakeDamaged(stat.template.dmg);
+            WTMain main = WTMain.Instance;
+            WTGameData data = main.playerData;
+            int dmg = stat.dmg;
+            if (Utils.GetRandomNum(data.playerAb.shieldChance))
+            {
+                dmg = (int)(stat.dmg * 0.5f);
+                BasePlayer.Instance.PlayShield();
+            }
+            BasePlayer.Instance.OnTakeDamaged(dmg);
         }
         else
         {

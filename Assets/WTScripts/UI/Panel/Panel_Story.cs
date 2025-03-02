@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,26 +13,46 @@ public class Panel_Story : MonoBehaviour
     "혼령? 너 같으면 혼령을 주겠냐?\n다른 곳이나 알아봐라~",
      "토끼 주제에 감히 날 가지고 놀아?\n좋게 말할때 줄 것을....내가 직접 빼앗아주지!"};
 
+    private int[] keys = new int[] { 0, 1, 0, 0, 1, 0 };
     public TextMeshProUGUI storyTMP;
+    public GameObject storyGo;
+    public GameObject tutorialGo;
     private int count = 0;
+
+    public SkeletonGraphic playerSkel;
+    public SkeletonGraphic rabitSkel;
+
+    public Color disableColor;
 
     private void Awake()
     {
-        storyTMP.SetText(story[count]);
-        count++;
+        OnClickBtn_StoryArrow();
     }
     public void OnClickBtn_StoryArrow()
     {
         if(count > story.Length -1)
         {
-            OnClickBtn_Skip();
-            Debug.Log("게임시작");
+            storyGo.SetActive(false);
+            tutorialGo.SetActive(true);
+            return;
+            //OnClickBtn_Start();
+            //Debug.Log("게임시작");
+        }
+        if (keys[count] == 0)
+        {
+            playerSkel.color = Color.white;
+            rabitSkel.color = disableColor;
+        }
+        else
+        {
+            rabitSkel.color = Color.white;
+            playerSkel.color = disableColor;
         }
         storyTMP.SetText(story[count]);
         count++;
     }
 
-    public void OnClickBtn_Skip()
+    public void OnClickBtn_Start()
     {
         WTMain main = WTMain.Instance;
         main.ChangeGameState(WTGameState.Game);

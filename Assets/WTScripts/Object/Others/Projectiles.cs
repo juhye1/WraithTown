@@ -45,7 +45,14 @@ public class Projectiles : ObjectPoolBase
         WTMain main = WTMain.Instance;
         WTGameData data = main.playerData;
         distance = data.playerAb.attackRange;
-        damage = data.playerAb.damage;
+        int dmg = data.playerAb.damage;
+        if (Utils.GetRandomNum(data.playerAb.criticalChance))
+        {
+            dmg = dmg * 2;
+            BasePlayer.Instance.PlayCritical();
+        }
+
+        damage = dmg;
         startPos = player.projectileTr.position;
         transform.position = startPos;
         rb.velocity = dir.normalized * speed;

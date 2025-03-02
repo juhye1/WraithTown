@@ -55,14 +55,14 @@ public partial class WTMain : MonoBehaviour
         {
             //꺼지지 않는 불, 크리
             WTSupportUnitAbilityTemplate temp = GetSupportUnitAbilityTemplate(12004);
-            playerData.playerAb.doubleDamageChance = temp.support_ability_stat;
+            playerData.playerAb.criticalChance = temp.support_ability_stat;
         }
         c = GetActiveSupportUnit(12005); 
         if (c != null)
         {
             //강인함
             WTSupportUnitAbilityTemplate temp = GetSupportUnitAbilityTemplate(12005);
-            playerData.playerAb.enemyHalfDamageChance = c.unitCount * temp.support_ability_stat;
+            playerData.playerAb.shieldChance = c.unitCount * temp.support_ability_stat;
         }
         c = GetActiveSupportUnit(12006);
         if (c != null)

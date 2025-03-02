@@ -69,8 +69,14 @@ public class PlayerFSM : BaseFSM
             if(coll.TryGetComponent(out BaseEnemy enemy))
             {
                 WTMain main = WTMain.Instance;
-                WTGameData data = main.playerData;
-                enemy.OnTakeDamaged(data.playerAb.damage);
+                WTGameData data = main.playerData; 
+                int dmg = data.playerAb.damage;
+                if (Utils.GetRandomNum(data.playerAb.criticalChance))
+                {
+                    dmg = dmg * 2;
+                    BasePlayer.Instance.PlayCritical();
+                }
+                enemy.OnTakeDamaged(dmg);
             }
         }
     }

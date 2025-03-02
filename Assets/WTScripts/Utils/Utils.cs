@@ -26,4 +26,15 @@ public static class Utils
             list[randomIndex] = temp;
         }
     }
+
+    public static bool GetRandomNum(float percent)
+    {
+        System.Random random = new System.Random();
+        int val = random.Next(0, 101);
+        if(val < percent * 100)
+        {
+            return true;
+        }
+        return false;
+    }
 }

@@ -628,7 +628,7 @@ MonoBehaviour:
   panelDay: {fileID: 5312553328288096356, guid: 54c5fae37d7efb44db5e858a8338c199, type: 3}
   panelShop: {fileID: 8527392110023353345, guid: 4c4734afef5a7794185e4c9074edfa18, type: 3}
   panelPause: {fileID: 1872987708292125946, guid: 2c6947a42d1addf4db1c0ce87a4dee8a, type: 3}
-  panelGameOver: {fileID: 0}
+  panelGameOver: {fileID: 3695294259878117659, guid: 1388e4127e9cf4b42979a30b32b256b2, type: 3}
   panelSelectCharacter: {fileID: 5491950997077786081, guid: 15f2d00eac394984c9019a79810c7186, type: 3}
   panelStory: {fileID: 197521353249145046, guid: 021869528806cb849915f4684647c8d9, type: 3}
 --- !u!1660057539 &9223372036854775807

@@ -4,6 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Spine.Unity;
 using UnityEngine.UIElements;
+using DG.Tweening;
 
 public enum PlayerSkin
 {
@@ -22,6 +23,9 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     [SerializeField]
     private int sTileCount;
     public List<WraithTile> tiles = new List<WraithTile>();
+
+    public SpriteRenderer[] effects;
+
     #endregion
 
     #region ���� Ŭ����
@@ -97,6 +101,23 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
         {
 
         }
+    }
+
+    public void PlayCritical()
+    {
+        PlayEffect(0);
+    }
+
+    public void PlayShield()
+    {
+        PlayEffect(1);
+    }
+
+    private void PlayEffect(int val)
+    {
+        effects[val].enabled = true;
+        effects[val].color = Color.white;
+        effects[val].DOColor(Color.clear, 1);
     }
 
     public void DeathEvt()
