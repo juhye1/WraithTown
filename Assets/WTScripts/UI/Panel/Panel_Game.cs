@@ -30,7 +30,7 @@ public class Panel_Game : MonoBehaviour
     public Slot_Synergy currentSlot;
     //public Slider daySlider;
 
-    private void Awake()
+    private void Start()
     {
         RT = transform as RectTransform;
         ResetSlider();

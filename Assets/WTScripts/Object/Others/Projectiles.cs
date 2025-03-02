@@ -42,8 +42,10 @@ public class Projectiles : ObjectPoolBase
     public void OnShoot(BasePlayer player, Vector2 dir)
     {
         SetActive(true);
-        distance = WTMain.Instance.playerData.playerAb.attackRange;
-        damage = player.stat.status.dmg;
+        WTMain main = WTMain.Instance;
+        WTGameData data = main.playerData;
+        distance = data.playerAb.attackRange;
+        damage = data.playerAb.damage;
         startPos = player.projectileTr.position;
         transform.position = startPos;
         rb.velocity = dir.normalized * speed;

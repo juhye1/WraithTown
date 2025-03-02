@@ -68,17 +68,19 @@ public class PlayerFSM : BaseFSM
         { 
             if(coll.TryGetComponent(out BaseEnemy enemy))
             {
-                enemy.OnTakeDamaged(player.stat.status.dmg);
+                WTMain main = WTMain.Instance;
+                WTGameData data = main.playerData;
+                enemy.OnTakeDamaged(data.playerAb.damage);
             }
         }
     }
 
     private void OnDrawGizmos()
     {
-        // ±âÁî¸ð »ö»ó ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Gizmos.color = Color.red;
 
-        // ÇöÀç À§Ä¡¿¡¼­ ½´ÆÃ ¹æÇâÀ» ±âÁØÀ¸·Î ¿øÀ» ±×¸²
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½
         Vector2 center = (Vector2)transform.position + shootDir;
         Gizmos.DrawWireSphere(center, 2);
     }

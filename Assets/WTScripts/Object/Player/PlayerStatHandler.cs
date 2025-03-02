@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerStatHandler : MonoBehaviour
 {
     private BasePlayer player => BasePlayer.Instance;
-    public WTWraithStatTemplate status;
+ //   public WTWraithStatTemplate status;
     public void Init()
     {
-        status = WTMain.Instance.GetPlayerCharacterTemplate((ushort)WTMain.Instance.playerData.userUnitId);
+        //status = WTMain.Instance.GetPlayerCharacterTemplate((ushort)WTMain.Instance.playerData.userUnitId);
     }
 
 }

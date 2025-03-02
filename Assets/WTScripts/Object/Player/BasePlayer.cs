@@ -77,13 +77,13 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
 
     public void OnTakeDamaged(int damage)
     {
-        if (isDead || stat.status.hp <= 0) return;
-        stat.status.hp -= damage;
         WTMain main = WTMain.Instance;
-        Debug.LogWarning(stat.status.hp);
-        main.playerData.currentHP = stat.status.hp;
-        WTGlobal.CallEventDelegate(WTEventType.PlayerHPControl, stat.status.hp);
-        if (stat.status.hp <= 0)
+        WTGameData data = main.playerData;
+        if (isDead || data.currentHP <= 0) return;
+        data.currentHP -= damage;
+        Debug.LogWarning(data.currentHP);
+        WTGlobal.CallEventDelegate(WTEventType.PlayerHPControl, data.currentHP);
+        if (data.currentHP <= 0)
         {
             DeathEvt();
         }
