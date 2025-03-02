@@ -117,6 +117,9 @@ public class WTUIMain : MonoBehaviour
             case WTUIState.Result:
                 go = SpawnUIObject(container.panelResult);
                 break;
+            case WTUIState.SelectCharacter:
+                go = SpawnUIObject(container.panelSelectCharacter);
+                break;
         }
         return go;
     }
@@ -158,9 +161,13 @@ public class WTUIMain : MonoBehaviour
             panel_Lobby = GetPanel(WTUIState.Lobby).GetComponent<Panel_Lobby>();
 
         }
+        else if(uiState == WTUIState.SelectCharacter)
+        {
+            GetPanel(WTUIState.SelectCharacter);
+        }
         else if (uiState == WTUIState.Game)
         {
-            if(panel_Game == null)
+            if (panel_Game == null)
             {
                 panel_Game = GetPanel(WTUIState.Game).GetComponent<Panel_Game>();
             }
