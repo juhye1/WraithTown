@@ -18,6 +18,8 @@ public partial class WTMain : MonoBehaviour
             if(player == null)
             {
                 GameObject go = Instantiate(pc_temp.basePrefab, Vector2.zero, Quaternion.identity);
+                characterCam.transform.SetParent(go.transform);
+                characterCam.transform.localPosition = new Vector3(0, 0, -15);
                 player = go.GetComponent<BasePlayer>();
             }
             PlayerSkin skin = TID == WTConstants.UnitIDMiho ? PlayerSkin.Miho : PlayerSkin.Kebi;
@@ -29,7 +31,9 @@ public partial class WTMain : MonoBehaviour
             playerData.userUnitId = TID;
             playerData.currentHP = temp.hp;
             playerData.stageID = WTConstants.StartStageID;
-            ChangeGameState(WTGameState.Game);
+            WTGlobal.CallEventDelegate(WTEventType.PlayerSpawn, 0);
+            WTUIMain uiMain = WTUIMain.Instance;
+            uiMain.ChangeUIState(WTUIState.Story);
         }
         return null;
     }

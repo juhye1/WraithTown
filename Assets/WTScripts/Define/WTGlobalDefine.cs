@@ -13,6 +13,14 @@ static class WTConstants
     public const string StrDay = "Day ";
     public const ushort UnitIDMiho = 11001;
     public const ushort UnitIDKebi = 11002;
+
+    public const ushort SynergyIDGhost = 10101;
+    public const ushort SynergyIDYoukai = 10104;
+    public const ushort TraitIDSoil = 10201;
+    public const ushort TraitIDFire = 10204;
+    public const ushort TraitIDGold = 10207;
+    public const ushort TraitIDMoon = 10210;
+    public const ushort TraitIDWater = 10213;
 }
 
 public delegate void WTEventProcDelegate(int param1);

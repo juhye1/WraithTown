@@ -15,7 +15,7 @@ public class RotationTarget : MonoBehaviour
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Quaternion targetRot = Quaternion.Euler(0, 0, angle);
 
-            // ºÎµå·´°Ô È¸Àü (Lerp »ç¿ë)
+            // ï¿½Îµå·´ï¿½ï¿½ È¸ï¿½ï¿½ (Lerp ï¿½ï¿½ï¿½)
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * rSpeed);
         }
     }

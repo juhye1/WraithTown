@@ -20,6 +20,9 @@ public enum WTEventType
     ChangeGold = 5,
     ChangePoint = 6,
     ChangeStage = 7,
+    UpdateUnitInfo = 8,
+    AddSynergy = 9,
+    PlayerSpawn = 10,
     Count
 }
 

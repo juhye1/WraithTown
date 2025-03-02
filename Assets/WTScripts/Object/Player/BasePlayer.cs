@@ -90,7 +90,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
         foreach(var idx in uniqueNumbers)
         {
             tiles[idx].isSpecial = true;
-            tiles[idx].SetTileColor();
+            tiles[idx].SetTileSpecialColor();
         }
     }
 

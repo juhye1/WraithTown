@@ -124,6 +124,9 @@ public class WTUIMain : MonoBehaviour
             case WTUIState.GameOver:
                 go = SpawnUIObject(container.panelGameOver);
                 break;
+            case WTUIState.Story:
+                go = SpawnUIObject(container.panelStory);
+                break;
         }
         return go;
     }
@@ -148,6 +151,9 @@ public class WTUIMain : MonoBehaviour
             {
                 GetPanel(WTUIState.Shop);
                 panel_Game.RT.SetAsLastSibling();
+                main.player.fsm.ChangeState(main.player.fsm.IdleState);
+                main.player.isPlaying = false;
+                main.spawner.gameObject.SetActive(false);
             }
             else
             {
@@ -168,6 +174,10 @@ public class WTUIMain : MonoBehaviour
         else if(uiState == WTUIState.SelectCharacter)
         {
             GetPanel(WTUIState.SelectCharacter);
+        }
+        else if(uiState == WTUIState.Story)
+        {
+            GetPanel(WTUIState.Story);
         }
         else if (uiState == WTUIState.Game)
         {

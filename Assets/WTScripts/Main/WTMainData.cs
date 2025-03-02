@@ -3,6 +3,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
+
+public class SupportUnitCount
+{
+    public ushort unitID;
+    public int unitCount;
+    public SupportUnitCount(ushort id, int count)
+    {
+        unitID = id;
+        unitCount = count;
+    }
+}
 
 [Serializable]
 public class WTGameData
@@ -15,7 +27,9 @@ public class WTGameData
     public ushort day = 0;
     public ushort remainTimes = 0;
     public WTPlayerAbility playerAb;
-    public List<ushort> supportUnits = new();
+    public List<SupportUnitCount> supportUnits = new();
+    public List<ushort> totalSupportUnits = new();
+    public List<SupportUnitCount> activeSupportUnits = new();
 }
 [Serializable]
 public class WTStageData
@@ -40,6 +54,7 @@ public class WTCardData
     public string card_des;
     public string EffectType;
     public byte effectID;
+    public byte card_color;
 }
 [Serializable]
 public class WTWraithStatTemplate
@@ -68,6 +83,7 @@ public class WTPlayerAbility
     public float attackRange;
     public float attackSpeed;
     public int projectileCount;
+    public int special_tile_count;
 
     public WTPlayerAbility(WTWraithStatTemplate temp)
     {
@@ -77,6 +93,7 @@ public class WTPlayerAbility
         moveSpeed = temp.move_speed;
         attackRange = temp.attack_range;
         projectileCount = 1;
+        special_tile_count = temp.special_tile_count;
     }
 }
 
@@ -115,7 +132,8 @@ public class WTSupportUnitAbilityTemplate
 {
     public ushort support_unit_id;
     public string support_ability_name; 
-    public string support_ability; 
+    public string support_ability;
+    public float support_ability_stat;
 }
 [Serializable]
 public class WTSupportUnitAbilityTemplateGroup
@@ -145,6 +163,7 @@ public class WTSynergyTemplate
     public string synergy_name;   // 시너지 이름
     public int threshold;         // 효과 발동 조건 (예: 2개 이상)
     public string effect_des;     // 효과 설명
+   [NonSerialized] public string synergy_threshold;   // 시너지 이름
 }
 
 [Serializable]
@@ -160,6 +179,7 @@ public class WTWraithIDTemplate
     public string wraith_name;  // 망령 이름
     public int synergy_id;      // 시너지 ID
     public int trait_id;        // 특성 ID
+    [NonSerialized] public string trait_threshold;   // 시너지 이름
 }
 [Serializable]
 public class WTWraithIDTemplateGroup
@@ -196,6 +216,23 @@ public class WTAttributeTileTemplateGroup
 }
 
 [Serializable]
+public class WTTotalSynergyDataTemplate
+{
+    public ushort Total_Synergy_ID;         // 전체 시너지 ID
+    public string Total_Synergy_Name;    // 전체 시너지 이름
+    public string Card_Effect_Name;      // 카드 효과 이름
+    public int[] Effect_Value;           // 효과 값 (배열로 변환)
+    public string ThresHold_UI;          // 조건 UI 표시
+}
+
+[Serializable]
+public class WTTotalSynergyDataTemplateGroup
+{
+    public WTTotalSynergyDataTemplate[] totalSynergyDatas;
+}
+
+
+[Serializable]
 public class WTStageTimeData
 {
     public ushort stage_id, stage_night_time, stage_day_time, total_stage_time = 0;
@@ -211,6 +248,7 @@ public partial class WTMain : MonoBehaviour
     [NonSerialized] public WTGameData playerData = null;
     [NonSerialized] public WTCardData[] cardDatas = null;
     [NonSerialized] public WTSupportUnitTemplate[] supportUnitDatas = null;
+    [NonSerialized] public ushort[] synergyIds;
 
     [NonSerialized] public Dictionary<ushort, WTStageTimeData> dicStageData = new();
     [NonSerialized] public Dictionary<ushort, WTWraithStatTemplate> dicPlayerStatTemplate = new();
@@ -221,6 +259,8 @@ public partial class WTMain : MonoBehaviour
     [NonSerialized] public Dictionary<ushort, WTWraithIDTemplate> dicWraithIDTemplate= new();
     [NonSerialized] public Dictionary<ushort, WTTraitDataTemplate> dicTraitDataTemplate= new();
     [NonSerialized] public Dictionary<ushort, WTAttributeTileTemplate> dicTileDataTemplate= new();
+    [NonSerialized] public Dictionary<ushort, WTTotalSynergyDataTemplate> dicTotalSynergyTemplate= new();
+    [NonSerialized] public Dictionary<ushort, Sprite[]> dicSynergeSprites= new();
 
     public void InitDatas()
     {
@@ -228,9 +268,12 @@ public partial class WTMain : MonoBehaviour
         streamingAssetPath = Application.streamingAssetsPath;
         persistentPath = Application.persistentDataPath;
         tempPath = Application.temporaryCachePath;
+        synergyIds = new ushort[7] { WTConstants.SynergyIDGhost, WTConstants.SynergyIDYoukai, WTConstants.TraitIDSoil, WTConstants.TraitIDFire, WTConstants.TraitIDGold,
+        WTConstants.TraitIDMoon, WTConstants.TraitIDWater};
         LoadAddressable();
         LoadTemplates();
         LoadSavedData();
+        AddSpriteToDic();
         //LoadOptionFromJson();
         //LoadQuestTemplate();
         //LoadMapTemplate();
@@ -358,6 +401,76 @@ public partial class WTMain : MonoBehaviour
             WTEnemyUnitStatsTemplate s = tempEnemyData.enemyUnitStats[i];
             dicEnemyUnitStatsTemplate.Add(s.enemyunit_id, s);
         }
+
+        //적 유닛 스탯 정보
+        TextAsset totalSynergyTa = Resources.Load<TextAsset>("Template/TotalSynergyTemplate");
+        WTTotalSynergyDataTemplateGroup totalSynergyGroup = JsonUtility.FromJson<WTTotalSynergyDataTemplateGroup>(totalSynergyTa.text);
+        for (int i = 0; i < totalSynergyGroup.totalSynergyDatas.Length; ++i)
+        {
+            WTTotalSynergyDataTemplate s = totalSynergyGroup.totalSynergyDatas[i];
+            dicTotalSynergyTemplate.Add(s.Total_Synergy_ID, s);
+        }
+    }
+
+    public Sprite GetSynergySprite(ushort ID, int lv)
+    {
+        Sprite[] result;
+        dicSynergeSprites.TryGetValue(ID, out result);
+        return result[lv];
+    }
+
+    public void AddSpriteToDic()
+    {
+        Sprite[] sprites = Resources.LoadAll<Sprite>("Synerge");
+
+        for(int i=0; i< synergyIds.Length; ++i)
+        {
+            dicSynergeSprites.Add(synergyIds[i], new Sprite[4]);
+        }
+
+        int count = 0;
+        for (int i = 0; i < sprites.Length; ++i)
+        {
+            string spriteName = sprites[i].name;
+            string[] parts = spriteName.Split('_'); // 언더바(_) 기준으로 분리
+            if (parts.Length >= 3)
+            {
+                string result = parts[1]; // 가운데 단어 가져오기
+                ushort ID = 0;
+                switch(result)
+                {
+                    case "soil":
+                        ID = WTConstants.TraitIDSoil;
+                        break;
+                    case "gold":
+                        ID = WTConstants.TraitIDGold;
+                        break;
+                    case "moon":
+                        ID = WTConstants.TraitIDMoon;
+                        break;
+                    case "water":
+                        ID = WTConstants.TraitIDWater;
+                        break;
+                    case "fire":
+                        ID = WTConstants.TraitIDFire;
+                        break;
+                    case "ghost":
+                        ID = WTConstants.SynergyIDGhost;
+                        break;
+                    case "youkai":
+                        ID = WTConstants.SynergyIDYoukai;
+                        break;
+
+                }
+                dicSynergeSprites[ID][count] = sprites[i];
+                count++;
+                if(count > 3)
+                {
+                    count = 0;
+                }
+                Debug.Log(sprites[i].name);
+            }
+        }
     }
 
     public WTStageTimeData GetCurrentStageData()
@@ -378,8 +491,22 @@ public partial class WTMain : MonoBehaviour
         return result;
     }
 
-    
+    public WTSynergyTemplate GetSynergeTemplate(ushort TID)
+    {
+        WTSynergyTemplate result;
+        dicSynergyTemplate.TryGetValue(TID, out result);
+        return result;
+    }
 
+    public WTTotalSynergyDataTemplate GetTotalSynergeTemplate(ushort TID)
+    {
+        WTTotalSynergyDataTemplate result;
+        dicTotalSynergyTemplate.TryGetValue(TID, out result);
+        return result;
+    }
+
+
+    
     public WTWraithStatTemplate GetPlayerCharacterTemplate(ushort TID)
     {
         WTWraithStatTemplate result;
@@ -415,7 +542,39 @@ public partial class WTMain : MonoBehaviour
                 break;
             }
         }
-        playerData.supportUnits.Add(unit.support_unit_id);
+        AddUnit(unit.support_unit_id);
+        playerData.totalSupportUnits.Add(unit.support_unit_id);
+        WTGlobal.CallEventDelegate(WTEventType.AddSynergy, unit.support_unit_id);
+    }
+
+    public void AddUnit(ushort addUnitID)
+    {
+        for(int i=0; i<playerData.supportUnits.Count; ++i)
+        {
+            ushort id = playerData.supportUnits[i].unitID;
+            if(id == addUnitID)
+            {
+                playerData.supportUnits[i].unitCount++;
+                return;
+            }
+        }
+        SupportUnitCount c = new(addUnitID, 1);
+        playerData.supportUnits.Add(c);
+    }
+
+    public void AddActiveUnit(ushort addUnitID)
+    {
+        for (int i = 0; i < playerData.activeSupportUnits.Count; ++i)
+        {
+            ushort id = playerData.activeSupportUnits[i].unitID;
+            if (id == addUnitID)
+            {
+                playerData.activeSupportUnits[i].unitCount++;
+                return;
+            }
+        }
+        SupportUnitCount c = new(addUnitID, 1);
+        playerData.activeSupportUnits.Add(c);
     }
 
     public void GetSupportTraitUnit(ushort traitID)
@@ -431,7 +590,9 @@ public partial class WTMain : MonoBehaviour
                 break;
             }
         }
-        playerData.supportUnits.Add(unit.support_unit_id);
+        AddUnit(unit.support_unit_id);
+        playerData.totalSupportUnits.Add(unit.support_unit_id);
+        WTGlobal.CallEventDelegate(WTEventType.AddSynergy, unit.support_unit_id);
         Debug.Log("ADD" + unit.support_unit_name);
     }
 
@@ -467,33 +628,59 @@ public partial class WTMain : MonoBehaviour
                 break;
             case WTEffectType.TileGradeChange:
                 //타일 등급 변경
+                for (int i = 0; i < player.tiles.Count; ++i)
+                {
+                    WraithTile tile = player.tiles[i];
+                    if(!tile.isSpecial)
+                    {
+                        tile.SetTileSpecialColor();
+                        break;
+                    }
+                }
                 break;
             case WTEffectType.TilePositionChange:
                 //타일 위치 변경
+                Utils.Shuffle(player.tiles);
+                for (int i = 0; i < player.tiles.Count; ++i)
+                {
+                    WraithTile tile = player.tiles[i];
+                    if (i < playerData.playerAb.special_tile_count)
+                    {
+                        tile.SetTileSpecialColor();
+                    }
+                    else
+                    {
+                        tile.SetTileNormalColor();
+                    }
+                }
+
                 break;
+
+
                 //밑으로 유닛 랜덤 획득
             case WTEffectType.GetRandomSoilUnit:
                 // Trait
-                GetSupportTraitUnit(10201);
+                
+                GetSupportTraitUnit(WTConstants.TraitIDSoil);
                 break;
             case WTEffectType.GetRandomFireUnit:
-                GetSupportTraitUnit(10204);
+                GetSupportTraitUnit(WTConstants.TraitIDFire);
                 break;
             case WTEffectType.GetRandomGoldUnit:
-                GetSupportTraitUnit(10207);
+                GetSupportTraitUnit(WTConstants.TraitIDGold);
                 break;
             case WTEffectType.GetRandomMoonUnit:
-                GetSupportTraitUnit(10210);
+                GetSupportTraitUnit(WTConstants.TraitIDMoon);
                 break;
             case WTEffectType.GetRandomWaterUnit:
-                GetSupportTraitUnit(10213);
+                GetSupportTraitUnit(WTConstants.TraitIDWater);
                 //Synergy
                 break;
             case WTEffectType.GetRandomGhostUnit:
-                GetSupportSynergyUnit(10101);
+                GetSupportSynergyUnit(WTConstants.SynergyIDGhost);
                 break;
             case WTEffectType.GetRandomYokaiUnit:
-                GetSupportSynergyUnit(10102);
+                GetSupportSynergyUnit(WTConstants.SynergyIDYoukai);
 
                 break;
             case WTEffectType.Count:

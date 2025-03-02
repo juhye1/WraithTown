@@ -57,7 +57,7 @@ public class BaseFSM : MonoBehaviour
         Direction = direction.x < 0 ? CharacterDirection.Left : CharacterDirection.Right;
     }
 
-    //_animator°¡ ºÙ¾îÀÖ´Â ¿ÀºêÁ§Æ®°¡ ¸ðµ¨ ¿ÀºêÁ§Æ®
+    //_animatorï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     public virtual void SetFlip()
     {
         if (anim.skeleton == null)

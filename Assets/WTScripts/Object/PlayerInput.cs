@@ -67,7 +67,7 @@ public class PlayerInput : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Started:
-                Debug.Log("ÇÃ·¹ÀÌ¾î °ø°Ý");
+                Debug.Log("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 if(!player.fsm.isAttack)
                     player.fsm.ChangeState(player.fsm.AttackState);
                 break;
@@ -118,9 +118,9 @@ public class PlayerInput : MonoBehaviour
     {
         lastMousePos = Mouse.current.position.ReadValue();
 
-        // ¸¶¿ì½º À§Ä¡¸¦ ¿ùµå ÁÂÇ¥·Î º¯È¯
+        // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½È¯
         screenToWorldPos = lastMousePos;
-        screenToWorldPos.z = Mathf.Abs(cam.transform.position.z - player.transform.position.z); // ¿Ã¹Ù¸¥ ±íÀÌ ¼³Á¤
+        screenToWorldPos.z = Mathf.Abs(cam.transform.position.z - player.transform.position.z); // ï¿½Ã¹Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         Vector3 worldMousePos = cam.ScreenToWorldPoint(screenToWorldPos);
 

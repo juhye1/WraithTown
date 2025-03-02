@@ -17,7 +17,11 @@ public class BaseIdleState : BaseState
 
     public override void Execute()
     {
-        fsm.Flip();
+        BasePlayer player = BasePlayer.Instance;
+        if(player.isPlaying)
+        {
+            fsm.Flip();
+        }
     }
 
     public override void Exit()

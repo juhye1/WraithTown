@@ -6,6 +6,7 @@ using UnityEngine;
 public partial class WTMain : MonoBehaviour
 {
     public Camera mainCam;
+    public Camera characterCam;
     public const byte defaultOrthoSize = 15;
     public Transform WTVCam1_Follow;
     //public CinemachineVirtualCamera WTVCam1;

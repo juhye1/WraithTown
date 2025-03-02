@@ -3,34 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slot_Unit : MonoBehaviour
 {
     public TextMeshProUGUI unitName;
+    public TextMeshProUGUI unitCount;
     public SkeletonGraphic unitSkel;
+    private SupportUnitCount currentUnitData;
 
-    public void SetUnit(WTSupportUnitTemplate temp)
+    public void ChangeUnitPosition()
     {
-        if(temp.synergy_id == 10101)
+
+    }
+
+    public void SetUnit(WTSupportUnitTemplate temp, SkeletonDataAsset skelData, SupportUnitCount unitData, string animaionKey)
+    {
+        if (currentUnitData != null)
         {
-            switch(temp.trait_id)
+            if (unitData == currentUnitData)
             {
-                case 10201:
-                   // unitSkel.AnimationState.SetAnimation("Fire");
-                    //흙
-                    break;
-                case 10210:
-                    //달
-                    break;
-                case 10204:
-                    //불
-                    break;
+                return;
             }
-            //귀신
         }
-        else
-        {
-            //유령
-        }
+        currentUnitData = unitData;
+        unitSkel.skeletonDataAsset = skelData;
+        unitCount.SetText(unitData.unitCount.ToString());
+        unitName.SetText(temp.support_unit_name);
+        unitSkel.AnimationState.SetAnimation(0, animaionKey, true);
     }
 }

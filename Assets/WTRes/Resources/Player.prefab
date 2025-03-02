@@ -190,6 +190,7 @@ MonoBehaviour:
   cooltime: 1
   moveSpeed: 5
   moveDir: {x: 0, y: 0}
+  lookDir: {x: 0, y: 0}
   shootDir: {x: 0, y: 0}
   projectileName: Projectiles
 --- !u!114 &110136118968118927
@@ -290,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4690916811266922753}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: AimParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118955129685483435}
   - component: {fileID: 2429694623379182268}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: AimTr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5130594807140746787}
   - component: {fileID: 1213588306343386384}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: AimObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

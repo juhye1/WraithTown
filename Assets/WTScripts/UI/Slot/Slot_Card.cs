@@ -9,13 +9,15 @@ public class Slot_Card : MonoBehaviour
     public TextMeshProUGUI descTMP;
     public TextMeshProUGUI pointTMP;
     public Image disableImage;
+    public Image cardImage;
     public Button btn;
     private WTCardData cardData;
-    public void SetCardData(WTCardData data)
+    public void SetCardData(WTCardData data, Sprite sp)
     {
         disableImage.enabled = false;
         btn.interactable = true;
         cardData = data;
+        cardImage.sprite = sp;
         descTMP.SetText(data.card_des);
         pointTMP.SetText(data.card_coin_cost.ToString());
     }

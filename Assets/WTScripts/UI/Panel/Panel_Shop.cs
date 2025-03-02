@@ -9,6 +9,7 @@ public class Panel_Shop : MonoBehaviour
     public TextMeshProUGUI nextdayTMP;
     public TextMeshProUGUI changePanelTMP;
     public Slot_Card[] slotCards = new Slot_Card[3];
+    public Sprite[] cardSprites;
 
     [Header("GameObject")]
     public GameObject panelCard;
@@ -37,7 +38,8 @@ public class Panel_Shop : MonoBehaviour
         Utils.Shuffle(datas);
         for(int i=0; i<slotCards.Length; ++i)
         {
-            slotCards[i].SetCardData(datas[i]);
+            Sprite s = cardSprites[datas[i].card_color];
+            slotCards[i].SetCardData(datas[i], s);
         }
     }
 
@@ -65,6 +67,8 @@ public class Panel_Shop : MonoBehaviour
         main.playerData.stageID++;
         WTGlobal.CallEventDelegate(WTEventType.ChangeStage, main.playerData.stageID);
         uiMain.ChangeUIState(WTUIState.Game);
+        main.player.isPlaying = true;
+        main.spawner.gameObject.SetActive(true);
         uiMain.DestroyPanel(WTUIState.Shop);
     }
 
