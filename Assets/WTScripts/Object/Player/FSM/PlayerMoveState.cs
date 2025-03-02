@@ -19,9 +19,9 @@ public class PlayerMoveState : BaseMoveState
     {
         base.Execute();
         //if ()
-        Debug.Log(fsm.moveDir);
-        Debug.Log(fsm.moveSpeed);
         fsm.rb.velocity = fsm.moveDir * fsm.moveSpeed;
+        if(fsm.moveDir == Vector2.zero)
+            fsm.ChangeState(fsm.IdleState);
     }
 
     public override void Exit()

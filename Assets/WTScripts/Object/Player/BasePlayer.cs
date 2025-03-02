@@ -43,7 +43,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
         if (fsm.currentState != null)
             fsm.currentState?.Execute();
         if (rotObj != null)
-            rotObj.RotateTowards(fsm.shootDir);
+            rotObj.RotateTowards(fsm.targetPos);
         fsm.WaitForCooltime();
     }
     #endregion

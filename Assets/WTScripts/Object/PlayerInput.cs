@@ -125,7 +125,7 @@ public class PlayerInput : MonoBehaviour
         Vector3 worldMousePos = cam.ScreenToWorldPoint(screenToWorldPos);
 
         player.fsm.Aiming(worldMousePos);
-        player.fsm.targetPos = player.fsm.shootDir;
+        player.fsm.targetPos = worldMousePos;
     }
 
 }

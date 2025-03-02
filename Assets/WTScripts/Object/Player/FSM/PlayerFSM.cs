@@ -8,6 +8,7 @@ public class PlayerFSM : BaseFSM
 {
     public float moveSpeed;
     public Vector2 moveDir;
+    public Vector2 lookDir;
     public Vector2 shootDir;
     private LayerMask enemyMask;
     public string projectileName;
@@ -16,7 +17,7 @@ public class PlayerFSM : BaseFSM
     public PlayerDieState DieState { get; private set; }
     public PlayerAttackState AttackState { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
-
+    
     #endregion
     protected override void Awake()
     {
@@ -54,7 +55,7 @@ public class PlayerFSM : BaseFSM
 
     public void Aiming(Vector2 dir)
     {
-        shootDir = (dir - (Vector2)transform.position).normalized;
+        shootDir = dir - (Vector2)transform.position;
     }
 
     public void Shoot()
@@ -62,7 +63,7 @@ public class PlayerFSM : BaseFSM
         if(player.skinType == PlayerSkin.Miho)
         {
             var obj = WTPoolManager.Instance.SpawnQueue<Projectiles>(projectileName);
-            obj.OnShoot(player, shootDir);
+            obj.OnShoot(player, shootDir.normalized);
         }
         else if(player.skinType == PlayerSkin.Kebi)
         {
@@ -72,7 +73,7 @@ public class PlayerFSM : BaseFSM
 
     private void Slash()
     {
-        var colls = Physics2D.OverlapCircleAll((Vector2)transform.position + shootDir, 2, enemyMask);
+        var colls = Physics2D.OverlapCircleAll((Vector2)transform.position + shootDir.normalized, 2, enemyMask);
         Debug.LogWarning(colls.Length);
         foreach(var coll in colls) 
         { 
