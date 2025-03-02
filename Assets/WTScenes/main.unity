@@ -173,6 +173,8 @@ MonoBehaviour:
   isTestMode: 1
   mainCam: {fileID: 519420031}
   WTVCam1_Follow: {fileID: 878489303}
+  player: {fileID: 0}
+  shopTime: 300
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,14 +424,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b059c44d14b974b908f1a623e4327d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelLogin: {fileID: 0}
   panelLobby: {fileID: 1408593725006897418, guid: 3c06cb34456b1194ea5a964d51663809, type: 3}
   panelLoading: {fileID: 0}
   panelGame: {fileID: 8245050139444142276, guid: c7b167e16f95a7e47a980f31457c5b1c, type: 3}
   panelDay: {fileID: 5312553328288096356, guid: 54c5fae37d7efb44db5e858a8338c199, type: 3}
   panelShop: {fileID: 8527392110023353345, guid: 4c4734afef5a7794185e4c9074edfa18, type: 3}
   panelPause: {fileID: 1872987708292125946, guid: 2c6947a42d1addf4db1c0ce87a4dee8a, type: 3}
-  panelResult: {fileID: 0}
+  panelGameOver: {fileID: 0}
   panelSelectCharacter: {fileID: 5491950997077786081, guid: 15f2d00eac394984c9019a79810c7186, type: 3}
 --- !u!1 &857176160
 GameObject:

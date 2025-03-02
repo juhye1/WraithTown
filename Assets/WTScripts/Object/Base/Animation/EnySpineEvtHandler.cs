@@ -24,7 +24,7 @@ public class EnySpineEvtHandler : MonoBehaviour
 
     private void OnAnimationStart(TrackEntry trackEntry)
     {
-        Debug.Log($"¾Ö´Ï¸ÞÀÌ¼Ç ½ÃÀÛµÊ: {trackEntry.Animation.Name}");
+        //Debug.Log($"ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½Ûµï¿½: {trackEntry.Animation.Name}");
 
         switch (trackEntry.Animation.Name)
         {
@@ -34,10 +34,10 @@ public class EnySpineEvtHandler : MonoBehaviour
         }
     }
 
-    // ¾Ö´Ï¸ÞÀÌ¼ÇÀÌ ³¡³ª¸é È£ÃâµÇ´Â ÇÔ¼ö
+    // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½Ô¼ï¿½
     private void OnAnimationComplete(TrackEntry trackEntry)
     {
-        Debug.Log($"¾Ö´Ï¸ÞÀÌ¼Ç Á¾·áµÊ: {trackEntry.Animation.Name}");
+        //Debug.Log($"ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½: {trackEntry.Animation.Name}");
 
         switch (trackEntry.Animation.Name)
         {

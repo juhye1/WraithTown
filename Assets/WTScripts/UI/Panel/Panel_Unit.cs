@@ -17,14 +17,27 @@ public class Panel_Unit : MonoBehaviour
     private List<Slot_TMPSupportUnit> tmpUnitList = new();
     public RectTransform parentRT;
     private StringBuilder sb = new StringBuilder(20);
+    [Header("Unit")]
+    public Slot_Unit slotUnit;
+    public RectTransform slotParent;
+    private List<Slot_Unit> slotUnitList = new();
 
     private void OnEnable()
     {
         ShowPlayerAbility();
+        ShowUnits();
     }
-    public void ShowRewards()
+    public void ShowUnits()
     {
-        //보유한 유닛 목록 이건 전투 끝나고
+        WTMain main = WTMain.Instance;
+        List<ushort> spUnits = main.playerData.supportUnits;
+        for (int i = 0; i < spUnits.Count; ++i)
+        {
+            Slot_Unit unit = Instantiate(slotUnit, slotParent);
+            WTSupportUnitTemplate temp = main.GetSupportUnitTemplate(spUnits[i]);
+            unit.SetUnit(temp);
+            slotUnitList.Add(unit);
+        }
     }
 
     public void OnClickBtn_ShuffleUnitPos()

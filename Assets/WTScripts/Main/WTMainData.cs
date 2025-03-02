@@ -141,6 +141,7 @@ public class WTSupportUnitTemplateGroup
 public class WTSynergyTemplate
 {
     public ushort synergy_id;        // 시너지 ID
+    public ushort synergy_type;
     public string synergy_name;   // 시너지 이름
     public int threshold;         // 효과 발동 조건 (예: 2개 이상)
     public string effect_des;     // 효과 설명
@@ -386,6 +387,12 @@ public partial class WTMain : MonoBehaviour
         return result;
     }
 
+    public WTSupportUnitTemplate GetSupportUnitTemplate(ushort TID)
+    {
+        WTSupportUnitTemplate result;
+        dicSupportUnitTemplate.TryGetValue(TID, out result);
+        return result;
+    }
 
     public void SaveData()
     {
@@ -425,6 +432,7 @@ public partial class WTMain : MonoBehaviour
             }
         }
         playerData.supportUnits.Add(unit.support_unit_id);
+        Debug.Log("ADD" + unit.support_unit_name);
     }
 
     public void ChangePlayerStats(WTEffectType type, int val)
@@ -465,20 +473,28 @@ public partial class WTMain : MonoBehaviour
                 break;
                 //밑으로 유닛 랜덤 획득
             case WTEffectType.GetRandomSoilUnit:
-               // WTTraitDataTemplate temp = GetSupportTraitUnit()
-                GetSupportSynergyUnit(10201);
+                // Trait
+                GetSupportTraitUnit(10201);
                 break;
             case WTEffectType.GetRandomFireUnit:
+                GetSupportTraitUnit(10204);
                 break;
             case WTEffectType.GetRandomGoldUnit:
+                GetSupportTraitUnit(10207);
                 break;
             case WTEffectType.GetRandomMoonUnit:
+                GetSupportTraitUnit(10210);
                 break;
             case WTEffectType.GetRandomWaterUnit:
+                GetSupportTraitUnit(10213);
+                //Synergy
                 break;
             case WTEffectType.GetRandomGhostUnit:
+                GetSupportSynergyUnit(10101);
                 break;
             case WTEffectType.GetRandomYokaiUnit:
+                GetSupportSynergyUnit(10102);
+
                 break;
             case WTEffectType.Count:
                 break;

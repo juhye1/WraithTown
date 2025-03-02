@@ -9,6 +9,8 @@ public partial class WTMain : MonoBehaviour
     [NonSerialized] public float nightTime;
     [NonSerialized] public bool isTimerStarted;
 
+    public int shopTime = 300;
+
     public void StartDayTimer(WTStageTimeData data)
     {
         playerTimer = 0;
@@ -18,7 +20,7 @@ public partial class WTMain : MonoBehaviour
         SpawnSpawner();
         if (isTestMode)
         {
-           playerTimer = WTConstants.TotalStageTime -3; // 상점 테스트용
+           playerTimer = WTConstants.TotalStageTime - shopTime; // 상점 테스트용
         }
         isTimerStarted = true;
         WTGlobal.CallEventDelegate(WTEventType.Timer, 3); // 테스트
