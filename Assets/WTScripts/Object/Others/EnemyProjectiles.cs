@@ -39,13 +39,13 @@ public class EnemyProjectiles : ObjectPoolBase
     public void OnShoot(BaseEnemy enemy, Vector2 dir)
     {
         SetActive(true);
-        distance = enemy.stat.attack_range;
         WTMain main = WTMain.Instance;
         WTGameData data = main.playerData;
-        int dmg = enemy.stat.dmg;
+        distance = enemy.stat.template.attack_range;
+        int dmg = enemy.stat.template.dmg;
         if (Utils.GetRandomNum(data.playerAb.shieldChance))
         {
-            dmg = (int)(enemy.stat.dmg * 0.5f);
+            dmg = (int)(enemy.stat.template.dmg * 0.5f);
             BasePlayer.Instance.PlayShield();
         }
         damage = dmg;

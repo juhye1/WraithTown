@@ -84,10 +84,10 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
         {
             WTMain main = WTMain.Instance;
             WTGameData data = main.playerData;
-            int dmg = stat.dmg;
+            int dmg = stat.template.dmg;
             if (Utils.GetRandomNum(data.playerAb.shieldChance))
             {
-                dmg = (int)(stat.dmg * 0.5f);
+                dmg = (int)(stat.template.dmg * 0.5f);
                 BasePlayer.Instance.PlayShield();
             }
             BasePlayer.Instance.OnTakeDamaged(dmg);
