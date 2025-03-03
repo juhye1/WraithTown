@@ -19,6 +19,7 @@ public class Panel_DayTimer : MonoBehaviour
     private void Start()
     {
         beginPosX = dayArrowRect.localPosition.x;
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.bgmClip["StageBattle"]);
     }
 
     private void OnEnable()

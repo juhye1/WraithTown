@@ -101,6 +101,13 @@ public class WTResourcesManager : Singleton<WTResourcesManager>
                     var instance = Instantiate(obj); // 씬에 인스턴스 생성
                     instance.gameObject.SetActive(true);
                 }
+                var sound = Resources.Load<SoundManager>(("SoundManager"));
+                if (sound != null)
+                {
+                    var instance = Instantiate(sound); // 씬에 인스턴스 생성
+                    instance.gameObject.SetActive(true);
+                    instance.Init();
+                }
             }
         });
         //TitleManager.Instance.titleScene.SetGuageBar(1f);

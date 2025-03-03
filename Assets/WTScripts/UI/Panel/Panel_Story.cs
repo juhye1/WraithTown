@@ -28,6 +28,11 @@ public class Panel_Story : MonoBehaviour
     {
         OnClickBtn_StoryArrow();
     }
+
+    private void OnEnable()
+    {
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.bgmClip["Story"]);
+    }
     public void OnClickBtn_StoryArrow()
     {
         if(count > story.Length -1)

@@ -50,6 +50,13 @@ public class Projectiles : ObjectPoolBase
         {
             dmg = dmg * 2;
             BasePlayer.Instance.PlayCritical();
+            int idx = Random.Range(1, 5);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["RevolverShot_0" + idx]);
+        }
+        else
+        {
+            int idx = Random.Range(1, 6);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["MachineGunShot_0" + idx]);
         }
 
         damage = dmg;

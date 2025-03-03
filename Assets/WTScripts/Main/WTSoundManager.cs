@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -8,7 +9,7 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] AudioSource[] bgm;
     [SerializeField] AudioSource sfx;
-    public AudioClip[] bgmClip;
+    public Dictionary<string, AudioClip> bgmClip = new();
 
     private int activeChannel = 0;
     private Tween[] fadeInTweens = new Tween[2];
@@ -18,16 +19,21 @@ public class SoundManager : Singleton<SoundManager>
     protected override void Awake()
     {
         base.Awake();
-        InitTweens();
+        InitTweens();   
     }
 
-    [ContextMenu("OnBGM")]
-    public void Test1()
+    public void Init()
     {
-        PlayBGM(bgmClip[0]);
+       var datas = Resources.LoadAll<AudioClip>("");
+        foreach (var data in datas)
+        {
+            bgmClip.Add(data.name, data);
+            Debug.LogWarning(data.name);
+        }
     }
 
     #region ????
+
     public void PlayBGM(AudioClip clip)
     {
         int nextChannel = 1 - activeChannel;
