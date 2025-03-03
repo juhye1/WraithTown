@@ -18,7 +18,8 @@ public class Panel_Game : MonoBehaviour
     
     [Header("Slider")]
     public Slider hpSlider;
-    public SkeletonGraphic profileSkel;
+    public SkeletonGraphic profileSkel_M;
+    public SkeletonGraphic profileSkel_K;
     public SkeletonDataAsset kebi;
     public SkeletonDataAsset miho;
 
@@ -65,7 +66,16 @@ public class Panel_Game : MonoBehaviour
     private void SetProfile(int d)
     {
         WTMain main = WTMain.Instance;
-        profileSkel.skeletonDataAsset = main.playerData.userUnitId == WTConstants.UnitIDKebi ? kebi : miho;
+        if(main.playerData.userUnitId == WTConstants.UnitIDKebi)
+        {
+            profileSkel_K.enabled = true;
+        }
+        else
+        {
+            profileSkel_M.enabled = true;
+        }
+        //    profileSkel_M
+        //profileSkel.skeletonDataAsset = main.playerData.userUnitId == WTConstants.UnitIDKebi ? kebi : miho;
     }
     public void ControlHPSlider(int hp)
     {

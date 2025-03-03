@@ -80,13 +80,18 @@ public partial class WTMain : MonoBehaviour
             uiMain.ChangeUIState(WTUIState.Game);
             StartDayTimer(GetCurrentStageData());
         }
-        return true;
+        else if(gameState == WTGameState.End)
+        {
+            uiMain.ChangeUIState(WTUIState.GameOver);
+        }
+            return true;
     }
 
     public void RestartGame()
     {
         WTUIMain uiMain = WTUIMain.Instance;
         uiMain.DestroyPanel(WTUIState.Game);
+        player.Setup();
         uiMain.ChangeUIState(WTUIState.SelectCharacter);
     }
 

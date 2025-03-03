@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Panel_DayTimer : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Panel_DayTimer : MonoBehaviour
     public RectTransform dayArrowRect;
     public RectTransform dayArrowEndRect;
     private float beginPosX;
+
+    public Sprite[] daySprites;
+    public Image dayImage;
 
 
     private void Start()
@@ -40,8 +44,19 @@ public class Panel_DayTimer : MonoBehaviour
         WTStageTimeData data = main.GetCurrentStageData();
         string day = (data.stage_id - 10000).ToString();
         dayArrowRect.localPosition = new Vector3(beginPosX, dayArrowRect.localPosition.y, 0);
-        dayTMP.SetText(WTConstants.StrDay + day);
-        main.StartDayTimer(data);
-        ControlDayArrow(3);
+        //dayTMP.SetText(day);
+        int dayd = data.stage_id - 10001;
+        if(dayd > daySprites.Length -1)
+        {
+            WTUIMain uiMain = WTUIMain.Instance;
+
+        }
+        else
+        {
+
+            dayImage.sprite = daySprites[dayd];
+            main.StartDayTimer(data);
+            ControlDayArrow(3);
+        }
     }
 }
