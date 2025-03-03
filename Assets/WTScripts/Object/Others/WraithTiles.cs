@@ -33,6 +33,7 @@ public class WraithTiles : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(x, y, transform.position.z);
             var obj = Instantiate(tilePrefab, spawnPosition, Quaternion.identity, transform);
+            obj.HideTile(true);
             obj.index = i;
             BasePlayer.Instance.tiles.Add(obj);
         }

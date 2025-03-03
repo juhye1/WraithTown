@@ -61,6 +61,11 @@ public class Panel_Shop : MonoBehaviour
 
     public void OnClick_ShuffleBtn()
     {
+        WTMain main = WTMain.Instance;
+        if(main.playerData.gold < 2)
+        {
+            return;
+        }
         WTGlobal.CallEventDelegate(WTEventType.ChangeGold, shuffleGold);
         GetRandomCards();
         //2원 깎이게

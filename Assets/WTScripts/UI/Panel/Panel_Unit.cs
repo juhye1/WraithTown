@@ -35,7 +35,21 @@ public class Panel_Unit : MonoBehaviour
     {
         ShowPlayerAbility();
         ShowUnits();
-
+        WTMain main = WTMain.Instance;
+        BasePlayer player = main.player;
+        for(int i=0; i<player.tiles.Count; ++i)
+        {
+            player.tiles[i].HideTile(false);
+        }
+    }
+    private void OnDisable()
+    {
+        WTMain main = WTMain.Instance;
+        BasePlayer player = main.player;
+        for (int i = 0; i < player.tiles.Count; ++i)
+        {
+            player.tiles[i].HideTile(true);
+        }
     }
 
     public void ShowUnits()
@@ -76,9 +90,13 @@ public class Panel_Unit : MonoBehaviour
 
     public void OnClickBtn_ShuffleUnitPos()
     {
+        WTMain main = WTMain.Instance;
+        if (main.playerData.point < 10)
+        {
+            return;
+        }
         WTGlobal.CallEventDelegate(WTEventType.ChangePoint, -10); // 테스트
         //유닛 위치 랜덤 바꾸기
-        WTMain main = WTMain.Instance;
         BasePlayer player = main.player;
         List<SupportUnitCount> spUnits = main.playerData.supportUnits;
         List<ushort> totalSpUnits = main.playerData.totalSupportUnits;
