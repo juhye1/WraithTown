@@ -31,7 +31,7 @@ public class Panel_Shop : MonoBehaviour
         nextdayTMP.SetText(WTConstants.StrDay + (stage+1).ToString() + strContinue);
         GetGold();
         GetRandomCards();
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["CardShop"]);
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.bgmClip["CardShop"]);
     }
 
     private void GetGold()

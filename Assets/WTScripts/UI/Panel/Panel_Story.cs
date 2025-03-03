@@ -31,7 +31,7 @@ public class Panel_Story : MonoBehaviour
 
     private void OnEnable()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Story"]);
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.bgmClip["Story"]);
     }
     public void OnClickBtn_StoryArrow()
     {
