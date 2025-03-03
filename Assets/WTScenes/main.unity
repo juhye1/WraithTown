@@ -559,7 +559,7 @@ MonoBehaviour:
   mainCam: {fileID: 938054951}
   characterCam: {fileID: 570621150}
   WTVCam1_Follow: {fileID: 0}
-  shopTime: 300
+  shopTime: 180
 --- !u!4 &1279642375
 Transform:
   m_ObjectHideFlags: 0

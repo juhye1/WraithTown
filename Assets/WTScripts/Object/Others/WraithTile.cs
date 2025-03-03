@@ -25,6 +25,11 @@ public class WraithTile : MonoBehaviour
        // sr.color = Color.cyan;
         sr.sprite = sprites[1];
     }
+
+    public void HideTile(bool isHide)
+    {
+        sr.color = isHide ? Color.clear : Color.white;
+    }
     public void SetTileNormalColor()
     {
         isSpecial = false;

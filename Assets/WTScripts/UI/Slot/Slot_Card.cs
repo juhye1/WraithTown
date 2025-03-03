@@ -23,9 +23,13 @@ public class Slot_Card : MonoBehaviour
     }
     public void OnClickBtn_SelectCard()
     {
+        WTMain main = WTMain.Instance;
+        if (main.playerData.gold < cardData.card_coin_cost)
+        {
+            return;
+        }
         disableImage.enabled = true;
         btn.interactable = false;
-        WTMain main = WTMain.Instance;
         main.ChangePlayerStats((WTEffectType)cardData.effectID, cardData.value);
         WTGlobal.CallEventDelegate(WTEventType.ChangeGold, cardData.card_coin_cost * -1);
     }

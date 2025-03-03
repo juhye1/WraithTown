@@ -22,7 +22,11 @@ public partial class WTMain : MonoBehaviour
                 characterCam.transform.localPosition = new Vector3(0, 0, -15);
                 player = go.GetComponent<BasePlayer>();
             }
-            PlayerSkin skin = TID == WTConstants.UnitIDMiho ? PlayerSkin.Miho : PlayerSkin.Kebi;
+            else
+            {
+                player.Setup();
+            }
+                PlayerSkin skin = TID == WTConstants.UnitIDMiho ? PlayerSkin.Miho : PlayerSkin.Kebi;
             player.SetSkin(skin);
             playerData = new WTGameData();
             WTWraithStatTemplate temp = GetPlayerCharacterTemplate(TID);
@@ -32,6 +36,7 @@ public partial class WTMain : MonoBehaviour
             playerData.currentHP = temp.hp;
             playerData.stageID = WTConstants.StartStageID;
             WTUIMain uiMain = WTUIMain.Instance;
+            //player.Setup();
             if(gameMode == WTGameMode.PlayFromStart)
             {
                 uiMain.ChangeUIState(WTUIState.Story);

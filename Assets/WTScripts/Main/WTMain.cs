@@ -91,7 +91,7 @@ public partial class WTMain : MonoBehaviour
     {
         WTUIMain uiMain = WTUIMain.Instance;
         uiMain.DestroyPanel(WTUIState.Game);
-        player.Setup();
+       // player.Setup();
         uiMain.ChangeUIState(WTUIState.SelectCharacter);
     }
 
