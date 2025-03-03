@@ -60,14 +60,17 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
                 Debug.Log("����" + rand);
                 var obj = WTPoolManager.Instance.SpawnQueue<DropGoods>(goldGoods);
                 obj.Setup(transform.position);
+                int a = Random.Range(1, 11);
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Coin" + a]);
                 WTGlobal.CallEventDelegate(WTEventType.ChangeGold, stat.template.dead_drop_coin);
             }
         }
 
-        if(stat.template.dead_drop_soul != 0)
+        if (stat.template.dead_drop_soul != 0)
         {
             float rand = Random.Range(0, 1);
             Debug.Log("�ҿ�" + rand);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Soul"]);
             if (rand <= stat.template.drop_weight)
                 WTGlobal.CallEventDelegate(WTEventType.ChangePoint, stat.template.dead_drop_soul);
         }

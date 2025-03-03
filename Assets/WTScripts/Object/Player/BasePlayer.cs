@@ -124,6 +124,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     {
         if(isDead) return;
         isDead = true;
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["DeathSound"]);    
         fsm.ChangeState(fsm.DieState);
         WTUIMain.Instance.GetPanel(WTUIState.GameOver);
     }

@@ -240,6 +240,21 @@ public class WTTotalSynergyDataTemplateGroup
     public WTTotalSynergyDataTemplate[] totalSynergyDatas;
 }
 
+[Serializable]
+public class WTSoundDataTemplate
+{
+    public ushort Sound_id;
+    public string FileName;
+    public string File_des;
+    public string Sound_divi;
+}
+
+[Serializable]
+public class WTSoundDataTemplateGroup
+{
+    public WTSoundDataTemplate[] soundDatas;
+}
+
 
 [Serializable]
 public class WTStageTimeData
@@ -270,6 +285,7 @@ public partial class WTMain : MonoBehaviour
     [NonSerialized] public Dictionary<ushort, WTAttributeTileTemplate> dicTileDataTemplate= new();
     [NonSerialized] public Dictionary<ushort, WTTotalSynergyDataTemplate> dicTotalSynergyTemplate= new();
     [NonSerialized] public Dictionary<ushort, Sprite[]> dicSynergeSprites= new();
+    [NonSerialized] public Dictionary<ushort, WTSoundDataTemplate> dicSoundDataTemplate= new();
 
     public void InitDatas()
     {
@@ -279,6 +295,7 @@ public partial class WTMain : MonoBehaviour
         tempPath = Application.temporaryCachePath;
         synergyIds = new ushort[7] { WTConstants.SynergyIDGhost, WTConstants.SynergyIDYoukai, WTConstants.TraitIDSoil, WTConstants.TraitIDFire, WTConstants.TraitIDGold,
         WTConstants.TraitIDMoon, WTConstants.TraitIDWater};
+
         LoadAddressable();
         LoadTemplates();
         LoadSavedData();
@@ -418,6 +435,15 @@ public partial class WTMain : MonoBehaviour
         {
             WTTotalSynergyDataTemplate s = totalSynergyGroup.totalSynergyDatas[i];
             dicTotalSynergyTemplate.Add(s.Total_Synergy_ID, s);
+        }
+
+        //사운드
+        TextAsset soundDataTa = Resources.Load<TextAsset>("Template/SoundDataTemplate");
+        WTSoundDataTemplateGroup soundDataGroup = JsonUtility.FromJson<WTSoundDataTemplateGroup>(soundDataTa.text);
+        for (int i = 0; i < soundDataGroup.soundDatas.Length; ++i)
+        {
+            WTSoundDataTemplate s = soundDataGroup.soundDatas[i];
+            dicSoundDataTemplate.Add(s.Sound_id, s);
         }
     }
 

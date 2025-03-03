@@ -1,0 +1,273 @@
+{"soundDatas": [
+    {
+      "Sound_id": 1001,
+      "FileName": "BuyCard",
+      "File_des": "구입 버튼 클릭시",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1002,
+      "FileName": "CardShop",
+      "File_des": "혼령상점 진입 시",
+      "Sound_divi": "background"
+    },
+    {
+      "Sound_id": 1003,
+      "FileName": "Clickbutton",
+      "File_des": "UI버튼클릭시",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1004,
+      "FileName": "Coins1",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1005,
+      "FileName": "Coins2",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1006,
+      "FileName": "Coins3",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1007,
+      "FileName": "Coins4",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1008,
+      "FileName": "Coins5",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1009,
+      "FileName": "Coins6",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1010,
+      "FileName": "Coins7",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1011,
+      "FileName": "Coins8",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1012,
+      "FileName": "Coins9",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1013,
+      "FileName": "Coins10",
+      "File_des": "코인획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1014,
+      "FileName": "DeathSound",
+      "File_des": "유저 캐릭터 사망",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1015,
+      "FileName": "HeavySword Swing1",
+      "File_des": "근거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1016,
+      "FileName": "HeavySword Swing2",
+      "File_des": "근거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1017,
+      "FileName": "HeavySword Swing3",
+      "File_des": "근거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1018,
+      "FileName": "HeavySword Swing4",
+      "File_des": "근거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1019,
+      "FileName": "HeavySword Swing5",
+      "File_des": "근거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1020,
+      "FileName": "HeavySword Swing6",
+      "File_des": "근거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1021,
+      "FileName": "MachineGunShot_01",
+      "File_des": "원거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1022,
+      "FileName": "MachineGunShot_02",
+      "File_des": "원거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1023,
+      "FileName": "MachineGunShot_03",
+      "File_des": "원거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1024,
+      "FileName": "MachineGunShot_04",
+      "File_des": "원거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1025,
+      "FileName": "MachineGunShot_05",
+      "File_des": "원거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1026,
+      "FileName": "MachineGunShot_06",
+      "File_des": "원거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1027,
+      "FileName": "RevolverShot_01",
+      "File_des": "원거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1028,
+      "FileName": "RevolverShot_02",
+      "File_des": "원거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1029,
+      "FileName": "RevolverShot_03",
+      "File_des": "원거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1030,
+      "FileName": "RevolverShot_04",
+      "File_des": "원거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1031,
+      "FileName": "RevolverShot_05",
+      "File_des": "원거리 치명타 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1032,
+      "FileName": "Shieldblock1",
+      "File_des": "강인함 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1033,
+      "FileName": "Shieldblock2",
+      "File_des": "강인함 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1034,
+      "FileName": "Shieldblock3",
+      "File_des": "강인함 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1035,
+      "FileName": "Shieldblock4",
+      "File_des": "강인함 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1036,
+      "FileName": "Shieldblock5",
+      "File_des": "강인함 발동",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1037,
+      "FileName": "Soul",
+      "File_des": "소울 획득",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1038,
+      "FileName": "StageBattle",
+      "File_des": "스테이지 전투 배경음",
+      "Sound_divi": "background"
+    },
+    {
+      "Sound_id": 1039,
+      "FileName": "Story",
+      "File_des": "스토리 진행 배경음",
+      "Sound_divi": "background"
+    },
+    {
+      "Sound_id": 1040,
+      "FileName": "Swing1",
+      "File_des": "근거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1041,
+      "FileName": "Swing2",
+      "File_des": "근거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1042,
+      "FileName": "Swing3",
+      "File_des": "근거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1043,
+      "FileName": "Swing4",
+      "File_des": "근거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1044,
+      "FileName": "Swing5",
+      "File_des": "근거리 일반 공격",
+      "Sound_divi": "effect"
+    },
+    {
+      "Sound_id": 1045,
+      "FileName": "mainmenu",
+      "File_des": "메인메뉴",
+      "Sound_divi": "background"
+    }
+  ]
+}

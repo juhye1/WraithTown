@@ -1,0 +1,11 @@
+Upgrade_stone_drop.png
+size:1024,1024
+filter:Linear,Linear
+Glow
+bounds:628,573,206,205
+offsets:17,18,240,241
+Upgrade_stone
+bounds:2,2,624,988
+star
+bounds:628,780,210,210
+offsets:12,12,234,234
