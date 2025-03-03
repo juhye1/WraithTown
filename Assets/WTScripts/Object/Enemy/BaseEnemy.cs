@@ -62,7 +62,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
                 Debug.Log("����" + rand);
                 var obj = WTPoolManager.Instance.SpawnQueue<DropGoods>(goldGoods);
                 obj.Setup(transform.position);
-                int a = Random.Range(1, 11);
+                int a = Random.Range(1, 10);
                 SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Coins" + a]);
                 WTGlobal.CallEventDelegate(WTEventType.ChangeGold, stat.template.dead_drop_coin);
             }
@@ -138,6 +138,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     {
         skinType = type;
         int idx = 0;
+        transform.localScale = Vector3.one;
         switch(skinType)
         {
             case WTEnemyType.Hound:
@@ -151,6 +152,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
             case WTEnemyType.Exorcist:
                 idx = 2;
                 isNight = true;
+                transform.localScale = Vector3.one * 1.5f;
                 break;
             case WTEnemyType.Student:
                 idx = 3;

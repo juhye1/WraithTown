@@ -69,7 +69,7 @@ public class WTSpawner : MonoBehaviour
             //Debug.LogWarning(count + "마리 소환");
             for(int i = 0; i < count; i++)
             {
-                if (WTPoolManager.Instance.qPools["NormalEny"].Count > 100) break;
+                if (WTPoolManager.Instance.qPools["NormalEny"].Count > 50) break;
                 var obj = WTPoolManager.Instance.SpawnQueue<BaseEnemy>("NormalEny");
                 var idx = Random.Range(0, spawnTr.Length);
                 obj.transform.position = spawnTr[idx].position;

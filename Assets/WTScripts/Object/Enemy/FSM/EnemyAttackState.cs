@@ -2,6 +2,7 @@
 using Spine;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UIElements;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -37,6 +38,7 @@ public class EnemyAttackState : BaseAttackeState
             trackEntry.Complete += OnAnimationComplete;
         }
         SetAnimSpeed(fsm.enemy.stat.template.attack_speed);
+        fsm.enemy.OnAttack();
     }
 
     public override void Execute()
@@ -60,13 +62,21 @@ public class EnemyAttackState : BaseAttackeState
     private void OnAnimationStart(TrackEntry trackEntry)
     {
         fsm.isAttack = true;
-        fsm.enemy.OnAttack();
     }
 
     private void OnAnimationComplete(TrackEntry trackEntry)
     {
         fsm.isAttack = false;
-        fsm.ChangeState(fsm.AttackState);
+        float distance = Vector2.Distance(fsm.transform.position, fsm.player.transform.position);
+        // 타겟에게 도착하면 공격 상태로 변경
+        if (distance > fsm.atkRange)
+        {
+            fsm.ChangeState(fsm.ChaseState);
+        }
+        else if (distance <= fsm.atkRange)
+        {
+            fsm.ChangeState(fsm.AttackState);
+        }
     }
 }
 

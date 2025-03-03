@@ -72,12 +72,6 @@
       "Sound_divi": "effect"
     },
     {
-      "Sound_id": 1013,
-      "FileName": "Coins10",
-      "File_des": "코인획득",
-      "Sound_divi": "effect"
-    },
-    {
       "Sound_id": 1014,
       "FileName": "DeathSound",
       "File_des": "유저 캐릭터 사망",

@@ -12,8 +12,8 @@ public class SoundManager : Singleton<SoundManager>
     public Dictionary<string, AudioClip> bgmClip = new();
 
     private int activeChannel = 0;
-    private Tween[] fadeInTweens = new Tween[2];
-    private Tween[] fadeOutTweens = new Tween[2];
+    private Tween[] fadeInTweens = new Tween[3];
+    private Tween[] fadeOutTweens = new Tween[3];
     private int sfxCount = 0;
 
     protected override void Awake()
@@ -40,8 +40,8 @@ public class SoundManager : Singleton<SoundManager>
 
         bgm[nextChannel].clip = clip;
 
-        fadeInTweens[nextChannel].Restart();
-        fadeOutTweens[activeChannel].Restart();
+        bgm[nextChannel].Play();
+        bgm[activeChannel].Stop();
 
         activeChannel = nextChannel;
     }
@@ -59,10 +59,27 @@ public class SoundManager : Singleton<SoundManager>
     }
     #endregion
 
+
     private void InitTweens()
     {
-        for (int i = 0; i < 2; i++)
+        if (bgm == null || bgm.Length == 0)
         {
+            Debug.LogError("bgm 배열이 비어 있습니다!");
+            return;
+        }
+
+        //bgm 크기에 맞춰 배열 초기화
+        fadeInTweens = new Tween[bgm.Length];
+        fadeOutTweens = new Tween[bgm.Length];
+
+        for (int i = 0; i < bgm.Length; i++)
+        {
+            if (bgm[i] == null)
+            {
+                Debug.LogError($"bgm[{i}]가 null입니다! Inspector에서 확인하세요.");
+                continue;
+            }
+
             fadeInTweens[i] = bgm[i].DOFade(1f, 1f)
                 .SetAutoKill(false)
                 .Pause()
@@ -74,6 +91,7 @@ public class SoundManager : Singleton<SoundManager>
                 .OnComplete(() => bgm[i].Stop());
         }
     }
+
 
     #region 
     public void SetBGMAudioMixerValue(float value)
