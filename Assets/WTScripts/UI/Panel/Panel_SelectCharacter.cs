@@ -16,6 +16,8 @@ public class Panel_SelectCharacter : MonoBehaviour
     public Image selectImageKebi;
     public Color disableColor;
 
+    private bool isSpawn = false;
+
     private void OnEnable()
     {
         selectCharacterID = WTConstants.UnitIDMiho;
@@ -25,6 +27,8 @@ public class Panel_SelectCharacter : MonoBehaviour
 
     public void OnClickBtn_Miho()
     {
+        if (isSpawn) return;
+        isSpawn = true;
         selectCharacterID = WTConstants.UnitIDMiho;
         //selectImageMiho.enabled = true;
         //selectImageKebi.enabled = false;
@@ -38,6 +42,8 @@ public class Panel_SelectCharacter : MonoBehaviour
 
     public void OnClickBtn_Kebi()
     {
+        if (isSpawn) return;
+        isSpawn = true;
         selectCharacterID = WTConstants.UnitIDKebi;
         //selectImageMiho.enabled = false;
         //selectImageKebi.enabled = true;
@@ -56,6 +62,7 @@ public class Panel_SelectCharacter : MonoBehaviour
     private void AnimationCompleteEventMiho(TrackEntry de)
     {
         mihoSkel.AnimationState.SetAnimation(0, PlayerStateType.Idle.ToString(), true);
+        isSpawn = true;
         Invoke("SpawnCharacterDelay", 0.5f);
     }
 

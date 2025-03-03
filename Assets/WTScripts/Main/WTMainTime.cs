@@ -23,6 +23,7 @@ public partial class WTMain : MonoBehaviour
         {
            playerTimer = WTConstants.TotalStageTime - shopTime; // 상점 테스트용
         }
+        player.isPlaying = true;
         isTimerStarted = true;
         WTGlobal.CallEventDelegate(WTEventType.Timer, 3); // 테스트
     }
