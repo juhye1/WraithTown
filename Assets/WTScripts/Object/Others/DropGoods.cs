@@ -17,10 +17,10 @@ public class DropGoods : ObjectPoolBase
     {
         base.Setup();
         SetActive(true);
-        PlayGoldAnimation(pos);
+        PlayDropAnimation(pos);
     }
 
-    public void PlayGoldAnimation(Vector2 pos)
+    public void PlayDropAnimation(Vector2 pos)
     {
         transform.position = pos;
         Sequence seq = DOTween.Sequence();

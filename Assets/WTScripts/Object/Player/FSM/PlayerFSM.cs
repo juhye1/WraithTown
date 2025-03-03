@@ -63,6 +63,7 @@ public class PlayerFSM : BaseFSM
 
     private void Slash()
     {
+        bool isCri = false;
         var colls = Physics2D.OverlapCircleAll((Vector2)transform.position + shootDir.normalized, WTMain.Instance.playerData.playerAb.attackRange, enemyMask);
         foreach(var coll in colls) 
         { 
@@ -75,9 +76,20 @@ public class PlayerFSM : BaseFSM
                 {
                     dmg = dmg * 2;
                     BasePlayer.Instance.PlayCritical();
+                    isCri = true;
                 }
                 enemy.OnTakeDamaged(dmg);
             }
+        }
+        if(isCri)
+        {
+            int idx = Random.Range(1, 7);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["HeavySwordSwing" + idx]);
+        }
+        else
+        {
+            int idx = Random.Range(1, 5);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Swing" + idx]);
         }
     }
 

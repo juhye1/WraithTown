@@ -111,6 +111,8 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     public void PlayShield()
     {
         PlayEffect(1);
+        int idx = Random.Range(1, 5);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Shieldblock" + idx]);
     }
 
     private void PlayEffect(int val)

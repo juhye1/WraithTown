@@ -32,5 +32,6 @@ public class Slot_Card : MonoBehaviour
         btn.interactable = false;
         main.ChangePlayerStats((WTEffectType)cardData.effectID, cardData.value);
         WTGlobal.CallEventDelegate(WTEventType.ChangeGold, cardData.card_coin_cost * -1);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["BuyCard"]);
     }
 }

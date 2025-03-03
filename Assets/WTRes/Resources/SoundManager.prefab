@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5814624722301105715}
   - component: {fileID: 8243487798151114801}
   - component: {fileID: 2517511097048306369}
-  - component: {fileID: 7316796356203847421}
+  - component: {fileID: 4327598198513018514}
   - component: {fileID: 4912861113506976377}
   m_Layer: 0
   m_Name: SoundManager
@@ -80,7 +80,7 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: b3c892ba3197e0f448417dc19b9b6344, type: 2}
   bgm:
   - {fileID: 2517511097048306369}
-  - {fileID: 7316796356203847421}
+  - {fileID: 4327598198513018514}
   sfx: {fileID: 4912861113506976377}
 --- !u!82 &2517511097048306369
 AudioSource:
@@ -178,7 +178,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &7316796356203847421
+--- !u!82 &4327598198513018514
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,12 +187,12 @@ AudioSource:
   m_GameObject: {fileID: 7842333360311586113}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: b3c892ba3197e0f448417dc19b9b6344, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

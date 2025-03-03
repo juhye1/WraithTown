@@ -19,6 +19,8 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
     string killEffect = "KillEffect";
     [SerializeField]
     string goldGoods = "Goods";
+    [SerializeField]
+    string soulSton = "SoulSton";
     #endregion
 
     #region ���� Ŭ����
@@ -61,7 +63,7 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
                 var obj = WTPoolManager.Instance.SpawnQueue<DropGoods>(goldGoods);
                 obj.Setup(transform.position);
                 int a = Random.Range(1, 11);
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Coin" + a]);
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Coins" + a]);
                 WTGlobal.CallEventDelegate(WTEventType.ChangeGold, stat.template.dead_drop_coin);
             }
         }
@@ -70,9 +72,14 @@ public class BaseEnemy : ObjectPoolBase, BaseObject
         {
             float rand = Random.Range(0, 1);
             Debug.Log("�ҿ�" + rand);
-            SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Soul"]);
+            
             if (rand <= stat.template.drop_weight)
+            {
+                var obj = WTPoolManager.Instance.SpawnQueue<DropGoods>(soulSton);
+                obj.Setup(transform.position);
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.bgmClip["Soul"]);
                 WTGlobal.CallEventDelegate(WTEventType.ChangePoint, stat.template.dead_drop_soul);
+            }
         }
     }
 
