@@ -116,6 +116,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 387540334083181332, guid: 2737f589c894ead418627b06ca157763, type: 3}
+    - target: {fileID: 5494380640880540967, guid: 073a9b0ec53cb674d9dec36945547f16, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6601278508721434638, guid: 073a9b0ec53cb674d9dec36945547f16, type: 3}
       propertyPath: m_Name
       value: Map

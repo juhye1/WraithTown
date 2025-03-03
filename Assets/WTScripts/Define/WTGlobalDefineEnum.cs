@@ -33,7 +33,8 @@ public enum WTGameState
     Lobby,
     Loading,
     Game,
-    SelectCharacter
+    SelectCharacter,
+    End
 };
 
 

@@ -10,7 +10,7 @@ public class Panel_GameOver : MonoBehaviour
     private void OnEnable()
     {
         WTMain main = WTMain.Instance;
-        if(main.GetCurrentStageData().stage_id != 10006)
+        if(main.GetCurrentStageData().stage_id != 10005)
         {
             resultTMP.SetText("DEFEAT");
         }

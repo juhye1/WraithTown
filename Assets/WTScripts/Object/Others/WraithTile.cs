@@ -10,6 +10,7 @@ public class WraithTile : MonoBehaviour
     public SkeletonAnimation skel;
     public MeshRenderer meshRenderer;
     public bool isSpecial;
+    public Sprite[] sprites;
     public int index;
 
     private void Awake()
@@ -21,12 +22,13 @@ public class WraithTile : MonoBehaviour
     public void SetTileSpecialColor()
     {
         isSpecial = true;
-        sr.color = Color.cyan;
+       // sr.color = Color.cyan;
+        sr.sprite = sprites[1];
     }
     public void SetTileNormalColor()
     {
         isSpecial = false;
-        sr.color = Color.white;
+        sr.sprite = sprites[0];
     }
 
     public void SetUnit(SkeletonDataAsset data, string key)

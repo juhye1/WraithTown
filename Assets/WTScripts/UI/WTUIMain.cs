@@ -185,6 +185,10 @@ public class WTUIMain : MonoBehaviour
         {
             GetPanel(WTUIState.Story);
         }
+        else if (uiState == WTUIState.GameOver)
+        {
+            GetPanel(WTUIState.GameOver);
+        }
         else if (uiState == WTUIState.Game)
         {
             if (panel_Game == null)

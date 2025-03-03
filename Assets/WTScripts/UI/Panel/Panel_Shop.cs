@@ -70,7 +70,7 @@ public class Panel_Shop : MonoBehaviour
     {
         isCard = !isCard;
         string str = isCard ? strUnit : strCard;
-        changePanelTMP.SetText(str);
+        //changePanelTMP.SetText(str);
         panelCard.SetActive(isCard);
         panelUnit.SetActive(!isCard);
         //카드 <> 유닛

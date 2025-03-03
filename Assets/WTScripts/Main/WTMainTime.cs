@@ -97,7 +97,19 @@ public partial class WTMain : MonoBehaviour
                 if (playerTimer > WTConstants.TotalStageTime)
                 {
                     WTUIMain uiMain = WTUIMain.Instance;
-                    uiMain.ChangeUIState(WTUIState.Shop);
+                    WTMain main = WTMain.Instance;
+                    if(main.playerData.currentHP > 0)
+                    {
+                        if (main.GetCurrentStageData().stage_id == 10005)
+                        {
+                            uiMain.ChangeUIState(WTUIState.GameOver);
+                        }
+                        else
+                        {
+                            uiMain.ChangeUIState(WTUIState.Shop);
+
+                        }
+                    }
                     //스테이지 끝
                     isTimerStarted = false;
                 }
