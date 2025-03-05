@@ -37,4 +37,11 @@ public static class Utils
         }
         return false;
     }
+
+    public static int GetRandomNum(int max)
+    {
+        System.Random random = new System.Random();
+        int val = random.Next(0, max);
+        return val;
+    }
 }
