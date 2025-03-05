@@ -5,23 +5,29 @@ using UnityEngine;
 
 public partial class WTMain : MonoBehaviour
 {
-    [NonSerialized] public float playerTimer;
+   // [NonSerialized] public float playerTimer;
     [NonSerialized] public float nightTime;
     [NonSerialized] public bool isTimerStarted;
 
-    public int shopTime = 300;
+    public int stageTime = 300;
 
     public void StartDayTimer(WTStageTimeData data)
     {
-        playerTimer = 0;
-        nightTime = WTConstants.TotalStageTime * (data.stage_night_time * 0.01f);
+
+        playerData.remainTimes = 0;
+        nightTime = data.total_stage_time * (data.stage_night_time * 0.01f);
         //GameObject go = Resources.Load<GameObject>("Spawner");
         //Instantiate(go);
         SpawnSpawner();
         GetPlayerAb();
         if (isTestMode)
         {
-           playerTimer = WTConstants.TotalStageTime - shopTime; // 상점 테스트용
+            playerData.remainTimes = 0; // 테스트용
+            GetCurrentStageData().total_stage_time = (ushort)stageTime;
+        }
+        else
+        {
+            //playerData.remainTimes = data.total_stage_time;
         }
         player.isPlaying = true;
         isTimerStarted = true;
@@ -84,7 +90,7 @@ public partial class WTMain : MonoBehaviour
     {
         if(isTimerStarted)
         {
-            playerTimer += dt;
+            playerData.remainTimes += dt;
 
             if(playerData.playerAb.hpRecoveryPerSec != 0)
             {
@@ -92,10 +98,10 @@ public partial class WTMain : MonoBehaviour
             }
 
 
-            if (playerTimer > nightTime)
+            if (playerData.remainTimes > nightTime)
             {
                 // 낮으로 전환
-                if (playerTimer > WTConstants.TotalStageTime)
+                if (playerData.remainTimes > WTConstants.TotalStageTime)
                 {
                     WTUIMain uiMain = WTUIMain.Instance;
                     WTMain main = WTMain.Instance;

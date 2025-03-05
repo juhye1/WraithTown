@@ -28,10 +28,7 @@ public partial class WTMain : MonoBehaviour
     }
     private void Start()
     {
-        if(isTestMode)
-        {
-            ChangeGameState(WTGameState.Lobby);
-        }
+        ChangeGameState(WTGameState.Lobby);
     }
     private void Update()
     {

@@ -89,7 +89,7 @@ public class BasePlayer : Singleton<BasePlayer>, BaseObject
     public void OnTakeDamaged(int damage)
     {
 
-        if (isDead || data.currentHP <= 0) return;
+        if (isDead || data.currentHP <= 0 || !isPlaying) return;
         data.currentHP -= damage;
         Debug.LogWarning(data.currentHP);
         WTGlobal.CallEventDelegate(WTEventType.PlayerHPControl, data.currentHP);

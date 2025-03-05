@@ -26,7 +26,7 @@ public class WTGameData
     public ushort[] items = null;
     public ushort stageID = 0;
     public ushort day = 0;
-    public ushort remainTimes = 0;
+    public float remainTimes = 0;
     public ushort[] speicalTiles = null;
     public WTPlayerAbility playerAb;
     public List<SupportUnitCount> supportUnits = new();

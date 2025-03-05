@@ -24,6 +24,7 @@ public enum WTEventType
     AddSynergy,
     PlayerSpawn,
     ShowSynergyInfo,
+    StageEnd, // 샵
     Count
 }
 

@@ -555,11 +555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebef00ea2abd0ee4f8c81f3440c45120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTestMode: 1
+  isTestMode: 0
   mainCam: {fileID: 938054951}
   characterCam: {fileID: 570621150}
   WTVCam1_Follow: {fileID: 0}
-  shopTime: 180
+  stageTime: 30
 --- !u!4 &1279642375
 Transform:
   m_ObjectHideFlags: 0

@@ -20,23 +20,22 @@ public class Panel_DayTimer : MonoBehaviour
     {
         beginPosX = dayArrowRect.localPosition.x;
         SoundManager.Instance.PlayBGM(SoundManager.Instance.bgmClip["StageBattle"]);
+        ChangeDayTMP(0);
     }
 
     private void OnEnable()
     {
-        WTGlobal.RegisterEventDelegate(WTEventType.Timer, ControlDayArrow);
+       // WTGlobal.RegisterEventDelegate(WTEventType.Timer, ControlDayArrow);
         WTGlobal.RegisterEventDelegate(WTEventType.ChangeStage, ChangeDayTMP);
     }
     private void OnDisable()
     {
-        WTGlobal.UnregisterEventDelegate(WTEventType.Timer, ControlDayArrow);
+       // WTGlobal.UnregisterEventDelegate(WTEventType.Timer, ControlDayArrow);
         WTGlobal.UnregisterEventDelegate(WTEventType.ChangeStage, ChangeDayTMP);
     }
     public void ControlDayArrow(int time)
     {
-        dayArrowRect.DOLocalMoveX(dayArrowEndRect.localPosition.x, WTMain.Instance.shopTime);
-        //dayArrowRect.DOLocalMoveX(dayArrowEndRect.localPosition.x, WTConstants.TotalStageTime);
-        // daySlider.value = time;
+        dayArrowRect.DOLocalMoveX(dayArrowEndRect.localPosition.x, time).SetEase(Ease.Linear);
     }
 
     public void ChangeDayTMP(int val)
@@ -57,7 +56,8 @@ public class Panel_DayTimer : MonoBehaviour
 
             dayImage.sprite = daySprites[dayd];
             main.StartDayTimer(data);
-            ControlDayArrow(3);
+            ControlDayArrow(data.total_stage_time);
         }
+        transform.SetAsLastSibling();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WTSpawner : MonoBehaviour
@@ -20,6 +21,7 @@ public class WTSpawner : MonoBehaviour
     public void Setup()
     {
         gameObject.SetActive(true);
+        MonsterReset();
         StopAllCoroutines();
         StartCoroutine(MonsterSpawner());
     }
@@ -37,13 +39,27 @@ public class WTSpawner : MonoBehaviour
         }
     }
 
+    private void MonsterReset()
+    {
+        WTPoolManager pm = WTPoolManager.Instance;
+        Queue<ObjectPoolBase> pool = pm.qPools["NormalEny"];
+        for(int i = 0; i < pool.Count; ++i)
+        {
+            ObjectPoolBase d = pool.Dequeue();
+            BaseEnemy enemy = d as BaseEnemy;
+            enemy.isDead = false;
+            enemy.gameObject.SetActive(false);
+            d.Release();
+        }
+    }
+
     public float RandomSpawn()
     {
         var stageData = WTMain.Instance.dicStageData[WTMain.Instance.playerData.stageID];
         float rate = 0;
         if(WTMain.Instance.playerData.remainTimes != 0)
             rate = WTMain.Instance.playerData.remainTimes / stageData.total_stage_time * 100 ;
-        //¾î¶² ¾Öµé¸¸ ¼ÒÈ¯ °¡´ÉÇÑÁö È®ÀÎ
+        //ï¿½î¶² ï¿½Öµé¸¸ ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         List<WTEnemyUnitStatsTemplate> list = new List<WTEnemyUnitStatsTemplate>();
         foreach (var data in WTMain.Instance.dicEnemyUnitStatsTemplate)
         {
@@ -59,21 +75,31 @@ public class WTSpawner : MonoBehaviour
         {
             totalWeight += data.spawn_weight;
         }
-        //Debug.LogWarning(totalWeight + "ÃÑ°¡ÁßÄ¡");
+        //Debug.LogWarning(totalWeight + "ï¿½Ñ°ï¿½ï¿½ï¿½Ä¡");
         int count = 0;
+        WTPoolManager pm = WTPoolManager.Instance;
+        Queue<ObjectPoolBase> pool = pm.qPools["NormalEny"];
         foreach (var data in list)
         {
             count = Mathf.RoundToInt((data.spawn_weight / totalWeight) * stageData.EnemiesPerWave);
-            //Debug.LogWarning((data.spawn_weight / totalWeight) + "°¡ÁßÄ¡ ºñÀ²");
-            //Debug.LogWarning(stageData.EnemiesPerWave + "ÃÖ´ë ¸¶¸®¼ö");
-            //Debug.LogWarning(count + "¸¶¸® ¼ÒÈ¯");
-            for(int i = 0; i < count; i++)
+            //Debug.LogWarning((data.spawn_weight / totalWeight) + "ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½");
+            //Debug.LogWarning(stageData.EnemiesPerWave + "ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            //Debug.LogWarning(count + "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯");
+            for (int i = 0; i < count; i++)
             {
-                if (WTPoolManager.Instance.qPools["NormalEny"].Count > 50) break;
-                var obj = WTPoolManager.Instance.SpawnQueue<BaseEnemy>("NormalEny");
+                BaseEnemy obj = null;
+                if (pool.Count > 50)
+                {
+                    obj = pool.Dequeue() as BaseEnemy;
+                }
+                else
+                {
+                    obj = WTPoolManager.Instance.SpawnQueue<BaseEnemy>("NormalEny");
+                }
                 var idx = Random.Range(0, spawnTr.Length);
                 obj.transform.position = spawnTr[idx].position;
                 obj.Setup(data);
+
             }
         }
         return stageData.SpawnRate;

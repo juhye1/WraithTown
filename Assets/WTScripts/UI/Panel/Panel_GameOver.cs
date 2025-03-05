@@ -24,7 +24,7 @@ public class Panel_GameOver : MonoBehaviour
         WTMain main = WTMain.Instance;
         Application.Quit();
         //main.ChangeGameState(WTGameState.Lobby);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         //로비로
     }
 

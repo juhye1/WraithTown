@@ -32,6 +32,7 @@ public class Panel_Shop : MonoBehaviour
         GetGold();
         GetRandomCards();
         SoundManager.Instance.PlayBGM(SoundManager.Instance.bgmClip["CardShop"]);
+        WTGlobal.CallEventDelegate(WTEventType.StageEnd, 1);
     }
 
     private void GetGold()
@@ -90,7 +91,9 @@ public class Panel_Shop : MonoBehaviour
         WTGlobal.CallEventDelegate(WTEventType.ChangeStage, main.playerData.stageID);
         uiMain.ChangeUIState(WTUIState.Game);
         main.player.isPlaying = true;
+        main.player.Setup();
         main.spawner.gameObject.SetActive(true);
+        WTGlobal.CallEventDelegate(WTEventType.StageEnd, 0);
         uiMain.DestroyPanel(WTUIState.Shop);
     }
 

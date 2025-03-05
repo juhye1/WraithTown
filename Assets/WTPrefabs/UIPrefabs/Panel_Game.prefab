@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 4612461753189290359}
   - component: {fileID: 496050702166341120}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Img_vignette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2458,6 +2458,7 @@ MonoBehaviour:
   slotSynergy: {fileID: 2569458771664812070, guid: 536b0d25efd9b8a4ea1f0c573c513cc9, type: 3}
   slotParent: {fileID: 1774380664945061801}
   currentSlot: {fileID: 0}
+  vignetteImage: {fileID: 496050702166341120}
 --- !u!1 &8957826070193145400
 GameObject:
   m_ObjectHideFlags: 0

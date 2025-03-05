@@ -28,7 +28,8 @@ public class Panel_Game : MonoBehaviour
     public RectTransform slotParent;
     private List<Slot_Synergy> slots = new();
     private Dictionary<ushort, Slot_Synergy> dicSlot = new();
-    public Slot_Synergy currentSlot;
+    [NonSerialized] public Slot_Synergy currentSlot;
+    public Image vignetteImage;
     //public Slider daySlider;
 
     private void Start()
@@ -36,8 +37,8 @@ public class Panel_Game : MonoBehaviour
         RT = transform as RectTransform;
         ResetSlider();
         WTMain main = WTMain.Instance;
-        ControlGold(100);
-        ControlPoint(100);
+        ControlGold(0);
+        ControlPoint(0);
         SpawnSynergySlots();
         SetProfile(0);
         WTGlobal.CallEventDelegate(WTEventType.PlayerSpawn, 0);
@@ -51,6 +52,7 @@ public class Panel_Game : MonoBehaviour
         WTGlobal.RegisterEventDelegate(WTEventType.ChangeGold, ControlGold);
         WTGlobal.RegisterEventDelegate(WTEventType.ChangePoint, ControlPoint);
         WTGlobal.RegisterEventDelegate(WTEventType.AddSynergy, AddSynergy);
+        WTGlobal.RegisterEventDelegate(WTEventType.StageEnd, StageEnd);
     }
     private void OnDisable()
     {
@@ -61,6 +63,13 @@ public class Panel_Game : MonoBehaviour
         WTGlobal.UnregisterEventDelegate(WTEventType.ChangeGold, ControlGold);
         WTGlobal.UnregisterEventDelegate(WTEventType.ChangePoint, ControlPoint);
         WTGlobal.UnregisterEventDelegate(WTEventType.AddSynergy, AddSynergy);
+        WTGlobal.UnregisterEventDelegate(WTEventType.StageEnd, StageEnd);
+    }
+
+    private void StageEnd(int val)
+    {
+        bool enable = val == 0 ? true : false;
+        vignetteImage.enabled = enable;
     }
 
     private void SetProfile(int d)
@@ -127,22 +136,6 @@ public class Panel_Game : MonoBehaviour
         Sprite sprite2 = main.GetSynergySprite(unitTemp.trait_id, u.unitCount);
         s1.SetData(sprite1, main.GetTotalSynergeTemplate(unitTemp.synergy_id), u.unitCount);
         s2.SetData(sprite2, main.GetTotalSynergeTemplate(unitTemp.trait_id), u.unitCount);
-
-
-
-        //for (int i = 0; i < c.Count; ++i)
-        //{
-        //    WTSupportUnitTemplate unitTemp = main.GetSupportUnitTemplate(c[i].unitID);
-        //    Slot_Synergy s1 = dicSlot[unitTemp.synergy_id];
-        //    Slot_Synergy s2 = dicSlot[unitTemp.trait_id];
-        //    s1.gameObject.SetActive(true);
-        //    s2.gameObject.SetActive(true);
-        //    Sprite sprite1 = main.GetSynergySprite(unitTemp.synergy_id, c[i].unitCount);
-        //    Sprite sprite2 = main.GetSynergySprite(unitTemp.trait_id, c[i].unitCount);
-        //    s1.SetData(sprite1, main.GetTotalSynergeTemplate(unitTemp.synergy_id));
-        //    s2.SetData(sprite2, main.GetTotalSynergeTemplate(unitTemp.trait_id));
-        //}
-
     }
 
     private void SpawnSynergySlots()
