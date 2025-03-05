@@ -22,8 +22,8 @@ public partial class WTMain : MonoBehaviour
         GetPlayerAb();
         if (isTestMode)
         {
-            playerData.remainTimes = 0; // 테스트용
             GetCurrentStageData().total_stage_time = (ushort)stageTime;
+            nightTime = data.total_stage_time * (data.stage_night_time * 0.01f);
         }
         else
         {
@@ -101,13 +101,12 @@ public partial class WTMain : MonoBehaviour
             if (playerData.remainTimes > nightTime)
             {
                 // 낮으로 전환
-                if (playerData.remainTimes > WTConstants.TotalStageTime)
+                if (playerData.remainTimes > GetCurrentStageData().total_stage_time)
                 {
                     WTUIMain uiMain = WTUIMain.Instance;
-                    WTMain main = WTMain.Instance;
-                    if(main.playerData.currentHP > 0)
+                    if(playerData.currentHP > 0)
                     {
-                        if (main.GetCurrentStageData().stage_id == 10005)
+                        if (GetCurrentStageData().stage_id == 10005)
                         {
                             uiMain.ChangeUIState(WTUIState.GameOver);
                         }
